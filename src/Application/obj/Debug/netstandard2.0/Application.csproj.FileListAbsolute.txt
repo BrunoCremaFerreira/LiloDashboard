@@ -1,0 +1,9 @@
+/home/brn/Projects/Lilo Dashboard/src/Application/bin/Debug/netstandard2.0/Application.deps.json
+/home/brn/Projects/Lilo Dashboard/src/Application/bin/Debug/netstandard2.0/Application.dll
+/home/brn/Projects/Lilo Dashboard/src/Application/bin/Debug/netstandard2.0/Application.pdb
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.csprojAssemblyReference.cache
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.AssemblyInfoInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.AssemblyInfo.cs
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.csproj.CoreCompileInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.dll
+/home/brn/Projects/Lilo Dashboard/src/Application/obj/Debug/netstandard2.0/Application.pdb

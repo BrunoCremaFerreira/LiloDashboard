@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ifRDMo4YXYir0s7PymZCBwB546RGJYDywdBGnYTOxqEMo4B6cwD0W8dtxz46Ynq5oJpqeyVkxHNLz3u1lpK0KA==",
+  "dgSpecHash": "bs/6UjRMCrzmiH6cYLytPnI8iIF6ff/B+KFiotdCo3y4rzLSvroKchf9+ho5g9OrHYnFZhnLQZY3EnqSNgOdiQ==",
   "success": true,
   "projectFilePath": "/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/Bus.csproj",
   "expectedPackageFiles": [
+    "/home/brn/.nuget/packages/fluentvalidation/8.6.2/fluentvalidation.8.6.2.nupkg.sha512",
+    "/home/brn/.nuget/packages/mediatr/8.0.1/mediatr.8.0.1.nupkg.sha512",
     "/home/brn/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/home/brn/.nuget/packages/system.componentmodel.annotations/4.4.1/system.componentmodel.annotations.4.4.1.nupkg.sha512"
   ],
   "logs": []
 }

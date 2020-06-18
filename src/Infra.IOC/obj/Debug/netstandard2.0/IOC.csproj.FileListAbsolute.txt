@@ -1,0 +1,8 @@
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/bin/Debug/netstandard2.0/IOC.deps.json
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/bin/Debug/netstandard2.0/IOC.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/bin/Debug/netstandard2.0/IOC.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/obj/Debug/netstandard2.0/IOC.AssemblyInfoInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/obj/Debug/netstandard2.0/IOC.AssemblyInfo.cs
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/obj/Debug/netstandard2.0/IOC.csproj.CoreCompileInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/obj/Debug/netstandard2.0/IOC.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.IOC/obj/Debug/netstandard2.0/IOC.pdb

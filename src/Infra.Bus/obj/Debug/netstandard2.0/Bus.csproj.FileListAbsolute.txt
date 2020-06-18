@@ -1,0 +1,12 @@
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/bin/Debug/netstandard2.0/Bus.deps.json
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/bin/Debug/netstandard2.0/Bus.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/bin/Debug/netstandard2.0/Bus.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/bin/Debug/netstandard2.0/Domain.Core.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/bin/Debug/netstandard2.0/Domain.Core.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.csprojAssemblyReference.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.AssemblyInfoInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.AssemblyInfo.cs
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.csproj.CoreCompileInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.csproj.CopyComplete
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/obj/Debug/netstandard2.0/Bus.pdb

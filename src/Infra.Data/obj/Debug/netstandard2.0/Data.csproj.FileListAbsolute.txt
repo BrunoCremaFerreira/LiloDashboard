@@ -1,0 +1,8 @@
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/bin/Debug/netstandard2.0/Data.deps.json
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/bin/Debug/netstandard2.0/Data.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/bin/Debug/netstandard2.0/Data.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.AssemblyInfoInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.AssemblyInfo.cs
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.csproj.CoreCompileInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.pdb

@@ -1,0 +1,9 @@
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/bin/Debug/netstandard2.0/CQRS.deps.json
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/bin/Debug/netstandard2.0/CQRS.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/bin/Debug/netstandard2.0/CQRS.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.csprojAssemblyReference.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.AssemblyInfoInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.AssemblyInfo.cs
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.csproj.CoreCompileInputs.cache
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.dll
+/home/brn/Projects/Lilo Dashboard/src/Infra.CQRS/obj/Debug/netstandard2.0/CQRS.pdb

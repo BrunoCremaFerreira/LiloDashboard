@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "mkWZl/ZTHOtTBnBxUvhZm/Rjh0vUxB/SQAt1bcyrMALfk2nB+s1JZRULORRTNbFVd/gwyp0nORVYFqsKUxZAZw==",
+  "dgSpecHash": "CG7jHMONoBq57lvujdYa7ia0AEjoGLLWo35pCz4llwlJBoKk6fBBGAGvZ0J2s8aYxLV7obvf5FpFM32OWxp9aA==",
   "success": true,
   "projectFilePath": "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj",
   "expectedPackageFiles": [
+    "/home/brn/.nuget/packages/fluentvalidation/8.6.2/fluentvalidation.8.6.2.nupkg.sha512",
+    "/home/brn/.nuget/packages/mediatr/8.0.1/mediatr.8.0.1.nupkg.sha512",
     "/home/brn/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/home/brn/.nuget/packages/system.componentmodel.annotations/4.4.1/system.componentmodel.annotations.4.4.1.nupkg.sha512"
   ],
   "logs": []
 }
