@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "NBnFp/k4tyzzV/siP+8hICgBf35Y2L2Mx1pKMFQELcN++KjscaRKA06CN+BfKSgvIObrvKAlOc2Bdpp7bSz/rg==",
+  "success": true,
+  "projectFilePath": "/home/brn/Projects/Lilo Dashboard/src/Application/Application.csproj",
+  "expectedPackageFiles": [
+    "/home/brn/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

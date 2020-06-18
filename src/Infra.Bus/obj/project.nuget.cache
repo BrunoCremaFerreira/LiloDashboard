@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ifRDMo4YXYir0s7PymZCBwB546RGJYDywdBGnYTOxqEMo4B6cwD0W8dtxz46Ynq5oJpqeyVkxHNLz3u1lpK0KA==",
+  "success": true,
+  "projectFilePath": "/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/Bus.csproj",
+  "expectedPackageFiles": [
+    "/home/brn/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/brn/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
