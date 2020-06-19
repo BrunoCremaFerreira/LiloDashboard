@@ -1,6 +1,6 @@
 using System;
 
-namespace CQRS.Commands
+namespace CQRS.Commands.User
 {
     /// <summary>
     /// CQRS command clas for login procedure
