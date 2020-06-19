@@ -349,7 +349,7 @@
     ".NETStandard,Version=v2.0": [
       "Domain.Core >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
-      "mediatr >= *"
+      "mediatr >= 8.0.1"
     ]
   },
   "packageFolders": {
@@ -399,7 +399,7 @@
           },
           "mediatr": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[8.0.1, )"
           }
         },
         "imports": [

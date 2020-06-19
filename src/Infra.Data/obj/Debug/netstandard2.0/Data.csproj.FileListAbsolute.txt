@@ -6,3 +6,4 @@
 /home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.csproj.CoreCompileInputs.cache
 /home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.dll
 /home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.pdb
+/home/brn/Projects/Lilo Dashboard/src/Infra.Data/obj/Debug/netstandard2.0/Data.csprojAssemblyReference.cache
