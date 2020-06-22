@@ -24,7 +24,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj": {
+                "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,6 +45,128 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj",
+        "projectName": "Domain.Core",
+        "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj",
+        "packagesPath": "/home/brn/.nuget/packages/",
+        "outputPath": "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/brn/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[8.6.2, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "mediatr": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj",
+        "packagesPath": "/home/brn/.nuget/packages/",
+        "outputPath": "/home/brn/Projects/Lilo Dashboard/src/Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/brn/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj": {
+                "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Domain.Core/Domain.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "mediatr": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [

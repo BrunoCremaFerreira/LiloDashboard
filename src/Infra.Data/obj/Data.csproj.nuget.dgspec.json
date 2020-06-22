@@ -180,7 +180,7 @@
             },
             "MySql.Data.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[8.0.20, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",

@@ -56,6 +56,33 @@
           "lib/netstandard2.0/System.ComponentModel.Annotations.dll": {}
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
+      "Bus/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Domain.Core": "1.0.0",
+          "mediatr": "8.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Bus.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bus.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -353,6 +380,16 @@
         "version.txt"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
+    "Bus/1.0.0": {
+      "type": "project",
+      "path": "../Infra.Bus/Bus.csproj",
+      "msbuildProject": "../Infra.Bus/Bus.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -366,9 +403,11 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Application >= 1.0.0",
+      "Bus >= 1.0.0",
       "Domain >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
-      "mediatr >= *"
+      "mediatr >= 8.0.1"
     ]
   },
   "packageFolders": {
@@ -395,8 +434,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "/home/brn/Projects/Lilo Dashboard/src/Application/Application.csproj": {
+              "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Application/Application.csproj"
+            },
             "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj": {
               "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Domain/Domain.csproj"
+            },
+            "/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/Bus.csproj": {
+              "projectPath": "/home/brn/Projects/Lilo Dashboard/src/Infra.Bus/Bus.csproj"
             }
           }
         }
@@ -418,7 +463,7 @@
           },
           "mediatr": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[8.0.1, )"
           }
         },
         "imports": [
