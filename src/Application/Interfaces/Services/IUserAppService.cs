@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Application.EventSourcedNormalizers;
 using Application.ViewModels;
 
 namespace Application.Interfaces.Services
@@ -16,8 +15,5 @@ namespace Application.Interfaces.Services
         void Update(UserViewModel userViewModel);
 
         void Remove(Guid id);
-
-        IList<UserHistoryData> GetAllHistory(Guid id);
-
     }
 }

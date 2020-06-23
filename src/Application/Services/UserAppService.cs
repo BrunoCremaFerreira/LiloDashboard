@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Data.Repository.EventSourcing;
-using Application.EventSourcedNormalizers.User;
 using Application.Interfaces.Services;
 using Application.ViewModels;
 using Domain.Commands.User;
@@ -16,18 +14,16 @@ namespace Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        private readonly IEventStoreRepository _eventStoreRepository;
+        
         private readonly IMediatorHandler Bus;
 
         public UserAppService(IMapper mapper,
             IUserRepository userRepository,
-            IMediatorHandler bus,
-            IEventStoreRepository eventStoreRepository)
+            IMediatorHandler bus)
         {
             _mapper = mapper;
             _userRepository = userRepository;
             Bus = bus;
-            _eventStoreRepository = eventStoreRepository;
         }
 
         public IEnumerable<UserViewModel> GetAll()
@@ -56,11 +52,6 @@ namespace Application.Services
         {
             var removeCommand = new RemoveUserCommand(id);
             Bus.SendCommand(removeCommand);
-        }
-
-        public IList<UserHistoryData> GetAllHistory(Guid id)
-        {
-            return UserHistory.ToJavaScriptHistory(_eventStoreRepository.All(id));
         }
 
         public void Dispose()

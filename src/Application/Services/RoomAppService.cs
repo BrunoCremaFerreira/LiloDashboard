@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Data.Repository.EventSourcing;
 using Application.Interfaces.Services;
 using Application.ViewModels;
 using Domain.Commands.Room;
@@ -15,18 +14,15 @@ namespace Application.Services.User
     {
         private readonly IMapper _mapper;
         private readonly IRoomRepository _roomRepository;
-        private readonly IEventStoreRepository _eventStoreRepository;
         private readonly IMediatorHandler Bus;
 
         public RoomAppService(IMapper mapper,
             IRoomRepository roomRepository,
-            IMediatorHandler bus,
-            IEventStoreRepository eventStoreRepository)
+            IMediatorHandler bus)
         {
             _mapper = mapper;
             _roomRepository = roomRepository;
             Bus = bus;
-            _eventStoreRepository = eventStoreRepository;
         }
 
         public RoomViewModel GetById(Guid id)
@@ -36,7 +32,8 @@ namespace Application.Services.User
 
         public IEnumerable<RoomViewModel> GetAll()
         {
-            return _roomRepository.GetAll().ProjectTo<RoomViewModel>();
+            return _roomRepository.
+                GetAll().ProjectTo<RoomViewModel>(_mapper.ConfigurationProvider);
         }
 
         public void Register(RoomViewModel roomViewModel)

@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Data.Repository.EventSourcing;
-using AppService.Interfaces.Services;
-using AppService.ViewModels;
+using Application.Interfaces.Services;
+using Application.ViewModels;
 using Domain.Commands.Device;
 using Domain.Interfaces.Repository.Data;
 using Domain.Core.Bus;
@@ -15,18 +14,16 @@ namespace Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IDeviceRepository _deviceRepository;
-        private readonly IEventStoreRepository _eventStoreRepository;
+        
         private readonly IMediatorHandler Bus;
 
         public DeviceAppService(IMapper mapper,
             IDeviceRepository deviceRepository,
-            IMediatorHandler bus,
-            IEventStoreRepository eventStoreRepository)
+            IMediatorHandler bus)
         {
             _mapper = mapper;
             _deviceRepository = deviceRepository;
             Bus = bus;
-            _eventStoreRepository = eventStoreRepository;
         }
 
         public DeviceViewModel GetById(Guid id)
@@ -36,7 +33,8 @@ namespace Application.Services
 
         public IEnumerable<DeviceViewModel> GetAll()
         {
-            return _deviceRepository.GetAll().ProjectTo<DeviceViewModel>();
+            return _deviceRepository.
+                GetAll().ProjectTo<DeviceViewModel>(_mapper.ConfigurationProvider);
         }
 
         public void Register(DeviceViewModel deviceViewModel)
