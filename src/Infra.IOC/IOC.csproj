@@ -4,6 +4,7 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infra.Bus\Bus.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infra.Data\Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

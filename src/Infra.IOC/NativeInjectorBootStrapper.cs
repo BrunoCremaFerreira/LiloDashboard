@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Domain.Core.Bus;
 using Domain.Core.Notifications;
 using Bus;
@@ -9,23 +7,21 @@ using Data.Repository;
 using Data.Repository.EventSourcing;
 using Data.Repository.User;
 using AppService.Interfaces.Services;
-using AppService.Services;
 using Domain.Events.User;
 using Domain.EventHandlers.User;
 using MediatR;
 using Domain.Commands.User;
-using Domain.CommandHandlers.User;
+using Domain.CommandHandlers;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository.Data;
 using Data.UOW;
-using Application.Services.User;
+using Application.Services;
 using Domain.Interfaces.Model;
 using Domain.Model;
 using Domain.Core.Events;
 using Domain.Events.Building;
 using Domain.EventHandlers.Building;
 using Domain.Commands.Building;
-using Domain.CommandHandlers;
 
 namespace IOC
 {

@@ -1,0 +1,39 @@
+using AutoMapper;
+using Application.ViewModels;
+using Domain.Commands.Building;
+using Domain.Commands.Device;
+using Domain.Commands.Room;
+using Domain.Commands.User;
+
+namespace Application.AutoMapper
+{
+    public class ViewModelToDomainMappingProfile: Profile
+    {
+        public ViewModelToDomainMappingProfile()
+        {
+            //User
+            CreateMap<UserViewModel, RegisterNewUserCommand>().
+                ConstructUsing(c=> new RegisterNewUserCommand(c.Name, c.Email, c.IsAdmin));
+            CreateMap<UserViewModel, UpdateUserCommand>().
+                ConstructUsing(c=> new UpdateUserCommand(c.Id, c.Name, c.Email));
+            
+            //Building
+            CreateMap<BuildingViewModel, RegisterNewBuildingCommand>().
+                ConstructUsing(c=> new RegisterNewBuildingCommand(c.Name));
+            CreateMap<BuildingViewModel, UpdateBuildingCommand>().
+                ConstructUsing(c=> new UpdateBuildingCommand(c.Id, c.Name));
+            
+            //Room
+            CreateMap<RoomViewModel, RegisterNewRoomCommand>().
+                ConstructUsing(c=> new RegisterNewRoomCommand(c.Name));
+            CreateMap<RoomViewModel, UpdateRoomCommand>().
+                ConstructUsing(c=> new UpdateRoomCommand(c.Id, c.Name));
+            
+            //Device
+            CreateMap<DeviceViewModel, RegisterNewDeviceCommand>().
+                ConstructUsing(c=> new RegisterNewDeviceCommand(c.Name, c.HardwareAddress));
+            CreateMap<DeviceViewModel, UpdateDeviceCommand>().
+                ConstructUsing(c=> new UpdateDeviceCommand(c.Id, c.Name, c.HardwareAddress));
+        }
+    }
+}
