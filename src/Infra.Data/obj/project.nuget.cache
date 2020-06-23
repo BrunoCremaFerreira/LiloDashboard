@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "whLsSa6a1CUjJo7GLYCOlRYITt7lzJ6MqC/sbcPRHnK+LZfj3jaBk7q57xGxfgPcp+v83h7gAp7NRvsSrRzVOA==",
+  "dgSpecHash": "W2LgpZzaNItBlb8YKywES83MCfLrP7a3CKRHDWWATMG06GeIU2QXe7i5JQlMo2+SaCLeZVG2GwaVSjOTu8jIfg==",
   "success": true,
   "projectFilePath": "/home/brn/Projects/Lilo Dashboard/src/Infra.Data/Data.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "/home/brn/.nuget/packages/mysql.data/8.0.20/mysql.data.8.0.20.nupkg.sha512",
     "/home/brn/.nuget/packages/mysql.data.entityframeworkcore/8.0.20/mysql.data.entityframeworkcore.8.0.20.nupkg.sha512",
     "/home/brn/.nuget/packages/netstandard.library/1.6.1/netstandard.library.1.6.1.nupkg.sha512",
+    "/home/brn/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
     "/home/brn/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/home/brn/.nuget/packages/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "/home/brn/.nuget/packages/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

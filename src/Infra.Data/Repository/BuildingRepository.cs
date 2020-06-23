@@ -9,7 +9,7 @@ namespace Data.Repository
 {
     public class BuildingRepository: Repository<Domain.Model.Building>, IBuildingRepository
     {
-        public BuildingRepository(ProjectManagerDataContext context)
+        public BuildingRepository(LiloDataContext context)
             : base(context)
         {
 
