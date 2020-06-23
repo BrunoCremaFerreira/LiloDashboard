@@ -1,8 +1,14 @@
-using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Domain.Interfaces.Model
 {
-    public class IUser
+    public interface IUser
     {
+        string Name { get; }
+        
+        bool IsAuthenticated();
+
+        IEnumerable<Claim> GetClaimsIdentity();
     }
 }

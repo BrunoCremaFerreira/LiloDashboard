@@ -34,12 +34,12 @@ namespace Domain.CommandHandlers
         /// <summary>
         /// Handle Register New Building Command
         /// </summary>
-        public Task Handle(RegisterNewBuildingCommand request, CancellationToken cancellationToken)
+        Task<Unit> IRequestHandler<RegisterNewBuildingCommand, Unit>.Handle(RegisterNewBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Task.CompletedTask;
+                return (Task<Unit>)Task.CompletedTask;
             }
 
             var building = new Model.Building(Guid.NewGuid(), request.Name);
@@ -47,7 +47,7 @@ namespace Domain.CommandHandlers
             if (_buildingRepository.GetAll().Any(e=> e.Name.Trim().ToUpper() == request.Name.Trim().ToUpper()))
             {
                 Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
-                return Task.CompletedTask;
+                return (Task<Unit>)Task.CompletedTask;
             }
 
             _buildingRepository.Add(building);
@@ -55,18 +55,18 @@ namespace Domain.CommandHandlers
             if (Commit())
                 Bus.RaiseEvent(new BuildingRegisteredEvent(building.Id, building.Name));
             
-            return Task.CompletedTask;
+            return (Task<Unit>)Task.CompletedTask;
         }
 
         /// <summary>
         /// Handle Update Building Command
         /// </summary>
-        public Task Handle(UpdateBuildingCommand request, CancellationToken cancellationToken)
+        Task<Unit> IRequestHandler<UpdateBuildingCommand, Unit>.Handle(UpdateBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Task.CompletedTask;
+                return (Task<Unit>)Task.CompletedTask;
             }
             
             var building = _buildingRepository.GetById(request.Id);
@@ -75,7 +75,7 @@ namespace Domain.CommandHandlers
                 if (building.Name.Trim().ToUpper() == request.Name.Trim().ToUpper())
                 {
                     Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
-                    return Task.CompletedTask;
+                    return (Task<Unit>)Task.CompletedTask;
                 }
             }
             
@@ -85,18 +85,18 @@ namespace Domain.CommandHandlers
             if (Commit())
                 Bus.RaiseEvent(new BuildingUpdatedEvent(building.Id, building.Name));
             
-            return Task.CompletedTask;
+            return (Task<Unit>)Task.CompletedTask;
         }
 
         /// <summary>
         /// Handle Remove building Command
         /// </summary>
-        public Task Handle(RemoveBuildingCommand request, CancellationToken cancellationToken)
+        Task<Unit> IRequestHandler<RemoveBuildingCommand, Unit>.Handle(RemoveBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return Task.CompletedTask;
+                return (Task<Unit>)Task.CompletedTask;
             }
             
             _buildingRepository.Remove(request.Id);
@@ -104,7 +104,7 @@ namespace Domain.CommandHandlers
             if (Commit())
                 Bus.RaiseEvent(new BuildingRemovedEvent(request.Id));
             
-            return Task.CompletedTask;
+            return (Task<Unit>)Task.CompletedTask;
         }
 
         public void Dispose()
