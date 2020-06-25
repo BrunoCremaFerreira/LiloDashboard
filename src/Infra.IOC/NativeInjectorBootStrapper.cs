@@ -1,12 +1,11 @@
 using Domain.Core.Bus;
 using Domain.Core.Notifications;
 using Bus;
-using Data.Context;
 using Data.EventSourcing;
 using Data.Repository;
 using Data.Repository.EventSourcing;
 using Data.Repository.User;
-using AppService.Interfaces.Services;
+using Application.Interfaces.Services;
 using Domain.Events.User;
 using Domain.EventHandlers.User;
 using MediatR;
@@ -22,15 +21,18 @@ using Domain.Core.Events;
 using Domain.Events.Building;
 using Domain.EventHandlers.Building;
 using Domain.Commands.Building;
+using Microsoft.Extensions.DependencyInjection;
+using Data.Context;
+using Application.Services.User;
 
 namespace IOC
 {
-    public class NativeInjectorBootStrapper
+    public static class NativeInjectorBootStrapper
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(this IServiceCollection services)
         {
             // ASP.NET HttpContext dependency
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
             // Domain Bus (Mediator)
             services.AddScoped<IMediatorHandler, InMemoryBus>();
@@ -62,12 +64,11 @@ namespace IOC
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBuildingRepository, BuildingRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ProjectManagerDataContext>();
+            services.AddScoped<LiloDataContext>();
             
             // Infra - Data EventSourcing
             services.AddScoped<IEventStoreRepository, EventStoreSQLRepository>();
             services.AddScoped<IEventStore, SqlEventStore>();
-            services.AddScoped<EventStoreSQLContext>();
             
             // Infra - Identity
             services.AddScoped<IUser, User>();
