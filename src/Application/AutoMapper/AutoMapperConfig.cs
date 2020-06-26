@@ -2,7 +2,7 @@ using AutoMapper;
 
 namespace Application.AutoMapper
 {
-    public class AutoMapperConfig
+    public static class AutoMapperConfig
     {
         public static MapperConfiguration RegisterMappings()
         {
