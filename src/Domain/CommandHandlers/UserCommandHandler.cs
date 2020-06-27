@@ -33,12 +33,12 @@ namespace Domain.CommandHandlers
         /// <summary>
         /// Handle Register New User Command
         /// </summary>
-        Task<Unit> IRequestHandler<RegisterNewUserCommand, Unit>.Handle(RegisterNewUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RegisterNewUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
 
             var user = new Model.User(Guid.NewGuid(), 
@@ -46,27 +46,27 @@ namespace Domain.CommandHandlers
 
             if (_userRepository.GetByEmail(request.Email) != null)
             {
-                Bus.RaiseEvent(new DomainNotification(request.MessageType, "The customer e-mail has already been used."));
-                return (Task<Unit>)Task.CompletedTask;
+                await Bus.RaiseEvent(new DomainNotification(request.MessageType, "The customer e-mail has already been used."));
+                return Unit.Value;
             }
 
             _userRepository.Add(user);
 
             if (Commit())
-                Bus.RaiseEvent(new UserRegisteredEvent(user.Id, user.Name, user.Email, user.IsAdmin));
+                await Bus.RaiseEvent(new UserRegisteredEvent(user.Id, user.Name, user.Email, user.IsAdmin));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         /// <summary>
         /// Handle Update User Command
         /// </summary>
-        Task<Unit> IRequestHandler<UpdateUserCommand, Unit>.Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
             
             var user = new Model.User(request.Id, 
@@ -77,36 +77,36 @@ namespace Domain.CommandHandlers
             {
                 if (!existingUser.Equals(user))
                 {
-                    Bus.RaiseEvent(new DomainNotification(request.MessageType,"The customer e-mail has already been used."));
-                    return (Task<Unit>)Task.CompletedTask;
+                    await Bus.RaiseEvent(new DomainNotification(request.MessageType,"The customer e-mail has already been used."));
+                    return Unit.Value;
                 }
             }
             
             _userRepository.Update(user);
             
             if (Commit())
-                Bus.RaiseEvent(new UserUpdatedEvent(user.Id, user.Name, user.Email, user.IsAdmin));
+                await Bus.RaiseEvent(new UserUpdatedEvent(user.Id, user.Name, user.Email, user.IsAdmin));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         /// <summary>
         /// Handle Remove User Command
         /// </summary>
-        Task<Unit> IRequestHandler<RemoveUserCommand, Unit>.Handle(RemoveUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RemoveUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
             
             _userRepository.Remove(request.Id);
             
             if (Commit())
-                Bus.RaiseEvent(new UserRemovedEvent(request.Id));
+                await Bus.RaiseEvent(new UserRemovedEvent(request.Id));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         public void Dispose()
