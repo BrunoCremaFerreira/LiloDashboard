@@ -31,7 +31,10 @@ namespace API
         {
             services.AddControllers();
             services.AddSwagger();
-            services.AddMediatR(typeof(Startup));
+            
+            var assembly = AppDomain.CurrentDomain.Load("Domain");
+            services.AddMediatR(assembly);
+            
             services.RegisterServices();
             
             var config = Application.AutoMapper.AutoMapperConfig.RegisterMappings();

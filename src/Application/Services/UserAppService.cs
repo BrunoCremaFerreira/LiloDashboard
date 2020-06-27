@@ -36,10 +36,10 @@ namespace Application.Services
             return _mapper.Map<UserViewModel>(_userRepository.GetById(id));
         }
 
-        public void Register(UserViewModel userViewModel)
+        public async void Register(UserViewModel userViewModel)
         {
             var registerCommand = _mapper.Map<RegisterNewUserCommand>(userViewModel);
-            Bus.SendCommand(registerCommand);
+            await Bus.SendCommand(registerCommand);
         }
 
         public void Update(UserViewModel userViewModel)

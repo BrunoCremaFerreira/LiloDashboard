@@ -34,39 +34,39 @@ namespace Domain.CommandHandlers
         /// <summary>
         /// Handle Register New Building Command
         /// </summary>
-        Task<Unit> IRequestHandler<RegisterNewBuildingCommand, Unit>.Handle(RegisterNewBuildingCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RegisterNewBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
 
             var building = new Model.Building(Guid.NewGuid(), request.Name);
 
             if (_buildingRepository.GetAll().Any(e=> e.Name.Trim().ToUpper() == request.Name.Trim().ToUpper()))
             {
-                Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
-                return (Task<Unit>)Task.CompletedTask;
+                await Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
+                return Unit.Value;
             }
 
             _buildingRepository.Add(building);
 
             if (Commit())
-                Bus.RaiseEvent(new BuildingRegisteredEvent(building.Id, building.Name));
+                await Bus.RaiseEvent(new BuildingRegisteredEvent(building.Id, building.Name));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         /// <summary>
         /// Handle Update Building Command
         /// </summary>
-        Task<Unit> IRequestHandler<UpdateBuildingCommand, Unit>.Handle(UpdateBuildingCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
             
             var building = _buildingRepository.GetById(request.Id);
@@ -74,8 +74,8 @@ namespace Domain.CommandHandlers
             {
                 if (building.Name.Trim().ToUpper() == request.Name.Trim().ToUpper())
                 {
-                    Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
-                    return (Task<Unit>)Task.CompletedTask;
+                    await Bus.RaiseEvent(new DomainNotification(request.MessageType, "The building name has already been used."));
+                    return Unit.Value;
                 }
             }
             
@@ -83,28 +83,28 @@ namespace Domain.CommandHandlers
             _buildingRepository.Update(building);
             
             if (Commit())
-                Bus.RaiseEvent(new BuildingUpdatedEvent(building.Id, building.Name));
+                await Bus.RaiseEvent(new BuildingUpdatedEvent(building.Id, building.Name));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         /// <summary>
         /// Handle Remove building Command
         /// </summary>
-        Task<Unit> IRequestHandler<RemoveBuildingCommand, Unit>.Handle(RemoveBuildingCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RemoveBuildingCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
             {
                 NotifyValidationErrors(request);
-                return (Task<Unit>)Task.CompletedTask;
+                return Unit.Value;
             }
             
             _buildingRepository.Remove(request.Id);
             
             if (Commit())
-                Bus.RaiseEvent(new BuildingRemovedEvent(request.Id));
+                await Bus.RaiseEvent(new BuildingRemovedEvent(request.Id));
             
-            return (Task<Unit>)Task.CompletedTask;
+            return Unit.Value;
         }
 
         public void Dispose()

@@ -38,22 +38,22 @@ namespace Application.Services.User
                 ProjectTo<BuildingViewModel>(_mapper.ConfigurationProvider);
         }
 
-        public void Register(BuildingViewModel buildingViewModel)
+        public async void Register(BuildingViewModel buildingViewModel)
         {
             var registerCommand = _mapper.Map<RegisterNewBuildingCommand>(buildingViewModel);
-            Bus.SendCommand(registerCommand);
+            await Bus.SendCommand(registerCommand);
         }
 
-        public void Update(BuildingViewModel buildingViewModel)
+        public async void Update(BuildingViewModel buildingViewModel)
         {
             var updateCommand = _mapper.Map<UpdateBuildingCommand>(buildingViewModel);
-            Bus.SendCommand(updateCommand);
+            await Bus.SendCommand(updateCommand);
         }
 
-        public void Remove(Guid id)
+        public async void Remove(Guid id)
         {
             var removeCommand = new RemoveBuildingCommand(id);
-            Bus.SendCommand(removeCommand);
+            await Bus.SendCommand(removeCommand);
         }
 
         public void Dispose()
