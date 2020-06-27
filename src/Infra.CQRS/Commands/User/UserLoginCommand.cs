@@ -3,7 +3,7 @@ using System;
 namespace CQRS.Commands.User
 {
     /// <summary>
-    /// CQRS command clas for login procedure
+    /// CQRS command class for login procedure
     /// </summary>
     public class UserLoginCommand
     {
