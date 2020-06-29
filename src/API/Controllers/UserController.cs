@@ -9,8 +9,7 @@ using Application.ViewModels;
 
 namespace API.Controllers
 {
-    [ApiController]
-    public class UserController: ControllerBase
+    public class UserController: BaseLiloApiController
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUserAppService _userAppService;
