@@ -7,7 +7,7 @@ using Data.Repository.EventSourcing;
 using Data.Repository.User;
 using Application.Interfaces.Services;
 using Domain.Events.User;
-using Domain.EventHandlers.User;
+using Domain.EventHandlers;
 using MediatR;
 using Domain.Commands.User;
 using Domain.CommandHandlers;

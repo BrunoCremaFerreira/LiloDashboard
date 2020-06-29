@@ -10,7 +10,6 @@ using Application.ViewModels;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class UserController: ControllerBase
     {
         private readonly ILogger<UserController> _logger;
@@ -23,12 +22,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Route("v1/[controller]/user/{id}")]
         public UserViewModel GetUser(Guid id)
         {
             return _userAppService.GetById(id);
         }
 
         [HttpPost]
+        [Route("v1/[controller]/user")]
         public IActionResult CreateUser(UserViewModel user)
         {
             _userAppService.Register(user);
@@ -36,6 +37,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
+        [Route("v1/[controller]/user")]
         public IActionResult UpdateUser(UserViewModel user)
         {
             _userAppService.Update(user);
@@ -43,6 +45,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
+        [Route("v1/[controller]/user/{id}")]
         public IActionResult DeleteUser(Guid id)
         {
             _userAppService.Remove(id);

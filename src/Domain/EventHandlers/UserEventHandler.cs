@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Domain.Events.User;
 using MediatR;
 
-namespace Domain.EventHandlers.User
+namespace Domain.EventHandlers
 {
     public class UserEventHandler :
         INotificationHandler<UserRegisteredEvent>,
