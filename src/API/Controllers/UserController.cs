@@ -22,10 +22,30 @@ namespace API.Controllers
             _userAppService = userAppService;
         }
 
+        [HttpGet]
+        public UserViewModel GetUser(Guid id)
+        {
+            return _userAppService.GetById(id);
+        }
+
         [HttpPost]
         public IActionResult CreateUser(UserViewModel user)
         {
             _userAppService.Register(user);
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult UpdateUser(UserViewModel user)
+        {
+            _userAppService.Update(user);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteUser(Guid id)
+        {
+            _userAppService.Remove(id);
             return Ok();
         }
     }
