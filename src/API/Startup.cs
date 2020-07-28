@@ -33,7 +33,7 @@ namespace API
             services.AddControllers();
             services.AddSwagger();
             
-            var assembly = AppDomain.CurrentDomain.Load("Domain");
+            var assembly = AppDomain.CurrentDomain.Load("LiloDash.Domain");
             services.AddMediatR(assembly);
             
             services.RegisterServices();

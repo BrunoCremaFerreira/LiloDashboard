@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Domain.Interfaces.Repository.Data
+namespace LiloDash.Domain.Interfaces.Repository.Data
 {
     public interface IRepository<TEntity>: IDisposable where TEntity: class
     {

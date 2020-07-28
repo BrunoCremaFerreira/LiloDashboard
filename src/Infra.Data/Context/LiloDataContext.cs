@@ -2,7 +2,7 @@ using System.IO;
 using Data.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Domain.Model;
+using LiloDash.Domain.Model;
 
 namespace Data.Context
 {

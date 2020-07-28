@@ -1,6 +1,6 @@
-using Domain.Validations.Device;
+using LiloDash.Domain.Validations.Device;
 
-namespace Domain.Commands.Device
+namespace LiloDash.Domain.Commands.Device
 {
     public class RegisterNewDeviceCommand : DeviceCommand
     {

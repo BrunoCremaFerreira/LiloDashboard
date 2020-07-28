@@ -1,9 +1,9 @@
 using AutoMapper;
 using LiloDash.Application.ViewModels;
-using Domain.Commands.Building;
-using Domain.Commands.Device;
-using Domain.Commands.Room;
-using Domain.Commands.User;
+using LiloDash.Domain.Commands.Building;
+using LiloDash.Domain.Commands.Device;
+using LiloDash.Domain.Commands.Room;
+using LiloDash.Domain.Commands.User;
 
 namespace LiloDash.Application.AutoMapper
 {

@@ -1,6 +1,6 @@
-using Domain.Commands.Room;
+using LiloDash.Domain.Commands.Room;
 
-namespace Domain.Validations.Room
+namespace LiloDash.Domain.Validations.Room
 {
     public class RemoveRoomCommandValidation : RoomValidation<RoomCommand>
     {

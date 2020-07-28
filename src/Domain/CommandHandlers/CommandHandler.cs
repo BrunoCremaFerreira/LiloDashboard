@@ -1,10 +1,10 @@
 using MediatR;
-using Domain.Interfaces;
+using LiloDash.Domain.Interfaces;
 using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Commands;
 using LiloDash.Domain.Core.Notifications;
 
-namespace Domain.CommandHandlers
+namespace LiloDash.Domain.CommandHandlers
 {
     public class CommandHandler
     {

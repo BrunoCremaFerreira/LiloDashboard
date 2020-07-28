@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Commands;
 
-namespace Domain.Commands.Building
+namespace LiloDash.Domain.Commands.Building
 {
     public abstract class BuildingCommand: Command
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace Domain.Interfaces.Model
+namespace LiloDash.Domain.Interfaces.Model
 {
     public interface IUser
     {

@@ -1,8 +1,8 @@
 using System;
 using FluentValidation;
-using Domain.Commands.Building;
+using LiloDash.Domain.Commands.Building;
 
-namespace Domain.Validations.Building
+namespace LiloDash.Domain.Validations.Building
 {
     public class BuildingValidation<T>: AbstractValidator<T> where T: BuildingCommand
     {

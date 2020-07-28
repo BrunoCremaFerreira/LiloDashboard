@@ -1,7 +1,7 @@
 using System;
-using Domain.Validations.Room;
+using LiloDash.Domain.Validations.Room;
 
-namespace Domain.Commands.Room
+namespace LiloDash.Domain.Commands.Room
 {
     public class RegisterNewRoomCommand : RoomCommand
     {

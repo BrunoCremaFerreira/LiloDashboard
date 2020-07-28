@@ -1,7 +1,7 @@
 using System;
-using Domain.Validations.User;
+using LiloDash.Domain.Validations.User;
 
-namespace Domain.Commands.User
+namespace LiloDash.Domain.Commands.User
 {
     public class UpdateUserCommand: UserCommand
     {

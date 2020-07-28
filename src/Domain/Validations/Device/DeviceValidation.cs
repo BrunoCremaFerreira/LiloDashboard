@@ -1,8 +1,8 @@
 using System;
 using FluentValidation;
-using Domain.Commands.Device;
+using LiloDash.Domain.Commands.Device;
 
-namespace Domain.Validations.Device
+namespace LiloDash.Domain.Validations.Device
 {
     public class DeviceValidation<T> : AbstractValidator<T> where T : DeviceCommand
     {

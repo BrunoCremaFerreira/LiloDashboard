@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Events;
 
-namespace Domain.Events.User
+namespace LiloDash.Domain.Events.User
 {
     public class UserUpdatedEvent: Event
     {

@@ -1,6 +1,6 @@
 using Data.Repository.EventSourcing;
 using Newtonsoft.Json;
-using Domain.Interfaces.Model;
+using LiloDash.Domain.Interfaces.Model;
 using LiloDash.Domain.Core.Events;
 
 namespace Data.EventSourcing

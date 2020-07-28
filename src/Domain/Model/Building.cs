@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Interfaces.Model;
+using LiloDash.Domain.Interfaces.Model;
 using LiloDash.Domain.Core.Models;
-using Domain.Commands.Building;
+using LiloDash.Domain.Commands.Building;
 
-namespace Domain.Model
+namespace LiloDash.Domain.Model
 {
     /// <summary>
     /// Building Entity representation

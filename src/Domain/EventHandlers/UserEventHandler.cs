@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Domain.Events.User;
+using LiloDash.Domain.Events.User;
 using MediatR;
 
-namespace Domain.EventHandlers
+namespace LiloDash.Domain.EventHandlers
 {
     public class UserEventHandler :
         INotificationHandler<UserRegisteredEvent>,

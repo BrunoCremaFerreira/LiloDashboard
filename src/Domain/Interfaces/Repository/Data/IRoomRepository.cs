@@ -1,6 +1,6 @@
-using Domain.Model;
+using LiloDash.Domain.Model;
 
-namespace Domain.Interfaces.Repository.Data
+namespace LiloDash.Domain.Interfaces.Repository.Data
 {
     public interface IRoomRepository : IRepository<Room>
     {

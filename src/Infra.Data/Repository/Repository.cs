@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Data.Context;
 using Microsoft.EntityFrameworkCore;
-using Domain.Interfaces.Repository.Data;
+using LiloDash.Domain.Interfaces.Repository.Data;
 
 namespace Data.Repository
 {

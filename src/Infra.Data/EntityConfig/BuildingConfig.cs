@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Domain.Model;
+using LiloDash.Domain.Model;
 
 namespace Data.EntityConfig
 {

@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Events;
 
-namespace Domain.Events.Building
+namespace LiloDash.Domain.Events.Building
 {
     public class BuildingRegisteredEvent: Event
     {

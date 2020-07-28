@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Commands;
 
-namespace Domain.Commands.User
+namespace LiloDash.Domain.Commands.User
 {
     public abstract class UserCommand: Command
     {

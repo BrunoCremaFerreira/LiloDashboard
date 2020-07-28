@@ -1,8 +1,8 @@
 using System;
-using Domain.Interfaces.Model;
+using LiloDash.Domain.Interfaces.Model;
 using LiloDash.Domain.Core.Models;
 
-namespace Domain.Model
+namespace LiloDash.Domain.Model
 {
     /// <summary>
     /// Measure device

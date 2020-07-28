@@ -1,8 +1,8 @@
 using System;
 using FluentValidation;
-using Domain.Commands.User;
+using LiloDash.Domain.Commands.User;
 
-namespace Domain.Validations.User
+namespace LiloDash.Domain.Validations.User
 {
     public abstract class UserValidation<T> : AbstractValidator<T> where T: UserCommand
     {

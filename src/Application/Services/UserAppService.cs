@@ -4,8 +4,8 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Application.ViewModels;
-using Domain.Commands.User;
-using Domain.Interfaces.Repository.Data;
+using LiloDash.Domain.Commands.User;
+using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
 
 namespace LiloDash.Application.Services

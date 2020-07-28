@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Commands;
 
-namespace Domain.Commands.Device
+namespace LiloDash.Domain.Commands.Device
 {
     public abstract class DeviceCommand: Command
     {

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Domain.Interfaces.Model;
+using LiloDash.Domain.Interfaces.Model;
 
 namespace LiloDash.Application.ViewModels
 {

@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infra.Bus\Bus.csproj" />
     <ProjectReference Include="..\Infra.Data\Data.csproj" />
     <ProjectReference Include="..\Application\LiloDash.Application.csproj" />
+    <ProjectReference Include="..\Domain\LiloDash.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Domain.Interfaces.Model;
+using LiloDash.Domain.Interfaces.Model;
 
 namespace LiloDash.Application.ViewModels
 {

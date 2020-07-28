@@ -1,6 +1,6 @@
-using Domain.Commands.User;
+using LiloDash.Domain.Commands.User;
 
-namespace Domain.Validations.User
+namespace LiloDash.Domain.Validations.User
 {
     public class RegisterNewUserCommandValidation: UserValidation<RegisterNewUserCommand>
     {

@@ -1,7 +1,7 @@
 using System;
-using Domain.Validations.Building;
+using LiloDash.Domain.Validations.Building;
 
-namespace Domain.Commands.Building
+namespace LiloDash.Domain.Commands.Building
 {
     public class RemoveBuildingCommand : BuildingCommand
     {

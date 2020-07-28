@@ -1,5 +1,5 @@
 using Data.Context;
-using Domain.Interfaces;
+using LiloDash.Domain.Interfaces;
 
 namespace Data.UOW
 {

@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Domain.Events.Building;
+using LiloDash.Domain.Events.Building;
 using MediatR;
 
-namespace Domain.EventHandlers.Building
+namespace LiloDash.Domain.EventHandlers.Building
 {
     public class BuildingEventHandler :
         INotificationHandler<BuildingRegisteredEvent>,

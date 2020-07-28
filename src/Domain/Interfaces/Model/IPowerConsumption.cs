@@ -1,4 +1,4 @@
-namespace Domain.Interfaces.Model
+namespace LiloDash.Domain.Interfaces.Model
 {
     public interface IPowerConsumption
     {

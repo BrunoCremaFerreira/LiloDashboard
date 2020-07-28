@@ -1,7 +1,7 @@
 using System;
 using LiloDash.Domain.Core.Commands;
 
-namespace Domain.Commands.Room
+namespace LiloDash.Domain.Commands.Room
 {
     public abstract class RoomCommand: Command
     {

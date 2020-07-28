@@ -2,15 +2,15 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Domain.Interfaces;
-using Domain.Interfaces.Repository.Data;
+using LiloDash.Domain.Interfaces;
+using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Notifications;
-using Domain.Commands.Building;
+using LiloDash.Domain.Commands.Building;
 using System.Linq;
-using Domain.Events.Building;
+using LiloDash.Domain.Events.Building;
 
-namespace Domain.CommandHandlers
+namespace LiloDash.Domain.CommandHandlers
 {
     public class BuildingCommandHandler: CommandHandler,
         IRequestHandler<RegisterNewBuildingCommand>,

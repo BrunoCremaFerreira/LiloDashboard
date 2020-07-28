@@ -2,14 +2,14 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Domain.Commands.User;
-using Domain.Events.User;
-using Domain.Interfaces;
-using Domain.Interfaces.Repository.Data;
+using LiloDash.Domain.Commands.User;
+using LiloDash.Domain.Events.User;
+using LiloDash.Domain.Interfaces;
+using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Notifications;
 
-namespace Domain.CommandHandlers
+namespace LiloDash.Domain.CommandHandlers
 {
     public class UserCommandHandler: CommandHandler,
         IRequestHandler<RegisterNewUserCommand>,
