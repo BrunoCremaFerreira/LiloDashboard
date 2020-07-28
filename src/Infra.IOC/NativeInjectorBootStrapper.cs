@@ -1,5 +1,6 @@
-using Domain.Core.Bus;
-using Domain.Core.Notifications;
+using LiloDash.Domain.Core.Bus;
+using LiloDash.Domain.Core.Notifications;
+using LiloDash.Domain.Core.Events;
 using Bus;
 using Data.EventSourcing;
 using Data.Repository;
@@ -17,7 +18,6 @@ using Data.UOW;
 using LiloDash.Application.Services;
 using Domain.Interfaces.Model;
 using Domain.Model;
-using Domain.Core.Events;
 using Domain.Events.Building;
 using Domain.EventHandlers.Building;
 using Domain.Commands.Building;

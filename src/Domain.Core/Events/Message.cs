@@ -1,7 +1,7 @@
 using System;
 using MediatR;
 
-namespace Domain.Core.Events
+namespace LiloDash.Domain.Core.Events
 {
     public abstract class Message : IRequest
     {

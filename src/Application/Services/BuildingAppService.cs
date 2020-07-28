@@ -6,7 +6,7 @@ using LiloDash.Application.Interfaces.Services;
 using LiloDash.Application.ViewModels;
 using Domain.Commands.Building;
 using Domain.Interfaces.Repository.Data;
-using Domain.Core.Bus;
+using LiloDash.Domain.Core.Bus;
 
 namespace LiloDash.Application.Services.User
 {

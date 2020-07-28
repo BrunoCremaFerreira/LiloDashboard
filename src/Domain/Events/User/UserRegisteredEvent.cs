@@ -1,5 +1,5 @@
 using System;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Events;
 
 namespace Domain.Events.User
 {

@@ -1,5 +1,5 @@
 using System;
-using Domain.Core.Commands;
+using LiloDash.Domain.Core.Commands;
 
 namespace Domain.Commands.Device
 {

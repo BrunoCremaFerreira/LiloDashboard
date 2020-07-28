@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Events;
 
 namespace LiloDash.Application.EventSourcedNormalizers.User
 {

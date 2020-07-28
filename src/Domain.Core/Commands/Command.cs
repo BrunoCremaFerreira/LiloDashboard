@@ -1,8 +1,8 @@
 using System;
 using FluentValidation.Results;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Events;
 
-namespace Domain.Core.Commands
+namespace LiloDash.Domain.Core.Commands
 {
     public abstract class Command : Message
     {

@@ -6,8 +6,8 @@ using Domain.Commands.User;
 using Domain.Events.User;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository.Data;
-using Domain.Core.Bus;
-using Domain.Core.Notifications;
+using LiloDash.Domain.Core.Bus;
+using LiloDash.Domain.Core.Notifications;
 
 namespace Domain.CommandHandlers
 {

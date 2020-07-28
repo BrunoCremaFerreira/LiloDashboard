@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Interfaces.Model;
-using Domain.Core.Models;
+using LiloDash.Domain.Core.Models;
 
 namespace Domain.Model
 {

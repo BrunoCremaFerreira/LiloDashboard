@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Events;
 
 namespace Data.Repository.EventSourcing
 {

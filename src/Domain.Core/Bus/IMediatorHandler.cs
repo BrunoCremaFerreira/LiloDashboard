@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Domain.Core.Commands;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Commands;
+using LiloDash.Domain.Core.Events;
 
-namespace Domain.Core.Bus
+namespace LiloDash.Domain.Core.Bus
 {
     public interface IMediatorHandler
     {

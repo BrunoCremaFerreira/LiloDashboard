@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain.Core.Models
+namespace LiloDash.Domain.Core.Models
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

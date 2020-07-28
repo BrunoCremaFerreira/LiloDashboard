@@ -1,6 +1,6 @@
-﻿using Domain.Core.Bus;
-using Domain.Core.Commands;
-using Domain.Core.Events;
+﻿using LiloDash.Domain.Core.Bus;
+using LiloDash.Domain.Core.Commands;
+using LiloDash.Domain.Core.Events;
 using System.Threading.Tasks;
 using MediatR;
 

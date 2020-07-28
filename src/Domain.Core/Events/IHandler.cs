@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain.Core.Events
+namespace LiloDash.Domain.Core.Events
 {
     public interface IHandler<in T> where T : Message
     {

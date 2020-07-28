@@ -1,6 +1,6 @@
 using System;
 using Domain.Interfaces.Model;
-using Domain.Core.Models;
+using LiloDash.Domain.Core.Models;
 
 namespace Domain.Model
 {

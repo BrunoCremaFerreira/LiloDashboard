@@ -1,7 +1,7 @@
 using System;
-using Domain.Core.Events;
+using LiloDash.Domain.Core.Events;
 
-namespace Domain.Core.Notifications
+namespace LiloDash.Domain.Core.Notifications
 {
     public class DomainNotification : Event
     {

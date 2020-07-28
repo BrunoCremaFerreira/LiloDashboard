@@ -1,5 +1,3 @@
-using System;
-using Domain.Validations.Building;
 using Domain.Validations.Device;
 
 namespace Domain.Commands.Device

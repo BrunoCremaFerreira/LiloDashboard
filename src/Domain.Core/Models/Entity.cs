@@ -1,4 +1,4 @@
-namespace Domain.Core.Models
+namespace LiloDash.Domain.Core.Models
 {
     public abstract class Entity<TIdType>
     {
