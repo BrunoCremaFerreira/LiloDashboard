@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API
+namespace LiloDash.API
 {
     /// <summary>
     /// Swagger configuration

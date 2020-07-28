@@ -13,10 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using LiloDash.Infra.IOC;
-using API.Configurations;
+using LiloDash.API.Configurations;
 using LiloDash.Application.AutoMapper;
 
-namespace API
+namespace LiloDash.API
 {
     public class Startup
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Application.ViewModels;
 
-namespace API.Controllers
+namespace LiloDash.API.Controllers
 {
     public class UserController: BaseLiloApiController
     {

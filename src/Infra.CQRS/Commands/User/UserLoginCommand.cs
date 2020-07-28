@@ -1,6 +1,6 @@
 using System;
 
-namespace CQRS.Commands.User
+namespace LiloDash.Infra.CQRS.Commands.User
 {
     /// <summary>
     /// CQRS command class for login procedure

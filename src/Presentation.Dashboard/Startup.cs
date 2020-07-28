@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Dashboard
+namespace LiloDash.Presentation.Web.Dashboard
 {
     public class Startup
     {

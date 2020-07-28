@@ -1,7 +1,6 @@
 using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Notifications;
 using LiloDash.Domain.Core.Events;
-using Bus;
 using LiloDash.Infra.Data.EventSourcing;
 using LiloDash.Infra.Data.Repository;
 using LiloDash.Infra.Data.Repository.EventSourcing;
@@ -24,6 +23,7 @@ using LiloDash.Domain.Commands.Building;
 using Microsoft.Extensions.DependencyInjection;
 using LiloDash.Infra.Data.Context;
 using LiloDash.Application.Services.User;
+using LiloDash.Infra.Bus;
 
 namespace LiloDash.Infra.IOC
 {

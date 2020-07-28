@@ -19,21 +19,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.Web", "1.0.Web", "{4EF4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Domain", "Domain\LiloDash.Domain.csproj", "{F1C85048-05A7-4299-B723-35754F99D428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "Infra.CQRS\CQRS.csproj", "{A83F8FFD-FACE-4C9A-8881-15308018833D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.CQRS", "Infra.CQRS\LiloDash.Infra.CQRS.csproj", "{A83F8FFD-FACE-4C9A-8881-15308018833D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bus", "Infra.Bus\Bus.csproj", "{AB6A4410-1E87-43DF-8EAB-D3E1E40476B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.Bus", "Infra.Bus\LiloDash.Infra.Bus.csproj", "{AB6A4410-1E87-43DF-8EAB-D3E1E40476B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.Data", "Infra.Data\LiloDash.Infra.Data.csproj", "{616A4855-6338-4F64-9D9E-980927B26739}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.IOC", "Infra.IOC\LiloDash.Infra.IOC.csproj", "{7C32287E-10F1-4AE7-984C-1D4E17DFEB7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Presentation.Dashboard\Dashboard.csproj", "{E0763482-73AE-4E98-A330-C56A4046BA72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Presentation.Web.Dashboard", "Presentation.Dashboard\LiloDash.Presentation.Web.Dashboard.csproj", "{E0763482-73AE-4E98-A330-C56A4046BA72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Tests", "0.Tests", "{DB361D20-B596-11EA-9026-638F28BE75C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1.API", "1.1.API", "{128D4A00-B597-11EA-9026-638F28BE75C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{3F753830-C768-4E09-99AF-B345D54EDC67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.API", "API\LiloDash.API.csproj", "{3F753830-C768-4E09-99AF-B345D54EDC67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

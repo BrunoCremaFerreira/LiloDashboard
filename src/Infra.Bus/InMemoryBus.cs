@@ -4,7 +4,7 @@ using LiloDash.Domain.Core.Events;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace Bus
+namespace LiloDash.Infra.Bus
 {
     public sealed class InMemoryBus : IMediatorHandler
     {

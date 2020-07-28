@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Dashboard
+namespace LiloDash.Presentation.Web.Dashboard
 {
     public class Program
     {

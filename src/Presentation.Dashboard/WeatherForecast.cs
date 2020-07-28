@@ -1,6 +1,6 @@
 using System;
 
-namespace Dashboard
+namespace LiloDash.Presentation.Web.Dashboard
 {
     public class WeatherForecast
     {

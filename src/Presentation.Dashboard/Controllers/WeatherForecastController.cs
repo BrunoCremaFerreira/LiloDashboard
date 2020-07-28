@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Dashboard.Controllers
+namespace LiloDash.Presentation.Web.Dashboard.Controllers
 {
     [ApiController]
     [Route("[controller]")]
