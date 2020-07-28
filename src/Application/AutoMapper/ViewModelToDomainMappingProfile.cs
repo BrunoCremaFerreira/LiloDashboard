@@ -1,11 +1,11 @@
 using AutoMapper;
-using Application.ViewModels;
+using LiloDash.Application.ViewModels;
 using Domain.Commands.Building;
 using Domain.Commands.Device;
 using Domain.Commands.Room;
 using Domain.Commands.User;
 
-namespace Application.AutoMapper
+namespace LiloDash.Application.AutoMapper
 {
     public class ViewModelToDomainMappingProfile: Profile
     {

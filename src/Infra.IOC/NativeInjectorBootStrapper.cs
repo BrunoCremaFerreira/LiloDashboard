@@ -5,7 +5,7 @@ using Data.EventSourcing;
 using Data.Repository;
 using Data.Repository.EventSourcing;
 using Data.Repository.User;
-using Application.Interfaces.Services;
+using LiloDash.Application.Interfaces.Services;
 using Domain.Events.User;
 using Domain.EventHandlers;
 using MediatR;
@@ -14,7 +14,7 @@ using Domain.CommandHandlers;
 using Domain.Interfaces;
 using Domain.Interfaces.Repository.Data;
 using Data.UOW;
-using Application.Services;
+using LiloDash.Application.Services;
 using Domain.Interfaces.Model;
 using Domain.Model;
 using Domain.Core.Events;
@@ -23,7 +23,7 @@ using Domain.EventHandlers.Building;
 using Domain.Commands.Building;
 using Microsoft.Extensions.DependencyInjection;
 using Data.Context;
-using Application.Services.User;
+using LiloDash.Application.Services.User;
 
 namespace IOC
 {

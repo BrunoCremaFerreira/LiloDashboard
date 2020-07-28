@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Domain.Core.Events;
 
-namespace Application.EventSourcedNormalizers.User
+namespace LiloDash.Application.EventSourcedNormalizers.User
 {
     public class UserHistory
     {

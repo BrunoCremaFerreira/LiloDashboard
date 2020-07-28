@@ -3,8 +3,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infra.Bus\Bus.csproj" />
-    <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infra.Data\Data.csproj" />
+    <ProjectReference Include="..\Application\LiloDash.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

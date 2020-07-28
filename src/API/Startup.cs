@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using IOC;
 using API.Configurations;
+using LiloDash.Application.AutoMapper;
 
 namespace API
 {
@@ -37,7 +38,7 @@ namespace API
             
             services.RegisterServices();
             
-            var config = Application.AutoMapper.AutoMapperConfig.RegisterMappings();
+            var config = AutoMapperConfig.RegisterMappings();
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
         }

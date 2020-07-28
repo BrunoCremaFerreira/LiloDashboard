@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Application.Interfaces.Services;
-using Application.ViewModels;
+using LiloDash.Application.Interfaces.Services;
+using LiloDash.Application.ViewModels;
 
 namespace API.Controllers
 {

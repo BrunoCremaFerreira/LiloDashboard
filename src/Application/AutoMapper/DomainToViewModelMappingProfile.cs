@@ -1,8 +1,8 @@
 using AutoMapper;
-using Application.ViewModels;
+using LiloDash.Application.ViewModels;
 using Domain.Model;
 
-namespace Application.AutoMapper
+namespace LiloDash.Application.AutoMapper
 {
     public class DomainToViewModelMappingProfile: Profile
     {

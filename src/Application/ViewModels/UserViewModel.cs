@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.ViewModels
+namespace LiloDash.Application.ViewModels
 {
     public class UserViewModel
     {

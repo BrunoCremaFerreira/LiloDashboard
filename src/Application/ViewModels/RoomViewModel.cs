@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Domain.Interfaces.Model;
 
-namespace Application.ViewModels
+namespace LiloDash.Application.ViewModels
 {
     public class RoomViewModel : IPowerConsumption 
     {

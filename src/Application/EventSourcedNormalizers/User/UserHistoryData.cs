@@ -1,4 +1,4 @@
-namespace Application.EventSourcedNormalizers.User
+namespace LiloDash.Application.EventSourcedNormalizers.User
 {
     public class UserHistoryData
     {

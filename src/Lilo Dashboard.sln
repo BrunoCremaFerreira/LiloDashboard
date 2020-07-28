@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infrastructure", "4.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Core", "Domain.Core\Domain.Core.csproj", "{50E46743-FD00-4EC9-B3DC-14A9ED027585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{CCA1C0BA-8B9A-4A02-B452-AC0D03C26E19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Application", "Application\LiloDash.Application.csproj", "{CCA1C0BA-8B9A-4A02-B452-AC0D03C26E19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.Web", "1.0.Web", "{4EF40100-B12D-11EA-8CF2-6F4FDECF3081}"
 EndProject

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Application.ViewModels;
+using LiloDash.Application.ViewModels;
 
-namespace Application.Interfaces.Services
+namespace LiloDash.Application.Interfaces.Services
 {
     public interface IRoomAppService : IDisposable
     {

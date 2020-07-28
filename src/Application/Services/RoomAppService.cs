@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Application.Interfaces.Services;
-using Application.ViewModels;
+using LiloDash.Application.Interfaces.Services;
+using LiloDash.Application.ViewModels;
 using Domain.Commands.Room;
 using Domain.Interfaces.Repository.Data;
 using Domain.Core.Bus;
 
-namespace Application.Services.User
+namespace LiloDash.Application.Services.User
 {
     public class RoomAppService : IRoomAppService
     {

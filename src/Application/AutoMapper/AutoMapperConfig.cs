@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace Application.AutoMapper
+namespace LiloDash.Application.AutoMapper
 {
     public static class AutoMapperConfig
     {

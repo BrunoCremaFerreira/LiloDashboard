@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Domain.Interfaces.Model;
 
-namespace Application.ViewModels
+namespace LiloDash.Application.ViewModels
 {
     public class DeviceViewModel: IPowerConsumption
     {
