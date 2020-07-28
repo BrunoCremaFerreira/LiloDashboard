@@ -1,10 +1,10 @@
 using System.IO;
-using Data.EntityConfig;
+using LiloDash.Infra.Data.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using LiloDash.Domain.Model;
 
-namespace Data.Context
+namespace LiloDash.Infra.Data.Context
 {
     public class LiloDataContext: DbContext
     {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using LiloDash.Domain.Model;
 
-namespace Data.EntityConfig
+namespace LiloDash.Infra.Data.EntityConfig
 {
     public class RoomConfig: IEntityTypeConfiguration<Room>
     {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using LiloDash.Domain.Core.Events;
 
-namespace Data.EntityConfig
+namespace LiloDash.Infra.Data.EntityConfig
 {
     public class StoredEventConfig : IEntityTypeConfiguration<StoredEvent>
     {

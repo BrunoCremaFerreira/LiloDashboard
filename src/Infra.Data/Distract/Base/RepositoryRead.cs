@@ -1,6 +1,6 @@
 using System;
 
-namespace Data.Distract.Base
+namespace LiloDash.Infra.Data.Distract.Base
 {
     public abstract class RepositoryRead
     {

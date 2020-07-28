@@ -1,11 +1,11 @@
 using System;
-using Data.Context;
+using LiloDash.Infra.Data.Context;
 using LiloDash.Domain.Interfaces.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using LiloDash.Domain.Model;
 
-namespace Data.Repository
+namespace LiloDash.Infra.Data.Repository
 {
     public class BuildingRepository: Repository<LiloDash.Domain.Model.Building>, IBuildingRepository
     {

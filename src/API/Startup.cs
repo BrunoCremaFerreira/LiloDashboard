@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using IOC;
+using LiloDash.Infra.IOC;
 using API.Configurations;
 using LiloDash.Application.AutoMapper;
 

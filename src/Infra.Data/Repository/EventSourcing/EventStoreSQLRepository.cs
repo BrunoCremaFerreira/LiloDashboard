@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using LiloDash.Domain.Core.Events;
 
-namespace Data.Repository.EventSourcing
+namespace LiloDash.Infra.Data.Repository.EventSourcing
 {
     public class EventStoreSQLRepository : IEventStoreRepository
     {

@@ -1,9 +1,9 @@
-using Data.Repository.EventSourcing;
+using LiloDash.Infra.Data.Repository.EventSourcing;
 using Newtonsoft.Json;
 using LiloDash.Domain.Interfaces.Model;
 using LiloDash.Domain.Core.Events;
 
-namespace Data.EventSourcing
+namespace LiloDash.Infra.Data.EventSourcing
 {
     public class SqlEventStore: IEventStore
     {

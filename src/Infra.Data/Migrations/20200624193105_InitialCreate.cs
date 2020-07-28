@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Data.Migrations
+namespace LiloDash.Infra.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {

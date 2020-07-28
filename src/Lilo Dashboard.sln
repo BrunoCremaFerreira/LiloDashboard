@@ -23,9 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS", "Infra.CQRS\CQRS.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bus", "Infra.Bus\Bus.csproj", "{AB6A4410-1E87-43DF-8EAB-D3E1E40476B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Infra.Data\Data.csproj", "{616A4855-6338-4F64-9D9E-980927B26739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.Data", "Infra.Data\LiloDash.Infra.Data.csproj", "{616A4855-6338-4F64-9D9E-980927B26739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOC", "Infra.IOC\IOC.csproj", "{7C32287E-10F1-4AE7-984C-1D4E17DFEB7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.IOC", "Infra.IOC\LiloDash.Infra.IOC.csproj", "{7C32287E-10F1-4AE7-984C-1D4E17DFEB7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Presentation.Dashboard\Dashboard.csproj", "{E0763482-73AE-4E98-A330-C56A4046BA72}"
 EndProject

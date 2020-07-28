@@ -2,9 +2,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infra.Bus\Bus.csproj" />
-    <ProjectReference Include="..\Infra.Data\Data.csproj" />
     <ProjectReference Include="..\Application\LiloDash.Application.csproj" />
     <ProjectReference Include="..\Domain\LiloDash.Domain.csproj" />
+    <ProjectReference Include="..\Infra.Data\LiloDash.Infra.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

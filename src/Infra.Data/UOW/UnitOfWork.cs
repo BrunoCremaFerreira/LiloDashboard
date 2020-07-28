@@ -1,7 +1,7 @@
-using Data.Context;
+using LiloDash.Infra.Data.Context;
 using LiloDash.Domain.Interfaces;
 
-namespace Data.UOW
+namespace LiloDash.Infra.Data.UOW
 {
     public class UnitOfWork: IUnitOfWork
     {

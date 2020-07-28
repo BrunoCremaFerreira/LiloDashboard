@@ -1,9 +1,9 @@
 using LiloDash.Domain.Interfaces.Repository.Data;
-using Data.Context;
+using LiloDash.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace Data.Repository.User
+namespace LiloDash.Infra.Data.Repository.User
 {
     public class UserRepository: Repository<LiloDash.Domain.Model.User>, IUserRepository
     {

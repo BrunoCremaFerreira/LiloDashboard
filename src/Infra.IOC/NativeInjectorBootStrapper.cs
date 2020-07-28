@@ -2,10 +2,10 @@ using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Notifications;
 using LiloDash.Domain.Core.Events;
 using Bus;
-using Data.EventSourcing;
-using Data.Repository;
-using Data.Repository.EventSourcing;
-using Data.Repository.User;
+using LiloDash.Infra.Data.EventSourcing;
+using LiloDash.Infra.Data.Repository;
+using LiloDash.Infra.Data.Repository.EventSourcing;
+using LiloDash.Infra.Data.Repository.User;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Domain.Events.User;
 using LiloDash.Domain.EventHandlers;
@@ -14,7 +14,7 @@ using LiloDash.Domain.Commands.User;
 using LiloDash.Domain.CommandHandlers;
 using LiloDash.Domain.Interfaces;
 using LiloDash.Domain.Interfaces.Repository.Data;
-using Data.UOW;
+using LiloDash.Infra.Data.UOW;
 using LiloDash.Application.Services;
 using LiloDash.Domain.Interfaces.Model;
 using LiloDash.Domain.Model;
@@ -22,10 +22,10 @@ using LiloDash.Domain.Events.Building;
 using LiloDash.Domain.EventHandlers.Building;
 using LiloDash.Domain.Commands.Building;
 using Microsoft.Extensions.DependencyInjection;
-using Data.Context;
+using LiloDash.Infra.Data.Context;
 using LiloDash.Application.Services.User;
 
-namespace IOC
+namespace LiloDash.Infra.IOC
 {
     public static class NativeInjectorBootStrapper
     {

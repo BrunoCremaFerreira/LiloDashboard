@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using LiloDash.Domain.Model;
 
-namespace Data.EntityConfig
+namespace LiloDash.Infra.Data.EntityConfig
 {
     public class UserConfig: IEntityTypeConfiguration<User>
     {

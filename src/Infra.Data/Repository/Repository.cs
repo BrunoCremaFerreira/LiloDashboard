@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Data.Context;
+using LiloDash.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using LiloDash.Domain.Interfaces.Repository.Data;
 
-namespace Data.Repository
+namespace LiloDash.Infra.Data.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
