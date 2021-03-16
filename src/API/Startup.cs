@@ -1,46 +1,22 @@
-using System;
-using AutoMapper;
-using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using LiloDash.Infra.IOC;
-using LiloDash.API.Configurations;
-using LiloDash.Application.AutoMapper;
 
 namespace LiloDash.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwagger();
+            services
+                .AddControllers();
             
-            var assembly = AppDomain.CurrentDomain.Load("LiloDash.Domain");
-            services.AddMediatR(assembly);
-            
-            services.RegisterServices();
-            
-            var config = AutoMapperConfig.RegisterMappings();
-            IMapper mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
+            services
+                .AddSwagger()
+                .RegisterServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

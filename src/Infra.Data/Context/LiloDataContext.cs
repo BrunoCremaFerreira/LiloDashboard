@@ -8,11 +8,15 @@ namespace LiloDash.Infra.Data.Context
 {
     public class LiloDataContext: DbContext
     {
-        //Entities
+        #region :: DbSets
+
+
         public DbSet<User> Users { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Device> Devices { get; set; }
+
+        #endregion
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

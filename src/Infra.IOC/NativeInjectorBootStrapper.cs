@@ -1,9 +1,6 @@
 using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Notifications;
-using LiloDash.Domain.Core.Events;
-using LiloDash.Infra.Data.EventSourcing;
 using LiloDash.Infra.Data.Repository;
-using LiloDash.Infra.Data.Repository.EventSourcing;
 using LiloDash.Infra.Data.Repository.User;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Domain.Events.User;
@@ -24,54 +21,59 @@ using Microsoft.Extensions.DependencyInjection;
 using LiloDash.Infra.Data.Context;
 using LiloDash.Application.Services.User;
 using LiloDash.Infra.Bus;
+using System;
+using LiloDash.Application.AutoMapper;
 
 namespace LiloDash.Infra.IOC
 {
     public static class NativeInjectorBootStrapper
     {
-        public static void RegisterServices(this IServiceCollection services)
+        public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            // ASP.NET HttpContext dependency
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
-            // Domain Bus (Mediator)
-            services.AddScoped<IMediatorHandler, InMemoryBus>();
-            
-            // Application
-            services.AddScoped<IUserAppService, UserAppService>();
-            services.AddScoped<IBuildingAppService, BuildingAppService>();
-            
-            // Domain - Events
-            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-            services.AddScoped<INotificationHandler<UserRegisteredEvent>, UserEventHandler>();
-            services.AddScoped<INotificationHandler<UserUpdatedEvent>, UserEventHandler>();
-            services.AddScoped<INotificationHandler<UserRemovedEvent>, UserEventHandler>();
 
-            services.AddScoped<INotificationHandler<BuildingRegisteredEvent>, BuildingEventHandler>();
-            services.AddScoped<INotificationHandler<BuildingUpdatedEvent>, BuildingEventHandler>();
-            services.AddScoped<INotificationHandler<BuildingRemovedEvent>, BuildingEventHandler>();
+            var assembly = AppDomain.CurrentDomain.Load("LiloDash.Domain");
+            var config = AutoMapperConfig.RegisterMappings();
             
-            // Domain - Commands
-            services.AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>();
+            return services
+                //Domain Bus (Mediator)
+                .AddScoped<IMediatorHandler, InMemoryBus>()
+                .AddMediatR(assembly)
+            
+                //Application Services
+                .AddScoped<IUserAppService, UserAppService>()
+                .AddScoped<IBuildingAppService, BuildingAppService>()
+            
+                //Domain - Events
+                .AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>()
+                .AddScoped<INotificationHandler<UserRegisteredEvent>, UserEventHandler>()
+                .AddScoped<INotificationHandler<UserUpdatedEvent>, UserEventHandler>()
+                .AddScoped<INotificationHandler<UserRemovedEvent>, UserEventHandler>()
 
-            services.AddScoped<IRequestHandler<RegisterNewBuildingCommand>, BuildingCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateBuildingCommand>, BuildingCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveBuildingCommand>, BuildingCommandHandler>();
+                .AddScoped<INotificationHandler<BuildingRegisteredEvent>, BuildingEventHandler>()
+                .AddScoped<INotificationHandler<BuildingUpdatedEvent>, BuildingEventHandler>()
+                .AddScoped<INotificationHandler<BuildingRemovedEvent>, BuildingEventHandler>()
             
-            // Infra - Data
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IBuildingRepository, BuildingRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<LiloDataContext>();
+                //Domain - Commands
+                .AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>()
+                .AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>()
+                .AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>()
+
+                .AddScoped<IRequestHandler<RegisterNewBuildingCommand>, BuildingCommandHandler>()
+                .AddScoped<IRequestHandler<UpdateBuildingCommand>, BuildingCommandHandler>()
+                .AddScoped<IRequestHandler<RemoveBuildingCommand>, BuildingCommandHandler>()
             
-            // Infra - Data EventSourcing
-            services.AddScoped<IEventStoreRepository, EventStoreSQLRepository>();
-            services.AddScoped<IEventStore, SqlEventStore>();
+                //Infra - Data
+                .AddScoped<IUserRepository, UserRepository>()
+                .AddScoped<IBuildingRepository, BuildingRepository>()
+                .AddScoped<IUnitOfWork, UnitOfWork>()
+                .AddScoped<LiloDataContext>()
             
-            // Infra - Identity
-            services.AddScoped<IUser, User>();
+                //Infra - Identity
+                .AddScoped<IUser, User>()
+                
+                //AutoMapper
+                .AddSingleton(config.CreateMapper());
+
         }
     }
 }
