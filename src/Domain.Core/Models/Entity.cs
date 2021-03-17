@@ -1,8 +1,38 @@
+using System;
+
 namespace LiloDash.Domain.Core.Models
 {
+    ///<summary>
+    /// Base System Entity Generic Id
+    ///</summary>
     public abstract class Entity<TIdType>
     {
-        public TIdType Id { get; protected set; }
+
+        #region :: Properties
+
+        ///<summary>
+        /// Unique Identifyer
+        ///</summary>
+        public TIdType Id { get; set; }
+
+        ///<summary>
+        /// When Created Timestamp
+        ///</summary>
+        public DateTime WhenCreated {get;set;} = DateTime.UtcNow;
+
+        ///<summary>
+        /// Last persistence updated
+        ///</summary>
+        public DateTime? WhenUpdated {get;set;}
+
+        ///<summary>
+        /// Virtual deleted timestamp
+        ///</summary>
+        public DateTime? WhenDeleted {get;set;}
+
+        #endregion
+
+        #region :: Operator
 
         public override bool Equals(object obj)
         {
@@ -26,18 +56,31 @@ namespace LiloDash.Domain.Core.Models
         }
 
         public static bool operator !=(Entity<TIdType> a, Entity<TIdType> b)
-        {
-            return !(a == b);
-        }
+            => !(a == b);
+
+        #endregion
+
+        #region :: Override
 
         public override int GetHashCode()
-        {
-            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
-        }
+            =>(GetType().GetHashCode() * 907) + Id.GetHashCode();
 
         public override string ToString()
+            => GetType().Name + " [Id=" + Id + "]";
+
+        #endregion
+        
+    }
+
+    ///<summary>
+    /// Base System Entity
+    ///</summary>
+    public abstract class Entity: Entity<Guid>
+    {
+        public Entity()
         {
-            return GetType().Name + " [Id=" + Id + "]";
+            Id = Guid.NewGuid();
+            WhenCreated = DateTime.Now;
         }
     }
 }

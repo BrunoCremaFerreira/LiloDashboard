@@ -10,15 +10,10 @@ namespace LiloDash.Application.ViewModels
 {
     public class RoomViewModel : IPowerConsumption 
     {
-        [Key]
         public Guid Id { get; set; }
 
         public Guid BuildingId { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(100)]
-        [DisplayName("Name")]
-        [Required(ErrorMessage = "The Room Name is Required")]
         public string Name { get; set; }
 
         public virtual IEnumerable<DeviceViewModel> Devices { get; set; }
@@ -26,14 +21,11 @@ namespace LiloDash.Application.ViewModels
         #region :: Measure Methods
         
         public float GetPower()
-        {
-            return Devices.Sum(e => e.GetPower());
-        }
-
+            => Devices.Sum(e => e.GetPower());
+        
         public float AvarageConsumption()
-        {
-            return Devices.Sum(e => e.AvarageConsumption());
-        }
+            => Devices.Sum(e => e.AvarageConsumption());
+        
         
         #endregion
     }

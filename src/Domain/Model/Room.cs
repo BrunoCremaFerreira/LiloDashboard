@@ -14,9 +14,7 @@ namespace LiloDash.Domain.Model
         #region :: Constructors
 
         private Room()
-        {
-            Devices = new List<Device>();
-        }
+            => Devices = new List<Device>();
         
         public Room(Guid buildingId, Guid id, string name)
             :this()
@@ -46,14 +44,10 @@ namespace LiloDash.Domain.Model
         #region :: Measure Methods
         
         public float GetPower()
-        {
-            return Devices.Sum(e => e.GetPower());
-        }
+            => Devices.Sum(e => e.GetPower());
 
         public float AvarageConsumption()
-        {
-            return Devices.Sum(e => e.AvarageConsumption());
-        }
+            => Devices.Sum(e => e.AvarageConsumption());
         
         #endregion
     }

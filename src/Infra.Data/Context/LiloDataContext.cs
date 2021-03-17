@@ -3,13 +3,14 @@ using LiloDash.Infra.Data.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using LiloDash.Domain.Model;
+using LiloDash.Domain.Interfaces;
+using System.Threading.Tasks;
 
 namespace LiloDash.Infra.Data.Context
 {
-    public class LiloDataContext: DbContext
+    public class LiloDataContext: DbContext, IUnitOfWork
     {
         #region :: DbSets
-
 
         public DbSet<User> Users { get; set; }
         public DbSet<Building> Buildings { get; set; }
@@ -39,5 +40,8 @@ namespace LiloDash.Infra.Data.Context
             //Define the database to use
             optionsBuilder.UseMySQL(config.GetConnectionString("DefaultConnection"));
         }
+
+        public async Task<bool> Commit()
+            => await SaveChangesAsync() > 0;
     }
 }

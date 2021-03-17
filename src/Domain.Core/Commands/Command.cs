@@ -1,18 +1,15 @@
 using System;
 using FluentValidation.Results;
-using LiloDash.Domain.Core.Events;
+using MediatR;
 
 namespace LiloDash.Domain.Core.Commands
 {
-    public abstract class Command : Message
+    ///<summary>
+    /// Base class for system commands
+    ///</summary>
+    public abstract class Command : IRequest<ValidationResult>, IBaseRequest
     {
-        public DateTime Timestamp { get; private set; }
         public ValidationResult ValidationResult { get; set; }
-
-        protected Command()
-        {
-            Timestamp = DateTime.Now;
-        }
 
         public abstract bool IsValid();
     }

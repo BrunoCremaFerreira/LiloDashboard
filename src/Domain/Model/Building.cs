@@ -15,9 +15,7 @@ namespace LiloDash.Domain.Model
         #region :: Constructors
 
         private Building()
-        {
-            Rooms = new List<Room>();
-        }
+            => Rooms = new List<Room>();
         
         public Building(Guid id, string name)
             :this()
@@ -46,21 +44,15 @@ namespace LiloDash.Domain.Model
         /// Internal method to update data of a attached object instance
         /// </summary>
         internal void UpdateData(UpdateBuildingCommand updateCommand)
-        {
-            Name = updateCommand.Name;
-        }
-
+            => Name = updateCommand.Name;
+        
         #region :: Measure Methods
         
         public float GetPower()
-        {
-            return Rooms.Sum(e => e.GetPower());
-        }
+            => Rooms.Sum(e => e.GetPower());
 
         public float AvarageConsumption()
-        {
-            return Rooms.Sum(e => e.AvarageConsumption());
-        }
+            => Rooms.Sum(e => e.AvarageConsumption());
         
         #endregion
     }

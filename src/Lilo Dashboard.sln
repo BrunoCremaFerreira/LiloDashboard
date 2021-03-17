@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Applicat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Domain", "3.Domain", "{D4CE4EC0-B128-11EA-8CF2-6F4FDECF3081}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infrastructure", "4.Infrastructure", "{F82D7BC0-B128-11EA-8CF2-6F4FDECF3081}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Infra", "4.Infra", "{F82D7BC0-B128-11EA-8CF2-6F4FDECF3081}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Domain.Core", "Domain.Core\LiloDash.Domain.Core.csproj", "{50E46743-FD00-4EC9-B3DC-14A9ED027585}"
 EndProject

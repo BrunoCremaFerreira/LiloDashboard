@@ -7,12 +7,13 @@ using LiloDash.Domain.Model;
 
 namespace LiloDash.Infra.Data.Repository
 {
-    public class BuildingRepository: Repository<LiloDash.Domain.Model.Building>, IBuildingRepository
+    public class BuildingRepository: IBuildingRepository
     {
-        public BuildingRepository(LiloDataContext context)
-            : base(context)
-        {
+        private readonly LiloDataContext _context;
 
+        public BuildingRepository(LiloDataContext context)
+        {
+            _context = context;
         }
     }
 }

@@ -1,9 +1,10 @@
 using System;
+using System.Threading.Tasks;
 
 namespace LiloDash.Domain.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
-        bool Commit();
+        Task<bool> Commit();
     }
 }

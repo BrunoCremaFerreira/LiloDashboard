@@ -9,17 +9,11 @@ namespace LiloDash.Domain.Model
     /// <summary>
     /// System User Entity
     /// </summary>
-    public class User: Entity<Guid>, IUser
+    public class User: Entity, IUser
     {
         #region :: Constructors
 
-        public User()
-        {
-            Id = Guid.NewGuid();
-        }
-
         public User(Guid id, string name, string email, bool isAdmin)
-        :this()
         {
             Id = id;
             Name = name;

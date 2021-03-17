@@ -1,37 +1,33 @@
-using MediatR;
-using LiloDash.Domain.Interfaces;
-using LiloDash.Domain.Core.Bus;
-using LiloDash.Domain.Core.Commands;
-using LiloDash.Domain.Core.Notifications;
+using System.Threading.Tasks;
+using FluentValidation.Results;
 
 namespace LiloDash.Domain.CommandHandlers
 {
     public class CommandHandler
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMediatorHandler _imediatorHandlerBus;
-        private readonly DomainNotificationHandler _notifications;
+        protected ValidationResult ValidationResult;
 
-        public CommandHandler(IUnitOfWork unitOfWork, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications)
+        protected CommandHandler()
         {
-            _unitOfWork = unitOfWork;
-            _notifications = (DomainNotificationHandler)notifications;
-            _imediatorHandlerBus = bus;
+            ValidationResult = new ValidationResult();
         }
 
-        public bool Commit()
+        protected void AddError(string mensagem)
         {
-            if (_notifications.HasNotifications()) return false;
-            if (_unitOfWork.Commit()) return true;
-
-            _imediatorHandlerBus.RaiseEvent(new DomainNotification("Commit", "An error occurred to save data!"));
-            return false;
+            ValidationResult.Errors.Add(new ValidationFailure(string.Empty, mensagem));
         }
 
-        protected void NotifyValidationErrors(Command message)
+        protected async Task<ValidationResult> Commit(Interfaces.IUnitOfWork uow, string message)
         {
-            foreach (var error in message.ValidationResult.Errors)
-                _imediatorHandlerBus.RaiseEvent(new DomainNotification(message.MessageType, error.ErrorMessage));
+            if (!await uow.Commit()) 
+                AddError(message);
+
+            return ValidationResult;
+        }
+
+        protected async Task<ValidationResult> Commit(Interfaces.IUnitOfWork uow)
+        {
+            return await Commit(uow, "There was an error saving data").ConfigureAwait(false);
         }
     }
 }
