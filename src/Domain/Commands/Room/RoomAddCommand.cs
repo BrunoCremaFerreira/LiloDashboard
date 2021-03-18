@@ -1,6 +1,4 @@
-using System;
 using LiloDash.Domain.Validations.Room;
-
 namespace LiloDash.Domain.Commands.Room
 {
     public class RoomAddCommand : RoomCommand
@@ -12,7 +10,7 @@ namespace LiloDash.Domain.Commands.Room
 
         public override bool IsValid()
         {
-            ValidationResult = new RegisterNewRoomCommandValidation().Validate(this);
+            ValidationResult = new RoomAddCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

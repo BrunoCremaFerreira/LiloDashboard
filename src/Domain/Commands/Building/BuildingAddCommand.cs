@@ -12,7 +12,7 @@ namespace LiloDash.Domain.Commands.Building
 
         public override bool IsValid()
         {
-            ValidationResult = new RegisterNewBuildingCommandValidation().Validate(this);
+            ValidationResult = new BuildingAddCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

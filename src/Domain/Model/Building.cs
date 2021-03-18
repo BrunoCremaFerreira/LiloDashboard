@@ -40,12 +40,6 @@ namespace LiloDash.Domain.Model
 
         #endregion
 
-        /// <summary>
-        /// Internal method to update data of a attached object instance
-        /// </summary>
-        internal void UpdateData(UpdateBuildingCommand updateCommand)
-            => Name = updateCommand.Name;
-        
         #region :: Measure Methods
         
         public float GetPower()

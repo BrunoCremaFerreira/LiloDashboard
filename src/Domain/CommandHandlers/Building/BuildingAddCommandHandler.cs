@@ -1,12 +1,18 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
+using FluentValidation.Results;
+using LiloDash.Domain.Commands.Building;
+using LiloDash.Domain.Interfaces.Repository.Data;
+using MediatR;
 
 namespace LiloDash.Domain.CommandHandlers.Building
 {
-    public class BuildingAddCommandHandler: CommandHandler, IRequestHandler<RegisterNewBuildingCommand, ValidationResult>
+    public class BuildingAddCommandHandler: CommandHandler, IRequestHandler<BuildingAddCommand, ValidationResult>
     {
         protected readonly IBuildingRepository _buildingRepository;
 
-        public AddBuildingCommandHandler(IBuildingRepository buildingRepository)
+        public BuildingAddCommandHandler(IBuildingRepository buildingRepository)
         {
             _buildingRepository = buildingRepository;
         }
@@ -14,15 +20,16 @@ namespace LiloDash.Domain.CommandHandlers.Building
         /// <summary>
         /// Handle Register New Building Command
         /// </summary>
-        public async Task<ValidationResult> Handle(AddBuildingCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(BuildingAddCommand request, CancellationToken cancellationToken)
         {
             if (!request.IsValid())
                 return request.ValidationResult;
 
             //TODO: Valid existing
 
-            _buildingRepository.Add(building);
-            return await Commit(_buildingRepository.UnitOfWork);
+            //_buildingRepository.Add();
+            //return await Commit(_buildingRepository.UnitOfWork);
+            throw new NotImplementedException();
         }
     }
 }

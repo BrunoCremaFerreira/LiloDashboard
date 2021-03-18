@@ -26,37 +26,32 @@ namespace LiloDash.Application.Services.User
         }
 
         public RoomViewModel GetById(Guid id)
-        {
-            return _mapper.Map<RoomViewModel>(_roomRepository.GetById(id));
-        }
+         => _mapper.Map<RoomViewModel>(_roomRepository.GetById(id));
 
         public IEnumerable<RoomViewModel> GetAll()
         {
-            return _roomRepository.
-                GetAll().ProjectTo<RoomViewModel>(_mapper.ConfigurationProvider);
+            throw new NotImplementedException();
         }
 
         public void Register(RoomViewModel roomViewModel)
         {
-            var registerCommand = _mapper.Map<RegisterNewRoomCommand>(roomViewModel);
+            var registerCommand = _mapper.Map<RoomAddCommand>(roomViewModel);
             Bus.SendCommand(registerCommand);
         }
 
         public void Update(RoomViewModel roomViewModel)
         {
-            var updateCommand = _mapper.Map<UpdateRoomCommand>(roomViewModel);
+            var updateCommand = _mapper.Map<RoomUpdateCommand>(roomViewModel);
             Bus.SendCommand(updateCommand);
         }
 
         public void Remove(Guid id)
         {
-            var removeCommand = new RemoveRoomCommand(id);
+            var removeCommand = new RoomRemoveCommand(id);
             Bus.SendCommand(removeCommand);
         }
 
         public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
+            => GC.SuppressFinalize(this);
     }
 }

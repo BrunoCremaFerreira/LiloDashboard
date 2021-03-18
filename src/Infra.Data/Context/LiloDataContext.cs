@@ -12,7 +12,6 @@ namespace LiloDash.Infra.Data.Context
     {
         #region :: DbSets
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Device> Devices { get; set; }
@@ -21,7 +20,6 @@ namespace LiloDash.Infra.Data.Context
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new BuildingConfig());
             modelBuilder.ApplyConfiguration(new RoomConfig());
             modelBuilder.ApplyConfiguration(new DeviceConfig());

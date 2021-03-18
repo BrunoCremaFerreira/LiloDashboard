@@ -4,7 +4,7 @@ using LiloDash.Domain.Commands.Room;
 
 namespace LiloDash.Domain.Validations.Room
 {
-    public class RoomValidation<T>: AbstractValidator<T> where T: RoomCommand
+    public abstract class RoomValidation<T>: AbstractValidator<T> where T: RoomCommand
     {
         protected void ValidateId()
         {

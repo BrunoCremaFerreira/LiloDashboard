@@ -33,32 +33,28 @@ namespace LiloDash.Application.Services.User
 
         public IEnumerable<BuildingViewModel> GetAll()
         {
-            return _buildingRepository.
-                GetAll().
-                ProjectTo<BuildingViewModel>(_mapper.ConfigurationProvider);
+            throw new NotImplementedException();
         }
 
         public async void Register(BuildingViewModel buildingViewModel)
         {
-            var registerCommand = _mapper.Map<RegisterNewBuildingCommand>(buildingViewModel);
+            var registerCommand = _mapper.Map<BuildingAddCommand>(buildingViewModel);
             await Bus.SendCommand(registerCommand);
         }
 
         public async void Update(BuildingViewModel buildingViewModel)
         {
-            var updateCommand = _mapper.Map<UpdateBuildingCommand>(buildingViewModel);
+            var updateCommand = _mapper.Map<BuildingUpdateCommand>(buildingViewModel);
             await Bus.SendCommand(updateCommand);
         }
 
         public async void Remove(Guid id)
         {
-            var removeCommand = new RemoveBuildingCommand(id);
+            var removeCommand = new BuildingRemoveCommand(id);
             await Bus.SendCommand(removeCommand);
         }
 
         public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
+            => GC.SuppressFinalize(this);
     }
 }

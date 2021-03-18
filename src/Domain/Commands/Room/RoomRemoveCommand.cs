@@ -11,7 +11,7 @@ namespace LiloDash.Domain.Commands.Room
 
         public override bool IsValid()
         {
-            ValidationResult = new RemoveRoomCommandValidation().Validate(this);
+            ValidationResult = new RoomRemoveCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

@@ -4,9 +4,9 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Application.ViewModels;
-using LiloDash.Domain.Commands.Device;
 using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
+using LiloDash.Domain.Commands.Device;
 
 namespace LiloDash.Application.Services
 {
@@ -27,37 +27,32 @@ namespace LiloDash.Application.Services
         }
 
         public DeviceViewModel GetById(Guid id)
-        {
-            return _mapper.Map<DeviceViewModel>(_deviceRepository.GetById(id));
-        }
-
+            => _mapper.Map<DeviceViewModel>(_deviceRepository.GetById(id));
+        
         public IEnumerable<DeviceViewModel> GetAll()
         {
-            return _deviceRepository.
-                GetAll().ProjectTo<DeviceViewModel>(_mapper.ConfigurationProvider);
+            throw new NotImplementedException();
         }
 
         public void Register(DeviceViewModel deviceViewModel)
         {
-            var registerCommand = _mapper.Map<RegisterNewDeviceCommand>(deviceViewModel);
+            var registerCommand = _mapper.Map<DeviceAddCommand>(deviceViewModel);
             Bus.SendCommand(registerCommand);
         }
 
         public void Update(DeviceViewModel deviceViewModel)
         {
-            var updateCommand = _mapper.Map<UpdateDeviceCommand>(deviceViewModel);
+            var updateCommand = _mapper.Map<DeviceUpdateCommand>(deviceViewModel);
             Bus.SendCommand(updateCommand);
         }
 
         public void Remove(Guid id)
         {
-            var removeCommand = new RemoveDeviceCommand(id);
+            var removeCommand = new DeviceRemoveCommand(id);
             Bus.SendCommand(removeCommand);
         }
 
         public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
+            => GC.SuppressFinalize(this);
     }
 }

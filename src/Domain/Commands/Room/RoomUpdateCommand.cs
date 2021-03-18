@@ -13,7 +13,7 @@ namespace LiloDash.Domain.Commands.Room
         
         public override bool IsValid()
         {
-            ValidationResult = new UpdateRoomCommandValidation().Validate(this);
+            ValidationResult = new RoomUpdateCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

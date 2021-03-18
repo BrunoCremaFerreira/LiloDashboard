@@ -31,7 +31,6 @@ namespace LiloDash.Infra.IOC
                 .AddMediatR(assembly)
             
                 //Application Services
-                .AddScoped<IUserAppService, UserAppService>()
                 .AddScoped<IBuildingAppService, BuildingAppService>()
             
                 //Infra - Data

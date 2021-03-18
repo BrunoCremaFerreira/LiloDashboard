@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LiloDash.Infra.Data.Repository
 {
-    public class BuildingRepository: IBuildingRepository, RepositoryBase<Building>
+    public class BuildingRepository: RepositoryBase<Building>, IBuildingRepository
     {
         private readonly LiloDataContext _context;
 

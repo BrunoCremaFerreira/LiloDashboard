@@ -12,7 +12,7 @@ namespace LiloDash.Domain.Commands.Device
 
         public override bool IsValid()
         {
-            ValidationResult = new RemoveDeviceCommandValidation().Validate(this);
+            ValidationResult = new DeviceRemoveCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

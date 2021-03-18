@@ -14,7 +14,7 @@ namespace LiloDash.Domain.Commands.Device
         
         public override bool IsValid()
         {
-            ValidationResult = new UpdateDeviceCommandValidation().Validate(this);
+            ValidationResult = new DeviceUpdateCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

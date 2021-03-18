@@ -1,6 +1,5 @@
 ﻿using LiloDash.Domain.Core.Bus;
 using LiloDash.Domain.Core.Commands;
-using LiloDash.Domain.Core.Events;
 using System.Threading.Tasks;
 using MediatR;
 
