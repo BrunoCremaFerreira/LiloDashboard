@@ -3,17 +3,16 @@ using LiloDash.Domain.Validations.Room;
 
 namespace LiloDash.Domain.Commands.Room
 {
-    public class UpdateRoomCommand : RoomCommand
+    public class RoomAddCommand : RoomCommand
     {
-        public UpdateRoomCommand(Guid id, string name)
+        public RoomAddCommand(string name)
         {
-            Id = id;
             Name = name;
         }
-        
+
         public override bool IsValid()
         {
-            ValidationResult = new UpdateRoomCommandValidation().Validate(this);
+            ValidationResult = new RegisterNewRoomCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

@@ -2,9 +2,9 @@ using LiloDash.Domain.Commands.Building;
 
 namespace LiloDash.Domain.Validations.Building
 {
-    public class UpdateBuildingCommandValidation: BuildingValidation<UpdateBuildingCommand>
+    public class BuildingUpdateCommandValidation: BuildingValidation<UpdateBuildingCommand>
     {
-        public UpdateBuildingCommandValidation()
+        public BuildingUpdateCommandValidation()
         {
             ValidateId();
             ValidateName();

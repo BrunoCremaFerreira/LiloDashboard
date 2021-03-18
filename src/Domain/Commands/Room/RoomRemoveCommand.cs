@@ -3,12 +3,11 @@ using LiloDash.Domain.Validations.Room;
 
 namespace LiloDash.Domain.Commands.Room
 {
-    public class RemoveRoomCommand : RoomCommand
+    public class RoomRemoveCommand : RoomCommand
     {
-        public RemoveRoomCommand(Guid id)
-        {
-            Id = id;
-        }
+        public RoomRemoveCommand(Guid id)
+            => Id = id;
+        
 
         public override bool IsValid()
         {

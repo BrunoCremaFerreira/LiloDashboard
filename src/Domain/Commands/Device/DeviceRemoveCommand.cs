@@ -3,9 +3,9 @@ using LiloDash.Domain.Validations.Device;
 
 namespace LiloDash.Domain.Commands.Device
 {
-    public class RemoveDeviceCommand: DeviceCommand
+    public class DeviceRemoveCommand: DeviceCommand
     {
-        public RemoveDeviceCommand(Guid id)
+        public DeviceRemoveCommand(Guid id)
         {
             Id = id;
         }

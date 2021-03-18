@@ -3,7 +3,7 @@ using LiloDash.Domain.Validations.Building;
 
 namespace LiloDash.Domain.Commands.Building
 {
-    public class RemoveBuildingCommand : BuildingCommand
+    public class BuildingRemoveCommand : BuildingCommand
     {
         public RemoveBuildingCommand(Guid id)
         {

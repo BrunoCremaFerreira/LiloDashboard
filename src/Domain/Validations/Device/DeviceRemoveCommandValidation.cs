@@ -2,9 +2,9 @@ using LiloDash.Domain.Commands.Device;
 
 namespace LiloDash.Domain.Validations.Device
 {
-    public class RemoveDeviceCommandValidation : DeviceValidation<DeviceCommand>
+    public class DeviceRemoveCommandValidation : DeviceValidation<DeviceCommand>
     {
-        public RemoveDeviceCommandValidation()
+        public DeviceRemoveCommandValidation()
         {
             ValidateId();
         }

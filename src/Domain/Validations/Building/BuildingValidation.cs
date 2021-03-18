@@ -4,7 +4,7 @@ using LiloDash.Domain.Commands.Building;
 
 namespace LiloDash.Domain.Validations.Building
 {
-    public class BuildingValidation<T>: AbstractValidator<T> where T: BuildingCommand
+    public abstract class BuildingValidation<T>: AbstractValidator<T> where T: BuildingCommand
     {
         protected void ValidateId()
         {

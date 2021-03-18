@@ -3,9 +3,9 @@ using LiloDash.Domain.Validations.Building;
 
 namespace LiloDash.Domain.Commands.Building
 {
-    public class UpdateBuildingCommand: BuildingCommand
+    public class BuildingUpdateCommand: BuildingCommand
     {
-        public UpdateBuildingCommand(Guid id, string name)
+        public BuildingUpdateCommand(Guid id, string name)
         {
             Id = id;
             Name = name;

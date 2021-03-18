@@ -4,7 +4,7 @@ using LiloDash.Domain.Commands.Device;
 
 namespace LiloDash.Domain.Validations.Device
 {
-    public class DeviceValidation<T> : AbstractValidator<T> where T : DeviceCommand
+    public abstract class DeviceValidation<T> : AbstractValidator<T> where T : DeviceCommand
     {
         protected void ValidateId()
         {

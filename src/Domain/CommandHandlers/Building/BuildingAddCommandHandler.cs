@@ -2,7 +2,7 @@ using System;
 
 namespace LiloDash.Domain.CommandHandlers.Building
 {
-    public class AddBuildingCommandHandler: CommandHandler, IRequestHandler<RegisterNewBuildingCommand, ValidationResult>
+    public class BuildingAddCommandHandler: CommandHandler, IRequestHandler<RegisterNewBuildingCommand, ValidationResult>
     {
         protected readonly IBuildingRepository _buildingRepository;
 

@@ -1,18 +1,20 @@
+using System;
 using LiloDash.Domain.Validations.Device;
 
 namespace LiloDash.Domain.Commands.Device
 {
-    public class RegisterNewDeviceCommand : DeviceCommand
+    public class DeviceUpdateCommand : DeviceCommand
     {
-        public RegisterNewDeviceCommand(string name, int hardwareAddress)
+        public DeviceUpdateCommand(Guid id, string name, int hardwareAddress)
         {
+            Id = id;
             Name = name;
             HardwareAddress = hardwareAddress;
         }
-
+        
         public override bool IsValid()
         {
-            ValidationResult = new RegisterNewDeviceCommandValidation().Validate(this);
+            ValidationResult = new UpdateDeviceCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }
