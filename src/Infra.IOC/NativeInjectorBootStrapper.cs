@@ -37,9 +37,6 @@ namespace LiloDash.Infra.IOC
                 .AddScoped<IBuildingRepository, BuildingRepository>()
                 .AddScoped<IUnitOfWork, UnitOfWork>()
                 .AddScoped<LiloDataContext>()
-            
-                //Infra - Identity
-                .AddScoped<IUser, User>()
                 
                 //AutoMapper
                 .AddSingleton(config.CreateMapper());
