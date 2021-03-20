@@ -7,6 +7,8 @@ using LiloDash.Application.ViewModels;
 using LiloDash.Domain.Commands.Building;
 using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
+using System.Threading.Tasks;
+using FluentValidation.Results;
 
 namespace LiloDash.Application.Services.User
 {
@@ -27,31 +29,29 @@ namespace LiloDash.Application.Services.User
         }
 
         public BuildingViewModel GetById(Guid id)
-        {
-            return _mapper.Map<BuildingViewModel>(_buildingRepository.GetById(id));
-        }
-
+            => _mapper.Map<BuildingViewModel>(_buildingRepository.GetById(id));
+        
         public IEnumerable<BuildingViewModel> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public async void Register(BuildingViewModel buildingViewModel)
+        public async Task<ValidationResult> Add(BuildingViewModel buildingViewModel)
         {
             var registerCommand = _mapper.Map<BuildingAddCommand>(buildingViewModel);
-            await Bus.SendCommand(registerCommand);
+            return await (Task<ValidationResult>)Bus.SendCommand(registerCommand);
         }
 
-        public async void Update(BuildingViewModel buildingViewModel)
+        public async Task<ValidationResult> Update(BuildingViewModel buildingViewModel)
         {
             var updateCommand = _mapper.Map<BuildingUpdateCommand>(buildingViewModel);
-            await Bus.SendCommand(updateCommand);
+            return await (Task<ValidationResult>)Bus.SendCommand(updateCommand);
         }
 
-        public async void Remove(Guid id)
+        public async Task<ValidationResult> Remove(Guid id)
         {
             var removeCommand = new BuildingRemoveCommand(id);
-            await Bus.SendCommand(removeCommand);
+            return await (Task<ValidationResult>)Bus.SendCommand(removeCommand);
         }
 
         public void Dispose()

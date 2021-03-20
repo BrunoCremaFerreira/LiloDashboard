@@ -11,44 +11,38 @@ namespace LiloDash.API.Controllers
 {
     public class BuildingController: BaseLiloApiController
     {
-        private readonly ILogger<UserController> _logger;
         private readonly IBuildingAppService _buildingAppService;
 
-        public BuildingController(ILogger<UserController> logger, IBuildingAppService buildingAppService)
-        {
-            _logger = logger;
-            _buildingAppService = buildingAppService;
-        }
-
+        public BuildingController(IBuildingAppService buildingAppService)
+            => _buildingAppService = buildingAppService;
+        
         [HttpGet]
         [Route("v1/[controller]/building/{id}")]
         public BuildingViewModel GetBuilding(Guid id)
-        {
-            return _buildingAppService.GetById(id);
-        }
-
+            => _buildingAppService.GetById(id);
+        
         [HttpPost]
         [Route("v1/[controller]/building")]
-        public IActionResult CreateBuilding(BuildingViewModel building)
+        public async Task<IActionResult> CreateBuilding(BuildingViewModel building)
         {
-            _buildingAppService.Register(building);
-            return Ok();
+            var result = await _buildingAppService.Add(building);
+            return Ok(result);
         }
 
         [HttpPut]
         [Route("v1/[controller]/building")]
-        public IActionResult UpdateBuilding(BuildingViewModel building)
+        public async Task<IActionResult> UpdateBuilding(BuildingViewModel building)
         {
-            _buildingAppService.Update(building);
-            return Ok();
+            var result = await _buildingAppService.Update(building);
+            return Ok(result);
         }
 
         [HttpDelete]
         [Route("v1/[controller]/building/{id}")]
-        public IActionResult DeleteBuilding(Guid id)
+        public async Task<IActionResult> DeleteBuilding(Guid id)
         {
-            _buildingAppService.Remove(id);
-            return Ok();
+            var result = await _buildingAppService.Remove(id);
+            return Ok(result);
         }
     }
 }

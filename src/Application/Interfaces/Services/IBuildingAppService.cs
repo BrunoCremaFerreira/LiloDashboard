@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FluentValidation.Results;
 using LiloDash.Application.ViewModels;
 
 namespace LiloDash.Application.Interfaces.Services
@@ -10,10 +12,10 @@ namespace LiloDash.Application.Interfaces.Services
         
         IEnumerable<BuildingViewModel> GetAll();
 
-        void Register(BuildingViewModel roomViewModel);
+        Task<ValidationResult> Add(BuildingViewModel roomViewModel);
         
-        void Update(BuildingViewModel roomViewModel);
+        Task<ValidationResult> Update(BuildingViewModel roomViewModel);
 
-        void Remove(Guid id);
+        Task<ValidationResult> Remove(Guid id);
     }
 }
