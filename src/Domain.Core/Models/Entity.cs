@@ -5,7 +5,7 @@ namespace LiloDash.Domain.Core.Models
     ///<summary>
     /// Base System Entity Generic Id
     ///</summary>
-    public abstract class Entity<TIdType>
+    public abstract class Entity<TIdType>: IEntity
     {
 
         #region :: Properties
@@ -61,7 +61,7 @@ namespace LiloDash.Domain.Core.Models
         #endregion
 
         #region :: Override
-
+        
         public override int GetHashCode()
             =>(GetType().GetHashCode() * 907) + Id.GetHashCode();
 
@@ -70,6 +70,8 @@ namespace LiloDash.Domain.Core.Models
 
         #endregion
         
+        public object GetId()
+            => Id;
     }
 
     ///<summary>
@@ -80,7 +82,6 @@ namespace LiloDash.Domain.Core.Models
         public Entity()
         {
             Id = Guid.NewGuid();
-            WhenCreated = DateTime.Now;
         }
     }
 }

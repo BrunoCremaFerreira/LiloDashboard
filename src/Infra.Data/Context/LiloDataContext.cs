@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using LiloDash.Domain.Model;
 using LiloDash.Domain.Interfaces;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace LiloDash.Infra.Data.Context
 {
@@ -20,9 +21,17 @@ namespace LiloDash.Infra.Data.Context
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new BuildingConfig());
-            modelBuilder.ApplyConfiguration(new RoomConfig());
-            modelBuilder.ApplyConfiguration(new DeviceConfig());
+            //Entity Config
+            modelBuilder
+                .ApplyConfigurationsFromAssembly(typeof(LiloDataContext).Assembly);
+
+            var fks = modelBuilder.Model
+                .GetEntityTypes()
+                .SelectMany(e=> e.GetForeignKeys());
+
+            //Set delete behaviour
+            foreach(var rel in fks)
+                rel.DeleteBehavior = DeleteBehavior.ClientSetNull;
                         
             base.OnModelCreating(modelBuilder);
         }

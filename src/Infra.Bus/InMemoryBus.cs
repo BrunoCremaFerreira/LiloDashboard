@@ -2,6 +2,7 @@
 using LiloDash.Domain.Core.Commands;
 using System.Threading.Tasks;
 using MediatR;
+using FluentValidation.Results;
 
 namespace LiloDash.Infra.Bus
 {
@@ -12,7 +13,8 @@ namespace LiloDash.Infra.Bus
         public InMemoryBus(IMediator mediator)
             => _mediator = mediator;
         
-        public Task SendCommand<T>(T command) where T : Command
+        public Task<ValidationResult> SendCommand<TCommand>(TCommand command) 
+            where TCommand : Command
             => _mediator.Send(command);
     }
 }
