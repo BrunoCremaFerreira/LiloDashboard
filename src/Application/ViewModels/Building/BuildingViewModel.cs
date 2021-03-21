@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using LiloDash.Domain.Interfaces.Model;
 
-namespace LiloDash.Application.ViewModels
+namespace LiloDash.Application.ViewModels.Building
 {
     public class BuildingViewModel: IPowerConsumption 
     {

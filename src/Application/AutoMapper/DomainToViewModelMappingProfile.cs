@@ -1,5 +1,6 @@
 using AutoMapper;
 using LiloDash.Application.ViewModels;
+using LiloDash.Application.ViewModels.Building;
 using LiloDash.Domain.Model;
 
 namespace LiloDash.Application.AutoMapper

@@ -1,5 +1,6 @@
 using AutoMapper;
 using LiloDash.Application.ViewModels;
+using LiloDash.Application.ViewModels.Building;
 using LiloDash.Domain.Commands.Building;
 using LiloDash.Domain.Commands.Device;
 using LiloDash.Domain.Commands.Room;
@@ -11,9 +12,9 @@ namespace LiloDash.Application.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             //Building
-            CreateMap<BuildingViewModel, BuildingAddCommand>()
+            CreateMap<BuildingAddViewModel, BuildingAddCommand>()
                 .ConstructUsing(c=> new BuildingAddCommand(c.Name));
-            CreateMap<BuildingViewModel, BuildingUpdateCommand>()
+            CreateMap<BuildingUpdateViewModel, BuildingUpdateCommand>()
                 .ConstructUsing(c=> new BuildingUpdateCommand(c.Id, c.Name));
             
             //Room

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentValidation.Results;
 using LiloDash.Application.ViewModels;
+using LiloDash.Application.ViewModels.Building;
 
 namespace LiloDash.Application.Interfaces.Services
 {
@@ -12,9 +13,9 @@ namespace LiloDash.Application.Interfaces.Services
         
         IEnumerable<BuildingViewModel> GetAll();
 
-        Task<AddResultViewModel<Guid>> Add(BuildingViewModel roomViewModel);
+        Task<AddResultViewModel<Guid>> Add(BuildingAddViewModel roomViewModel);
         
-        Task<ValidationResult> Update(BuildingViewModel roomViewModel);
+        Task<ValidationResult> Update(BuildingUpdateViewModel roomViewModel);
 
         Task<ValidationResult> Remove(Guid id);
     }

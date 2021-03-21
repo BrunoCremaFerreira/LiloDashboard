@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LiloDash.Application.Interfaces.Services;
-using LiloDash.Application.ViewModels;
+using LiloDash.Application.ViewModels.Building;
 
 namespace LiloDash.API.Controllers
 {
@@ -18,12 +18,12 @@ namespace LiloDash.API.Controllers
         
         [HttpGet]
         [Route("v1/[controller]/building/{id}")]
-        public BuildingViewModel GetBuilding(Guid id)
-            => _buildingAppService.GetById(id);
+        public IActionResult GetBuilding(Guid id)
+            => Ok(_buildingAppService.GetById(id));
         
         [HttpPost]
         [Route("v1/[controller]/building")]
-        public async Task<IActionResult> CreateBuilding(BuildingViewModel building)
+        public async Task<IActionResult> AddBuilding(BuildingAddViewModel building)
         {
             var result = await _buildingAppService.Add(building);
             return Ok(result);
@@ -31,7 +31,7 @@ namespace LiloDash.API.Controllers
 
         [HttpPut]
         [Route("v1/[controller]/building")]
-        public async Task<IActionResult> UpdateBuilding(BuildingViewModel building)
+        public async Task<IActionResult> UpdateBuilding(BuildingUpdateViewModel building)
         {
             var result = await _buildingAppService.Update(building);
             return Ok(result);

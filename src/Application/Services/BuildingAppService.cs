@@ -4,6 +4,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using LiloDash.Application.Interfaces.Services;
 using LiloDash.Application.ViewModels;
+using LiloDash.Application.ViewModels.Building;
 using LiloDash.Domain.Commands.Building;
 using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
@@ -36,14 +37,14 @@ namespace LiloDash.Application.Services.User
             throw new NotImplementedException();
         }
 
-        public async Task<AddResultViewModel<Guid>> Add(BuildingViewModel buildingViewModel)
+        public async Task<AddResultViewModel<Guid>> Add(BuildingAddViewModel buildingViewModel)
         {
             var addCommand = _mapper.Map<BuildingAddCommand>(buildingViewModel);
             var result = await Bus.SendCommand(addCommand);
             return new AddResultViewModel<Guid>(result, addCommand.Id);
         }
 
-        public async Task<ValidationResult> Update(BuildingViewModel buildingViewModel)
+        public async Task<ValidationResult> Update(BuildingUpdateViewModel buildingViewModel)
         {
             var updateCommand = _mapper.Map<BuildingUpdateCommand>(buildingViewModel);
             return await (Task<ValidationResult>)Bus.SendCommand(updateCommand);
