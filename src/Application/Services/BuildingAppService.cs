@@ -36,10 +36,11 @@ namespace LiloDash.Application.Services.User
             throw new NotImplementedException();
         }
 
-        public async Task<ValidationResult> Add(BuildingViewModel buildingViewModel)
+        public async Task<AddResultViewModel<Guid>> Add(BuildingViewModel buildingViewModel)
         {
-            var registerCommand = _mapper.Map<BuildingAddCommand>(buildingViewModel);
-            return await (Task<ValidationResult>)Bus.SendCommand(registerCommand);
+            var addCommand = _mapper.Map<BuildingAddCommand>(buildingViewModel);
+            var result = await Bus.SendCommand(addCommand);
+            return new AddResultViewModel<Guid>(result, addCommand.Id);
         }
 
         public async Task<ValidationResult> Update(BuildingViewModel buildingViewModel)

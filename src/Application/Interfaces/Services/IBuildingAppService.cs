@@ -12,7 +12,7 @@ namespace LiloDash.Application.Interfaces.Services
         
         IEnumerable<BuildingViewModel> GetAll();
 
-        Task<ValidationResult> Add(BuildingViewModel roomViewModel);
+        Task<AddResultViewModel<Guid>> Add(BuildingViewModel roomViewModel);
         
         Task<ValidationResult> Update(BuildingViewModel roomViewModel);
 

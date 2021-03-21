@@ -8,7 +8,6 @@ namespace LiloDash.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<User, UserViewModel>();
             CreateMap<Building, BuildingViewModel>();
             CreateMap<Room, RoomViewModel>();
             CreateMap<Device, DeviceViewModel>();
