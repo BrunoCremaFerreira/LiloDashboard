@@ -3,7 +3,7 @@ using FluentValidation.Results;
 
 namespace LiloDash.Domain.CommandHandlers
 {
-    public class CommandHandler
+    public abstract class CommandHandler
     {
         protected ValidationResult ValidationResult;
 
