@@ -18,14 +18,13 @@ namespace LiloDash.Infra.IOC
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-
-            var assembly = AppDomain.CurrentDomain.Load("LiloDash.Domain");
             var config = AutoMapperConfig.RegisterMappings();
             
             return services
-                //Domain Bus (Mediator)
-                .AddScoped<IMediatorHandler, InMemoryBus>()
-                .AddMediatR(assembly)
+                .RegisterMediator()
+                .RegisterServiceBroker()
+
+                
             
                 //Application Services
                 .AddScoped<IBuildingAppService, BuildingAppService>()
@@ -39,5 +38,26 @@ namespace LiloDash.Infra.IOC
                 .AddSingleton(config.CreateMapper());
 
         }
+
+        #region :: Mediator
+
+        private static IServiceCollection RegisterMediator(this IServiceCollection services)
+        {
+            var assembly = AppDomain.CurrentDomain.Load("LiloDash.Domain");
+            return services
+                //Domain Bus (Mediator)
+                .AddScoped<IMediatorHandler, InMemoryBus>()
+                //Attach mediator commands by assembly
+                .AddMediatR(assembly);
+        }
+
+        #endregion
+
+        #region :: Service Broker
+
+        private static IServiceCollection RegisterServiceBroker(this IServiceCollection services)
+            => services.AddSingleton<IMessageHandler, ServiceBrokerBus>();
+
+        #endregion
     }
 }
