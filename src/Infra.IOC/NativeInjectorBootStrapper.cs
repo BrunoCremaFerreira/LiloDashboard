@@ -24,8 +24,6 @@ namespace LiloDash.Infra.IOC
                 .RegisterMediator()
                 .RegisterServiceBroker()
 
-                
-            
                 //Application Services
                 .AddScoped<IBuildingAppService, BuildingAppService>()
             
