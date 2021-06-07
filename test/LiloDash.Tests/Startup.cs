@@ -1,4 +1,7 @@
 using System;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace LiloDash.Domain.Tests
@@ -11,11 +14,9 @@ namespace LiloDash.Domain.Tests
         }
 
         private IConfiguration LoadConfiguration()
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            => new ConfigurationBuilder()
+                //.SetBasePath(Directory.GetCurrentDirectory())
+                //.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
-        }
     }
 }
