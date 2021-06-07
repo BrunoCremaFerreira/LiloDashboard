@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.API", "API\LiloDas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Infra.Environment", "Infra.Environment\LiloDash.Infra.Environment.csproj", "{423B32A5-4B55-474E-B5FA-EE539A2B596F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Domain.Tests", "..\test\LiloDash.Domain.Tests\LiloDash.Domain.Tests.csproj", "{5EDB4322-E154-45A5-9161-1EE60FCF0179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiloDash.Tests", "..\test\LiloDash.Tests\LiloDash.Tests.csproj", "{5EDB4322-E154-45A5-9161-1EE60FCF0179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
