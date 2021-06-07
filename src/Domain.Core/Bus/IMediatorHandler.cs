@@ -12,6 +12,13 @@ namespace LiloDash.Domain.Core.Bus
         ///<summary>
         /// Send command to Mediator
         ///</summary>
-        Task<ValidationResult> SendCommand<TCommand>(TCommand command) where TCommand : Command;
+        Task<ValidationResult> SendCommand<TCommand>(TCommand command) 
+            where TCommand : Command;
+
+        ///<summary>
+        /// Send command to Mediator with specific response
+        ///</summary>
+        Task<TResponse> SendCommand<TCommand, TResponse>(TCommand command) 
+            where TCommand : Command<TResponse>;
     }
 }
