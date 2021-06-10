@@ -12,13 +12,20 @@ echo "${YLL}+----------------|Environment script for first setup - Lilo DashBoar
 echo "${YLL}Checking Dependencies...${NC}"
 
 dependencyError=0
+#Root Login
+if [ $(id -u) -eq 0 ]
+then 
+    echo "${GRE}[X] Running as Root...${NC}"
+else
+    echo "${RED}[ ] Not running as Root...${NC}"
+    dependencyError=1
+fi
 
 #Check Docker
 if [ -x "$(command -v docker)" ]; then
     echo "${GRE}[X] Docker is installed...${NC}"
 else
     echo "${RED}[ ] Docker is not installed...${NC}"
-    echo "${RED}Script aborted.${NC}"
     dependencyError=1
 fi
 
@@ -32,6 +39,7 @@ fi
 
 if [ $dependencyError -eq 1 ];
 then
+    echo ""
     echo "${RED}Script aborted.${NC}"
     exit
 fi
