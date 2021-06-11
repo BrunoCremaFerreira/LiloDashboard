@@ -37,26 +37,32 @@ then
 fi
 
 #-----------------------|Starting  MySql Docker container|--------------------------------------------
-mysqlContainer="LiloMysql"
-echo "${YLL}Starting Database container...${NC}"
-if [ ! "$(docker ps -q -f name=${mysqlContainer})" ]; 
-then
-    echo "${GRE}Docker container '${mysqlContainer}' already stopped... ${NC}"
-else
-    echo "${GRE}Stopping docker container '${mysqlContainer}'... ${NC}"
-    docker container stop "${mysqlContainer}"
-fi
+{
+    mysqlContainer="LiloMysql"
+    echo "${YLL}Starting Database container...${NC}"
+    if [ ! "$(docker ps -q -f name=${mysqlContainer})" ]; 
+    then
+        echo "${GRE}Docker container '${mysqlContainer}' already stopped... ${NC}"
+    else
+        echo "${GRE}Stopping docker container '${mysqlContainer}'... ${NC}"
+        docker container stop "${mysqlContainer}"
+    fi
+} &
 
 #-----------------------|Starting MySql Docker container|-------------------------------------------
-brokerContainer="LiloBroker"
-echo "${YLL}Starting Service Broker container...${NC}"
-if [ ! "$(docker ps -q -f name=${brokerContainer})" ]; 
-then
-    echo "${GRE}Docker container '${brokerContainer}' already stopped... ${NC}"
-else
-    echo "${GRE}Stopping docker container '${brokerContainer}'... ${NC}"
-    docker container stop "${brokerContainer}"
-fi
+{
+    brokerContainer="LiloBroker"
+    echo "${YLL}Starting Service Broker container...${NC}"
+    if [ ! "$(docker ps -q -f name=${brokerContainer})" ]; 
+    then
+        echo "${GRE}Docker container '${brokerContainer}' already stopped... ${NC}"
+    else
+        echo "${GRE}Stopping docker container '${brokerContainer}'... ${NC}"
+        docker container stop "${brokerContainer}"
+    fi
+}
+
+wait
 
 #-----------------------|Docker ls|-----------------------------------------------------------------------
 echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
