@@ -22,6 +22,7 @@ else
     exit
 fi
 
+echo "${YLL}Update started...${NC}"
 #Checking all directories with have projects
 for filename in `find ../src -name *.csproj`
 do
@@ -35,7 +36,7 @@ do
         #echo $package;
         for package in `dotnet list package | grep '>' | sed 's/^ *> //g;s/ \+/ /g' | cut -f 1 -d ' ' | sort -u`
         do
-            echo "Updating package: ${package}..."
+            echo "${GRE}Updating package:${NC}${YLL} ${package}${NC}${GRE}...${NC}"
             dotnet add package "$package"
         done
 
@@ -44,6 +45,7 @@ do
 done
 wait
 
-
-#List of nugget packages to update
-#dotnet list package | sed 1,3d
+#-----------------------|End|---------------------------------------------------------------------------
+echo ""
+echo "${GRE}Script Finalized.${NC}"
+echo "${YLL}+-------------------------------------------------------------------------------------+${NC}"
