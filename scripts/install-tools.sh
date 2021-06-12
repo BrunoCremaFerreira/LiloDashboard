@@ -11,26 +11,11 @@ echo "${YLL}+----------------|Tools Setup - Lilo DashBoard|----------------+${NC
 #-----------------------|Dependencies Check|------------------------------------------------------------
 echo "${YLL}Checking Dependencies...${NC}"
 
-dependencyError=0
-#Root Login
-if [ $(id -u) -eq 0 ]
-then 
-    echo "${GRE}[X] Running as Root...${NC}"
-else
-    echo "${RED}[ ] Not running as Root...${NC}"
-    dependencyError=1
-fi
-
 #Check APT
 if [ -x "$(command -v apt)" ]; then
     echo "${GRE}[X] APT is installed...${NC}"
 else
     echo "${RED}[ ] APT is not installed...${NC}"
-    dependencyError=1
-fi
-
-if [ $dependencyError -eq 1 ];
-then
     echo ""
     echo "${RED}Script aborted.${NC}"
     exit
@@ -45,10 +30,11 @@ else
     echo "${GRE}Installing...${NC}"
     wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
-    apt-get update
-    apt-get install -y apt-transport-https && \
-    apt-get update && \
-    apt-get install -y dotnet-sdk-5.0
+    sudo apt-get update
+    sudo apt-get install -y apt-transport-https && \
+    sudo apt-get update && \
+    sudo apt-get install -y dotnet-sdk-5.0
+    rm packages-microsoft-prod.deb
 fi
 
 #-----------------------|Installing Vs Code|--------------------------------------------
@@ -60,6 +46,17 @@ else
     echo "${GRE}Installing...${NC}"
     wget https://az764295.vo.msecnd.net/stable/b4c1bd0a9b03c749ea011b06c6d2676c8091a70c/code_1.57.0-1623259737_amd64.deb
     sudo dpkg -i code_1.57.0-1623259737_amd64.deb
+    rm code_1.57.0-1623259737_amd64.deb
+fi
+
+#-----------------------|Installing Entity Framework|--------------------------------------------
+#Check EF
+if [ -x "$(command -v dotnet-ef)" ]; then
+    echo "${GRE}[X] EF is installed...${NC}"
+else
+    echo "${RED}[ ] EF is not installed...${NC}"
+    echo "${GRE}Installing...${NC}"
+    dotnet tool install --global dotnet-ef
 fi
 
 #-----------------------|End|---------------------------------------------------------------------------
