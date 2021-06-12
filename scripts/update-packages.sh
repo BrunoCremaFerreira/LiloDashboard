@@ -31,9 +31,6 @@ do
         cd "${directory}/"
         pwd
 
-        #package=`dotnet list package | sed 1,3d | sed -e "s/>//g"`
-        #package=${package%" *.*.* "}
-        #echo $package;
         for package in `dotnet list package | grep '>' | sed 's/^ *> //g;s/ \+/ /g' | cut -f 1 -d ' ' | sort -u`
         do
             echo "${GRE}Updating package:${NC}${YLL} ${package}${NC}${GRE}...${NC}"
