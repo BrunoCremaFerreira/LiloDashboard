@@ -36,20 +36,20 @@ then
     exit
 fi
 
-#-----------------------|Starting  MySql Docker container|--------------------------------------------
+#-----------------------|Starting Database Docker container|--------------------------------------------
 {
-    mysqlContainer="LiloMysql"
+    databaseContainer="LiloPostgres"
     echo "${YLL}Starting Database container...${NC}"
-    if [ ! "$(docker ps -q -f name=${mysqlContainer})" ]; 
+    if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
     then
-        echo "${GRE}Docker container '${mysqlContainer}' already stopped... ${NC}"
+        echo "${GRE}Docker container '${databaseContainer}' already stopped... ${NC}"
     else
-        echo "${GRE}Stopping docker container '${mysqlContainer}'... ${NC}"
-        docker container stop "${mysqlContainer}"
+        echo "${GRE}Stopping docker container '${databaseContainer}'... ${NC}"
+        docker container stop "${databaseContainer}"
     fi
 } &
 
-#-----------------------|Starting MySql Docker container|-------------------------------------------
+#-----------------------|Starting Broker Docker container|-------------------------------------------
 {
     brokerContainer="LiloBroker"
     echo "${YLL}Starting Service Broker container...${NC}"
@@ -66,7 +66,7 @@ wait
 
 #-----------------------|Docker ls|-----------------------------------------------------------------------
 echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
-docker container ls -all
+docker container ls -a
 
 #-----------------------|End|---------------------------------------------------------------------------
 echo ""

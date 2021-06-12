@@ -44,23 +44,23 @@ then
     exit
 fi
 
-#-----------------------|Configuring MySql Docker container|--------------------------------------------
-mysqlContainer="LiloMysql"
+#-----------------------|Configuring Database Docker container|--------------------------------------------
+databaseContainer="LiloPostgres"
 echo "${YLL}Checking Database container...${NC}"
-if [ ! "$(docker ps -q -f name=${mysqlContainer})" ]; 
+if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
 then
-    if [ "$(docker ps -aq -f status=exited -f name=${mysqlContainer})" ]; then
+    if [ "$(docker ps -aq -f status=exited -f name=${databaseContainer})" ]; then
         # cleanup
-        docker rm "${mysqlContainer}"
+        docker rm "${databaseContainer}"
     fi
-    # run MySql container
-    docker pull mysql
-    docker run --name "${mysqlContainer}" -e MYSQL_ROOT_PASSWORD=Masterkey10@ -d mysql:latest
+    # run Postgres container
+    docker pull postgres
+    docker run --name "${databaseContainer}" -e POSTGRES_PASSWORD=Masterkey10@ -d postgres
 else
-    echo "${GRE}Docker container '${mysqlContainer}' already exists... ${NC}"
+    echo "${GRE}Docker container '${databaseContainer}' already exists... ${NC}"
 fi
 
-#-----------------------|Configuring MySql Docker container|-------------------------------------------
+#-----------------------|Configuring Broker Docker container|-------------------------------------------
 brokerContainer="LiloBroker"
 echo "${YLL}Checking Service Broker container...${NC}"
 if [ ! "$(docker ps -q -f name=${brokerContainer})" ]; 
@@ -78,7 +78,7 @@ fi
 
 #-----------------------|Docker ls|-----------------------------------------------------------------------
 echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
-docker container ls -all
+docker container ls -a
 
 #-----------------------|End|---------------------------------------------------------------------------
 echo ""

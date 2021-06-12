@@ -36,15 +36,15 @@ then
     exit
 fi
 
-#-----------------------|Starting  MySql Docker container|--------------------------------------------
+#-----------------------|Starting Database Docker container|--------------------------------------------
 {
-    mysqlContainer="LiloMysql"
+    databaseContainer="LiloPostgres"
     echo "${YLL}Starting Database container...${NC}"
-    if [ ! "$(docker ps -q -f name=${mysqlContainer})" ]; 
+    if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
     then
-        docker container start "${mysqlContainer}"
+        docker container start "${databaseContainer}"
     else
-        echo "${GRE}Docker container '${mysqlContainer}' already started... ${NC}"
+        echo "${GRE}Docker container '${databaseContainer}' already started... ${NC}"
     fi
 } &
 
@@ -64,7 +64,7 @@ wait
 
 #-----------------------|Docker ls|-----------------------------------------------------------------------
 echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
-docker container ls -all
+docker container ls -a
 
 #-----------------------|End|---------------------------------------------------------------------------
 echo ""
