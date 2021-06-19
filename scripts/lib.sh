@@ -126,3 +126,19 @@ startContainer()
         log "Docker container '${containerName}' already started..." success
     fi
 }
+
+#
+# Purpose: Stop Docker Container
+#
+stopContainer()
+{
+    containerName="$1"
+    log "Stopping ${containerName} container..." information
+    if [ ! "$(docker ps -q -f name=${containerName})" ]; 
+    then
+        log "Docker container '${containerName}' already stopped..." success
+    else
+        log "Stopping docker container '${containerName}'..." success
+        sudo docker container stop "${containerName}"
+    fi
+}

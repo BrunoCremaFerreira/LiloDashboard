@@ -1,74 +1,44 @@
 #!/bin/bash
 
-#Text Decorations
-RED='\033[1;31m'
-YLL='\033[1;33m'
-GRE='\033[1;32m'
-NC='\033[0m'
+. ./lib.sh
+log "STOP CONTAINERS" intro 1.0.0
 
-echo "${YLL}+----------------|Stop Containers - Lilo DashBoard|----------------+${NC}"
-
-#-----------------------|Dependencies Check|------------------------------------------------------------
-echo "${YLL}Checking Dependencies...${NC}"
+#------------------|Dependencies Check|------------------
 
 dependencyError=0
+log "Checking dependencies" title
+
 #Root Login
-if [ $(id -u) -eq 0 ]
-then 
-    echo "${GRE}[X] Running as Root...${NC}"
-else
-    echo "${RED}[ ] Not running as Root...${NC}"
+checkIfIsRoot
+if [ $? -eq 1 ]; then
     dependencyError=1
-fi
+fi   
 
 #Check Docker
-if [ -x "$(command -v docker)" ]; then
-    echo "${GRE}[X] Docker is installed...${NC}"
-else
-    echo "${RED}[ ] Docker is not installed...${NC}"
+checkDependency docker Docker
+if [ $? -eq 1 ]; then
     dependencyError=1
+fi 
+
+if [ $dependencyError -eq 1 ]; then
+    die
 fi
 
-if [ $dependencyError -eq 1 ];
-then
-    echo ""
-    echo "${RED}Script aborted.${NC}"
-    exit
-fi
-
-#-----------------------|Starting Database Docker container|--------------------------------------------
+#-----------------------|Stopping Database Docker container|--------------------------------------------
 {
-    databaseContainer="LiloPostgres"
-    echo "${YLL}Starting Database container...${NC}"
-    if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
-    then
-        echo "${GRE}Docker container '${databaseContainer}' already stopped... ${NC}"
-    else
-        echo "${GRE}Stopping docker container '${databaseContainer}'... ${NC}"
-        docker container stop "${databaseContainer}"
-    fi
+    stopContainer "LiloPostgres"
 } &
 
-#-----------------------|Starting Broker Docker container|-------------------------------------------
+#-----------------------|Stopping Broker Docker container|-------------------------------------------
 {
-    brokerContainer="LiloBroker"
-    echo "${YLL}Starting Service Broker container...${NC}"
-    if [ ! "$(docker ps -q -f name=${brokerContainer})" ]; 
-    then
-        echo "${GRE}Docker container '${brokerContainer}' already stopped... ${NC}"
-    else
-        echo "${GRE}Stopping docker container '${brokerContainer}'... ${NC}"
-        docker container stop "${brokerContainer}"
-    fi
+    stopContainer "LiloBroker"
 }
 
 wait
 
-#-----------------------|Docker ls|-----------------------------------------------------------------------
-echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
+#-----------------------|Docker ls|-------------------------------
+log "Docker Containers" title
 docker container ls -a
 
-#-----------------------|End|---------------------------------------------------------------------------
-echo ""
-echo "${GRE}Script Finalized.${NC}"
-echo "${YLL}+-------------------------------------------------------------------------------------+${NC}"
+#------------------|End of Script|------------------
+log "End of Script..." success
