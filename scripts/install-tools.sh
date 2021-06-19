@@ -46,7 +46,8 @@ else
     echo "${GRE}Installing...${NC}"
     wget https://az764295.vo.msecnd.net/stable/b4c1bd0a9b03c749ea011b06c6d2676c8091a70c/code_1.57.0-1623259737_amd64.deb
     sudo dpkg -i code_1.57.0-1623259737_amd64.deb
-    rm code_1.57.0-1623259737_amd64.deb
+    sudo apt-get -f install
+    rm -f code_1.57.0-1623259737_amd64.deb
 fi
 
 #-----------------------|Installing Entity Framework|--------------------------------------------
