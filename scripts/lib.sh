@@ -111,3 +111,18 @@ checkIfIsRoot()
         return 1
     fi
 }
+
+#
+# Purpose: Start Docker Container
+#
+startContainer()
+{
+    local containerName="$1"
+    log "Starting $containerName container..." information
+    if [ ! "$(docker ps -q -f name=${containerName})" ]; 
+    then
+        sudo docker container start "${containerName}"
+    else
+        log "Docker container '${containerName}' already started..." success
+    fi
+}

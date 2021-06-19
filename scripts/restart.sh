@@ -1,25 +1,20 @@
 #!/bin/bash
 
-#Text Decorations
-RED='\033[1;31m'
-YLL='\033[1;33m'
-GRE='\033[1;32m'
-NC='\033[0m'
+. ./lib.sh
+log "CONTAINERS RESTART" intro 1.0.0
 
-echo "${YLL}+----------------|${NC}${GRE}Restart Containers - Lilo DashBoard${NC}${YLL}|----------------+${NC}"
+#------------------|Restart Docker|------------------
 
 #Stop
 { 
-    sh stop.sh
+    sh stop.sh nointro
 } || {
-    echo "${RED}Error in stop procedure.${NC}"
-    exit
+    die "Error in stop procedure."
 }
 
 #Start
 { 
-    sh start.sh
+    sh start.sh nointro
 } || {
-    echo "${RED}Error in start procedure.${NC}"
-    exit
+    echo "Error in start procedure."
 }

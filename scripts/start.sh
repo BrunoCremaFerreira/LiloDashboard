@@ -1,72 +1,44 @@
 #!/bin/bash
 
-#Text Decorations
-RED='\033[1;31m'
-YLL='\033[1;33m'
-GRE='\033[1;32m'
-NC='\033[0m'
+. ./lib.sh
+log "START CONTAINERS" intro 1.0.0
 
-echo "${YLL}+----------------|Start Containers - Lilo DashBoard|----------------+${NC}"
-
-#-----------------------|Dependencies Check|------------------------------------------------------------
-echo "${YLL}Checking Dependencies...${NC}"
+#------------------|Dependencies Check|------------------
 
 dependencyError=0
+log "Checking dependencies" title
+
 #Root Login
-if [ $(id -u) -eq 0 ]
-then 
-    echo "${GRE}[X] Running as Root...${NC}"
-else
-    echo "${RED}[ ] Not running as Root...${NC}"
+checkIfIsRoot
+if [ $? -eq 1 ]; then
     dependencyError=1
-fi
+fi   
 
 #Check Docker
-if [ -x "$(command -v docker)" ]; then
-    echo "${GRE}[X] Docker is installed...${NC}"
-else
-    echo "${RED}[ ] Docker is not installed...${NC}"
+checkDependency docker Docker
+if [ $? -eq 1 ]; then
     dependencyError=1
+fi 
+
+if [ $dependencyError -eq 1 ]; then
+    die
 fi
 
-if [ $dependencyError -eq 1 ];
-then
-    echo ""
-    echo "${RED}Script aborted.${NC}"
-    exit
-fi
-
-#-----------------------|Starting Database Docker container|--------------------------------------------
+#------------------|Starting Database Container|------------------
 {
-    databaseContainer="LiloPostgres"
-    echo "${YLL}Starting Database container...${NC}"
-    if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
-    then
-        docker container start "${databaseContainer}"
-    else
-        echo "${GRE}Docker container '${databaseContainer}' already started... ${NC}"
-    fi
+    startContainer "LiloPostgres"
 } &
 
-#-----------------------|Starting MySql Docker container|-------------------------------------------
+#------------------|Starting MySql Docker container|--------------
 {
-    brokerContainer="LiloBroker"
-    echo "${YLL}Starting Service Broker container...${NC}"
-    if [ ! "$(docker ps -q -f name=${brokerContainer})" ];
-    then
-        docker container start "${brokerContainer}"
-    else
-        echo "${GRE}Docker container '${brokerContainer}' already started... ${NC}"
-    fi
+    startContainer "LiloBroker"
 }
 
 wait
 
-#-----------------------|Docker ls|-----------------------------------------------------------------------
-echo "${YLL}+----------------|Docker Containers|--------------------------------------------------+${NC}"
+#-----------------------|Docker ls|-------------------------------
+log "Docker Containers" title
 docker container ls -a
 
-#-----------------------|End|---------------------------------------------------------------------------
-echo ""
-echo "${GRE}Script Finalized.${NC}"
-echo "${YLL}+-------------------------------------------------------------------------------------+${NC}"
+#------------------|End of Script|------------------
+log "End of Script..." success
