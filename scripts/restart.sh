@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . ./lib.sh
-log "CONTAINERS RESTART" intro 1.0.0
+log "CONTAINERS RESTART" intro 1.0.2
 
 #------------------|Restart Docker|------------------
 

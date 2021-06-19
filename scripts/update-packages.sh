@@ -1,28 +1,20 @@
 #!/bin/bash
 
-#Text Decorations
-RED='\033[1;31m'
-YLL='\033[1;33m'
-GRE='\033[1;32m'
-NC='\033[0m'
+. ./lib.sh
+log "UPDATE SOLUTION NUGET PACKAGES" intro 1.0.2
 
-echo "${YLL}+----------------|Nuget packages solution update - Lilo DashBoard|----------------+${NC}"
+#------------------|Dependencies Check|------------------
 
-#-----------------------|Dependencies Check|------------------------------------------------------------
-echo "${YLL}Checking Dependencies...${NC}"
+#Checking APT
+log "Checking dependencies" title
+checkDependency dotnet "Dot Net" 
+if [ $? -eq 1 ]; then
+    die
+fi   
 
-dependencyError=0
+#-----------------------|Dependencies Check|----------------------------------
+log "Update started..." title
 
-#Check DotNet
-if [ -x "$(command -v dotnet)" ]; then
-    echo "${GRE}[X] DotNet is installed...${NC}"
-else
-    echo "${RED}[ ] DotNet is not installed...${NC}"
-    echo "${RED}Script aborted.${NC}"
-    exit
-fi
-
-echo "${YLL}Update started...${NC}"
 #Checking all directories with have projects
 for filename in `find ../src -name *.csproj`
 do
@@ -33,7 +25,7 @@ do
 
         for package in `dotnet list package | grep '>' | sed 's/^ *> //g;s/ \+/ /g' | cut -f 1 -d ' ' | sort -u`
         do
-            echo "${GRE}Updating package:${NC}${YLL} ${package}${NC}${GRE}...${NC}"
+            log "Updating package:${NC}${YLL} ${package}${NC}${GRE}..." success
             dotnet add package "$package"
         done
 
@@ -42,7 +34,5 @@ do
 done
 wait
 
-#-----------------------|End|---------------------------------------------------------------------------
-echo ""
-echo "${GRE}Script Finalized.${NC}"
-echo "${YLL}+-------------------------------------------------------------------------------------+${NC}"
+#------------------|End of Script|------------------
+log "End of Script..." success

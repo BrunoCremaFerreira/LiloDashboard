@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . ./lib.sh
-log "DOT NET DEVELOPMENT ENVIRONMENT" intro 1.0.0
+log "DOT NET DEVELOPMENT ENVIRONMENT" intro 1.0.2
 
 #------------------|Dependencies Check|------------------
 

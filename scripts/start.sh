@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . ./lib.sh
-log "START CONTAINERS" intro 1.0.0
+log "START CONTAINERS" intro 1.0.2
 
 #------------------|Dependencies Check|------------------
 
