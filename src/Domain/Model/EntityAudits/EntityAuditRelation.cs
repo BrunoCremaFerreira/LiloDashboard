@@ -10,7 +10,7 @@ namespace LiloDash.Domain.Model.EntityAudits
     /// <summary>
     /// Entity relation
     /// </summary>
-    public class AuditEntityRelation
+    public class EntityAuditRelation
     {
         public int Id { get; set; }
 
