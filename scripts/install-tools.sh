@@ -79,10 +79,11 @@ installVsExtension "fernandoescolar.vscode-solution-explorer"
 
 #------------------|Installing Docker  |------------------
 
-checkDependency docker "Docker"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-
+#
+# Purpose: Install Docker on Ubuntu based systems
+#
+dockerInstallUbuntu()
+{
     #Configuring
     sudo apt-get install -y \
     apt-transport-https \
@@ -99,6 +100,54 @@ if [ $? -eq 1 ]; then
     #Installing
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+}
+
+#
+# Purpose: Install Docker on ChromeOs Systems
+#
+dockerInstallChromeBook()
+{
+    sudo apt-get update
+    sudo apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg2 \
+        software-properties-common
+
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+
+    sudo apt-key -y fingerprint 0EBFCD88
+
+    sudo add-apt-repository -y \
+        "deb [arch=amd64] https://download.docker.com/linux/debian \
+        $(lsb_release -cs) \
+        stable"
+
+    sudo apt-get update
+
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+}
+
+
+checkDependency docker "Docker"
+if [ $? -eq 1 ]; then
+    log "Installing..." success
+
+    unameStr=$(uname -a)
+    
+    case "$unameStr" in
+
+    *"penguin"*)
+        log "ChromeOs Version" success
+        dockerInstallChromeBook
+        ;;
+    
+    *)
+        log "Ubuntu Based Version" success
+        dockerInstallUbuntu
+        ;;
+    esac
 
     #Testing
     sudo docker run hello-world
