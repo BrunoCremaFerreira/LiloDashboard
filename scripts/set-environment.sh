@@ -27,9 +27,9 @@ fi
 #-----------------------|Configuring Database Docker container|--------------------------------------------
 databaseContainer="LiloPostgres"
 log "Checking Database container..." information
-if [ ! "$(docker ps -q -f name=${databaseContainer})" ]; 
+if [ ! "$(sudo docker ps -q -f name=${databaseContainer})" ]; 
 then
-    if [ "$(docker ps -aq -f status=exited -f name=${databaseContainer})" ]; then
+    if [ "$(sudo docker ps -aq -f status=exited -f name=${databaseContainer})" ]; then
         # cleanup
         sudo docker rm "${databaseContainer}"
     fi
@@ -43,9 +43,9 @@ fi
 #-----------------------|Configuring Broker Docker container|-------------------------------------------
 brokerContainer="LiloBroker"
 log "Checking Service Broker container..." information
-if [ ! "$(docker ps -q -f name=${brokerContainer})" ]; 
+if [ ! "$(sudo docker ps -q -f name=${brokerContainer})" ]; 
 then
-    if [ "$(docker ps -aq -f status=exited -f name=${brokerContainer})" ]; then
+    if [ "$(sudo docker ps -aq -f status=exited -f name=${brokerContainer})" ]; then
         # cleanup
         sudo docker rm "${brokerContainer}"
     fi
@@ -56,9 +56,24 @@ else
     log "Docker container '${brokerContainer}' already exists..." success
 fi
 
+#-----------------------|Configuring Jenkins Container|-------------------------------------------
+jenkinsContainer="LiloJenkins"
+log "Checking Jenkins container..." information
+if [ ! "$(sudo docker ps -q -f name=${jenkinsContainer})" ]; 
+then
+    if [ "$(sudo docker ps -aq -f status=exited -f name=${jenkinsContainer})" ]; then
+        # cleanup
+        sudo docker rm "${jenkinsContainer}"
+    fi
+    # run Jenkins container
+    sudo docker run -d -v jenkins_home:/var/jenkins_home -p 8080:9800 -p 50000:50000 jenkins/jenkins:lts-jdk11
+else
+    log "Docker container '${jenkinsContainer}' already exists..." success
+fi
+
 #-----------------------|Docker ls|-------------------------------
 log "Docker Containers" title
-docker container ls -a
+sudo docker container ls -a
 
 #------------------|End of Script|------------------
 log "End of Script..." success
