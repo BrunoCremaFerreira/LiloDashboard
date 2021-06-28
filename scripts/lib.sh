@@ -119,7 +119,7 @@ startContainer()
 {
     local containerName="$1"
     log "Starting $containerName container..." information
-    if [ ! "$(docker ps -q -f name=${containerName})" ]; 
+    if [ ! "$(sudo docker ps -q -f name=${containerName})" ]; 
     then
         sudo docker container start "${containerName}"
     else
@@ -134,7 +134,7 @@ stopContainer()
 {
     containerName="$1"
     log "Stopping ${containerName} container..." information
-    if [ ! "$(docker ps -q -f name=${containerName})" ]; 
+    if [ ! "$(sudo docker ps -q -f name=${containerName})" ]; 
     then
         log "Docker container '${containerName}' already stopped..." success
     else

@@ -21,6 +21,11 @@ fi
 #-----------------------|Stopping Broker Docker container|-------------------------------------------
 {
     stopContainer "LiloBroker"
+} &
+
+#-----------------------|Stopping Jenkins Docker container|-------------------------------------------
+{
+    stopContainer "LiloJenkins"
 }
 
 wait

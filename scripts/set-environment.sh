@@ -35,7 +35,7 @@ then
     fi
     # run Postgres container
     sudo docker pull postgres
-    sudo docker run --name "${databaseContainer}" -e POSTGRES_PASSWORD=Masterkey10@ -d postgres
+    sudo docker run --name "${databaseContainer}" -p 5432:5432 -e POSTGRES_PASSWORD=Masterkey10@ -d postgres
 else
     log "Docker container '${databaseContainer}' already exists..." information
 fi
@@ -66,7 +66,7 @@ then
         sudo docker rm "${jenkinsContainer}"
     fi
     # run Jenkins container
-    sudo docker run -d -v jenkins_home:/var/jenkins_home -p 8080:9800 -p 50000:50000 jenkins/jenkins:lts-jdk11
+    sudo docker run -d --name "$jenkinsContainer" -v jenkins_home:/var/jenkins_home -p 8080:9800 -p 50000:50000 jenkins/jenkins:lts-jdk11
 else
     log "Docker container '${jenkinsContainer}' already exists..." success
 fi
