@@ -4,7 +4,7 @@
         <DataCollectors>
             <DataCollector friendlyName="XPlat code coverage">
                 <Configuration>
-                    <Format>coverage</Format>
+                    <Format>cobertura</Format>
                     <Exclude>[*]LiloDash.Infra.Data*</Exclude>
                     <ExcludeByFile>**/Migrations/*.cs,**/Middlewares/*.cs</ExcludeByFile>
                     <SingleHit>false</SingleHit>

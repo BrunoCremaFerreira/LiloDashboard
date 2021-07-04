@@ -25,13 +25,13 @@ createHTMLReport()
     log "PWD: $(pwd)" success
 
     log "Running..." information
-    reportgenerator "-reports:coverage.coverage.xml" "-targetdir:coveragereport" -reporttypes:Html 
+    reportgenerator "-reports:coverage.cobertura.xml" "-targetdir:coveragereport" -reporttypes:Html 
 }
 
 openReport()
 {
     cd "coveragereport"
-    explorer index.html
+    dolphin . &
 }
 
 main()
