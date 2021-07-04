@@ -41,6 +41,19 @@ if [ $? -eq 1 ]; then
     dotnet tool install --global dotnet-ef
 fi
 
+#-----------------|Installing ReportGenerator|------------
+# Git: https://github.com/danielpalme/ReportGenerator
+
+checkDependency reportgenerator "Report Generator"
+if [ $? -eq 1 ]; then
+    log "Installing..." success
+    dotnet tool install -g dotnet-reportgenerator-globaltool
+    dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+    dotnet new tool-manifest
+    dotnet tool install dotnet-reportgenerator-globaltool
+    rm -R tools
+fi
+
 #------------------|VS Code            |------------------
 
 checkDependency code "Visual Studio Code"
