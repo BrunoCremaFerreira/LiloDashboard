@@ -9,7 +9,7 @@ namespace LiloDash.Application.Interfaces.Services
 {
     public interface IBuildingAppService : IDisposable
     {
-        BuildingViewModel GetById(Guid id);
+        Task<BuildingViewModel> GetById(Guid id);
         
         IEnumerable<BuildingViewModel> GetAll();
 

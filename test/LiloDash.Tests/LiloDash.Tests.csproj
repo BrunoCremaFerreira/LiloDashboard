@@ -30,4 +30,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\API\LiloDash.API.csproj" />
+    <ProjectReference Include="..\..\src\Domain\LiloDash.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Domain.Core\LiloDash.Domain.Core.csproj" />
+    <ProjectReference Include="..\..\src\Infra.Data\LiloDash.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\src\Infra.Bus\LiloDash.Infra.Bus.csproj" />
+  </ItemGroup>
+
 </Project>

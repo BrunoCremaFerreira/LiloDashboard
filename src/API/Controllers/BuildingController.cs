@@ -18,20 +18,20 @@ namespace LiloDash.API.Controllers
         
         [HttpGet]
         [Route("v1/[controller]/building/{id}")]
-        public IActionResult GetBuilding(Guid id)
-            => Ok(_buildingAppService.GetById(id));
+        public async Task<IActionResult> BuildingGetById(Guid id)
+            => Ok(await _buildingAppService.GetById(id));
         
         [HttpPost]
         [Route("v1/[controller]/building")]
-        public async Task<IActionResult> AddBuilding(BuildingAddViewModel building)
+        public async Task<IActionResult> BuildingAdd(BuildingAddViewModel building)
         {
             var result = await _buildingAppService.Add(building);
             return Ok(result);
         }
 
         [HttpPut]
-        [Route("v1/[controller]/building")]
-        public async Task<IActionResult> UpdateBuilding(BuildingUpdateViewModel building)
+        [Route("v1/[controller]/building/{id}")]
+        public async Task<IActionResult> BuildingUpdate(BuildingUpdateViewModel building)
         {
             var result = await _buildingAppService.Update(building);
             return Ok(result);
@@ -39,7 +39,7 @@ namespace LiloDash.API.Controllers
 
         [HttpDelete]
         [Route("v1/[controller]/building/{id}")]
-        public async Task<IActionResult> DeleteBuilding(Guid id)
+        public async Task<IActionResult> BuildingDelete(Guid id)
         {
             var result = await _buildingAppService.Remove(id);
             return Ok(result);

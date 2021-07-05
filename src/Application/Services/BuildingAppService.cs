@@ -29,7 +29,7 @@ namespace LiloDash.Application.Services.User
             Bus = bus;
         }
 
-        public BuildingViewModel GetById(Guid id)
+        public async Task<BuildingViewModel> GetById(Guid id)
             => _mapper.Map<BuildingViewModel>(_buildingRepository.GetById(id));
         
         public IEnumerable<BuildingViewModel> GetAll()
