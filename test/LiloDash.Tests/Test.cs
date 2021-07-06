@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace LiloDash.Domain.Tests
+namespace LiloDash.Tests
 {
     public abstract class Test<TEntity> where TEntity : IEntity
     {

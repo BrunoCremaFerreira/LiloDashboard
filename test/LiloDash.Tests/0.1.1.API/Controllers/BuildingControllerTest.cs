@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using LiloDash.Application.ViewModels.Building;
 
-namespace LiloDash.Domain.Tests.API.Controllers
+namespace LiloDash.Tests.API.Controllers
 {
     public class BuildingControllerTest: Test<Building>
     {

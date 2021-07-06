@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace LiloDash.Domain.Tests
+namespace LiloDash.Tests
 {
     public class Startup
     {
