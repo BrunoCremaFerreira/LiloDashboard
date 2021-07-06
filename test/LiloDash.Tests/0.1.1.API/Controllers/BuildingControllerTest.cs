@@ -46,5 +46,11 @@ namespace LiloDash.Domain.Tests.API.Controllers
             Assert.Equal((result.Value as BuildingViewModel).Id, building.Id);
         }
 
+        protected async override void CreateDatabaseSeed()
+        {
+            Context.Database.EnsureDeleted();
+            Context.Buildings.Add(new Building(Guid.NewGuid(), "House"));
+            await Context.Commit();
+        }
     }
 }

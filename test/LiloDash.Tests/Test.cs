@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using LiloDash.Domain.Core.Models;
+using LiloDash.Domain.Model;
 using LiloDash.Infra.Data.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,9 @@ namespace LiloDash.Domain.Tests
         public Test(LiloDataContext context)
         {
             _context = context;
+            CreateDatabaseSeed();
         }
+
+        protected abstract void CreateDatabaseSeed();
     }
 }
