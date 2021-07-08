@@ -3,6 +3,7 @@ using System.IO;
 using LiloDash.Domain.Core.Models;
 using LiloDash.Domain.Model;
 using LiloDash.Infra.Data.Context;
+using LiloDash.Tests.DatabaseSeeds;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -13,7 +14,7 @@ namespace LiloDash.Tests
     {
         private readonly LiloDataContext _context;
 
-        protected LiloDataContext Context => _context;
+        public LiloDataContext Context => _context;
 
         public Test(LiloDataContext context)
         {
@@ -21,6 +22,10 @@ namespace LiloDash.Tests
             CreateDatabaseSeed();
         }
 
-        protected abstract void CreateDatabaseSeed();
+        protected virtual void CreateDatabaseSeed()
+        {
+            if(typeof(TEntity) == typeof(Building))
+                this.CreateBuildingDatabaseSeed();
+        }
     }
 }

@@ -56,14 +56,6 @@ namespace LiloDash.Tests.Application.Services
             Assert.NotEqual(result.Id, Guid.Empty);
         }
 
-        protected async override void CreateDatabaseSeed()
-        {
-            //InMemory Database Mock
-            Context.Database.EnsureDeleted();
-            Context.Buildings.Add(new Building(Guid.NewGuid(), "House"));
-            await Context.Commit();
-        }
-
         private BuildingAddViewModel BuildingAddViewModelGetNewInstance()
             => new Faker<BuildingAddViewModel>().
                 CustomInstantiator(e=> new BuildingAddViewModel

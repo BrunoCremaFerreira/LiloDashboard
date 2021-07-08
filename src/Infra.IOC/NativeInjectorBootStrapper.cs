@@ -11,6 +11,9 @@ using LiloDash.Application.Services.User;
 using LiloDash.Infra.Bus;
 using System;
 using LiloDash.Application.AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using LiloDash.Infra.Data.Repository.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace LiloDash.Infra.IOC
 {
@@ -31,6 +34,37 @@ namespace LiloDash.Infra.IOC
                 .AddScoped<IBuildingRepository, BuildingRepository>()
                 .AddScoped<IUnitOfWork, UnitOfWork>()
                 .AddScoped<LiloDataContext>()
+                
+                //AutoMapper
+                .AddSingleton(config.CreateMapper());
+
+        }
+
+        public static IServiceCollection RegisterServicesTestProjects(this IServiceCollection services, DbContextOptions contextOptions)
+        {
+            var config = AutoMapperConfig.RegisterMappings();
+            
+            return services
+                .RegisterMediator()
+                .RegisterServiceBroker()
+
+                //Application Services
+                .AddScoped<IBuildingAppService, BuildingAppService>()
+            
+                //Infra - Data
+                .AddScoped<IBuildingRepository, BuildingRepository>()
+                .AddScoped<IUnitOfWork, UnitOfWork>()
+                .AddScoped(e=> new LiloDataContext
+                (
+                    new UserLoggedRepository
+                    (
+                        new HttpContextAccessor
+                        {
+                            HttpContext = new DefaultHttpContext()
+                        }
+                    ),
+                    contextOptions
+                ))
                 
                 //AutoMapper
                 .AddSingleton(config.CreateMapper());
