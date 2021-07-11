@@ -75,7 +75,7 @@ namespace LiloDash.Infra.Data.Context
                 .Build();
             
             //Define the database to use
-            optionsBuilder.UseNpgsql(config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
         public async Task<bool> Commit()

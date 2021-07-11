@@ -25,7 +25,7 @@ if [ $dependencyError -eq 1 ]; then
 fi
 
 #-----------------------|Configuring Database Docker container|--------------------------------------------
-databaseContainer="LiloPostgres"
+databaseContainer="LiloDatabase"
 log "Checking Database container..." information
 if [ ! "$(sudo docker ps -q -f name=${databaseContainer})" ]; 
 then
@@ -33,9 +33,9 @@ then
         # cleanup
         sudo docker rm "${databaseContainer}"
     fi
-    # run Postgres container
-    sudo docker pull postgres
-    sudo docker run --name "${databaseContainer}" -p 5432:5432 -e POSTGRES_PASSWORD=Masterkey10@ -d postgres
+
+    # Runing Database container
+    sudo docker run --name "${databaseContainer}" -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Masterkey10@' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
 else
     log "Docker container '${databaseContainer}' already exists..." information
 fi
