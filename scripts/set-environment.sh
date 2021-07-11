@@ -75,5 +75,10 @@ fi
 log "Docker Containers" title
 sudo docker container ls -a
 
+#-----------------------|Migrations|-------------------------------
+log "Running Migrations" title
+cd "../src/Infra.Data"
+dotnet ef database update
+
 #------------------|End of Script|------------------
 log "End of Script..." success
