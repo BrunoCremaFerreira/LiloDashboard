@@ -15,7 +15,7 @@ fi
 
 #-----------------------|Stopping Database Docker container|--------------------------------------------
 {
-    stopContainer "LiloPostgres"
+    stopContainer "LiloDatabase"
 } &
 
 #-----------------------|Stopping Broker Docker container|-------------------------------------------
