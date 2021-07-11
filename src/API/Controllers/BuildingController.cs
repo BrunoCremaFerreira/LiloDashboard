@@ -17,6 +17,11 @@ namespace LiloDash.API.Controllers
             => _buildingAppService = buildingAppService;
         
         [HttpGet]
+        [Route("v1/[controller]/building")]
+        public async Task<IActionResult> BuildingGetAll()
+            => Ok(await _buildingAppService.GetAll());
+
+        [HttpGet]
         [Route("v1/[controller]/building/{id}")]
         public async Task<IActionResult> BuildingGetById(Guid id)
             => Ok(await _buildingAppService.GetById(id));

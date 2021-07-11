@@ -7,6 +7,7 @@ namespace LiloDash.Domain.Commands.Building
     {
         public BuildingAddCommand(string name)
         {
+            Id = Guid.NewGuid();
             Name = name;
         }
 

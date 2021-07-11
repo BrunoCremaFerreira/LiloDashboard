@@ -11,7 +11,7 @@ namespace LiloDash.Application.Interfaces.Services
     {
         Task<BuildingViewModel> GetById(Guid id);
         
-        IEnumerable<BuildingViewModel> GetAll();
+        Task<IEnumerable<BuildingViewModel>> GetAll();
 
         Task<AddResultViewModel<Guid>> Add(BuildingAddViewModel roomViewModel);
         

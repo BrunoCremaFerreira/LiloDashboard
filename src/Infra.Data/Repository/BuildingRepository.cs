@@ -4,6 +4,8 @@ using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Model;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LiloDash.Infra.Data.Repository
 {
@@ -19,6 +21,9 @@ namespace LiloDash.Infra.Data.Repository
 
         public bool Exists(Expression<Func<Building, bool>> predicate)
             => Exists<Building>(predicate);
+
+        public Task<IEnumerable<Building>> GetAll()
+            => Task.FromResult<IEnumerable<Building>>(Context.Buildings.ToList());
 
         public Task<Building> GetById(Guid id)
             => Task.FromResult(

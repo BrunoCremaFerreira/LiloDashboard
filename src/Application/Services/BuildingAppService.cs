@@ -10,6 +10,7 @@ using LiloDash.Domain.Interfaces.Repository.Data;
 using LiloDash.Domain.Core.Bus;
 using System.Threading.Tasks;
 using FluentValidation.Results;
+using LiloDash.Domain.Model;
 
 namespace LiloDash.Application.Services.User
 {
@@ -30,11 +31,12 @@ namespace LiloDash.Application.Services.User
         }
 
         public async Task<BuildingViewModel> GetById(Guid id)
-            => _mapper.Map<BuildingViewModel>(_buildingRepository.GetById(id));
+            => _mapper.Map<BuildingViewModel>(await _buildingRepository.GetById(id));
         
-        public IEnumerable<BuildingViewModel> GetAll()
-        {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<BuildingViewModel>> GetAll()
+        { 
+            var result = await _buildingRepository.GetAll();
+            return _mapper.Map<IEnumerable<BuildingViewModel>>(result);
         }
 
         public async Task<AddResultViewModel<Guid>> Add(BuildingAddViewModel buildingViewModel)

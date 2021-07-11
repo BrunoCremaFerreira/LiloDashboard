@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentValidation.Results;
 using LiloDash.Domain.Model;
@@ -17,5 +18,7 @@ namespace LiloDash.Domain.Interfaces.Repository.Data
         void Remove(Guid Id);
 
         Task<Building> GetById(Guid id);
+
+        Task<IEnumerable<Building>> GetAll();
     }
 }
