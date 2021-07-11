@@ -25,11 +25,13 @@ namespace LiloDash.Domain.CommandHandlers.Building
             if (!request.IsValid())
                 return request.ValidationResult;
 
-            //TODO: Valid existing
+            if(_buildingRepository.Exists(e=> e.Name == request.Name))
+                return AddError(request, e => e.Name, $"Building with name {request.Name} already exist.");
 
-            //_buildingRepository.Add();
-            //return await Commit(_buildingRepository.UnitOfWork);
-            throw new NotImplementedException();
+            var building = new Model.Building(request.Id, request.Name);
+            await _buildingRepository.Add(building);
+
+            return await Commit(_buildingRepository.UnitOfWork);
         }
     }
 }

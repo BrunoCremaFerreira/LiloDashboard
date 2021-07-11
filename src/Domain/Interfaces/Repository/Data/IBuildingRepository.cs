@@ -8,9 +8,9 @@ namespace LiloDash.Domain.Interfaces.Repository.Data
     ///<summary>
     /// Building Repository
     ///</summary>
-    public interface IBuildingRepository
+    public interface IBuildingRepository : IRepository<Building>
     {
-        void Add(Building building);
+        Task Add(Building building);
 
         void Update(Building building);
 
