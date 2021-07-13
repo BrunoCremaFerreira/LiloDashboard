@@ -17,37 +17,48 @@ namespace LiloDash.API.Controllers
             => _buildingAppService = buildingAppService;
         
         [HttpGet]
-        [Route("v1/[controller]/building")]
+        [Route("v1/[controller]")]
         public async Task<IActionResult> BuildingGetAll()
             => Ok(await _buildingAppService.GetAll());
 
         [HttpGet]
-        [Route("v1/[controller]/building/{id}")]
+        [Route("v1/[controller]/{id}")]
         public async Task<IActionResult> BuildingGetById(Guid id)
-            => Ok(await _buildingAppService.GetById(id));
+        {
+            var result = await _buildingAppService.GetById(id);
+            return result != null
+                ? Ok(result)
+                : NoContent();
+        }
         
         [HttpPost]
-        [Route("v1/[controller]/building")]
+        [Route("v1/[controller]")]
         public async Task<IActionResult> BuildingAdd(BuildingAddViewModel building)
         {
             var result = await _buildingAppService.Add(building);
-            return Ok(result);
+            return result.Result.IsValid
+                ? Ok(result)
+                : BadRequest(result);
         }
 
         [HttpPut]
-        [Route("v1/[controller]/building/{id}")]
+        [Route("v1/[controller]/{id}")]
         public async Task<IActionResult> BuildingUpdate(BuildingUpdateViewModel building)
         {
             var result = await _buildingAppService.Update(building);
-            return Ok(result);
+            return result.IsValid
+                ? Ok(result)
+                : BadRequest(result);
         }
 
         [HttpDelete]
-        [Route("v1/[controller]/building/{id}")]
+        [Route("v1/[controller]/{id}")]
         public async Task<IActionResult> BuildingDelete(Guid id)
         {
             var result = await _buildingAppService.Remove(id);
-            return Ok(result);
+            return result.IsValid
+                ? Ok(result)
+                : BadRequest(result);
         }
     }
 }
