@@ -31,7 +31,7 @@ namespace LiloDash.Domain.Model
         /// <summary>
         /// Friendly name of the house
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Building rooms
