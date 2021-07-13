@@ -3,6 +3,8 @@ using System.IO;
 using LiloDash.API.Controllers;
 using LiloDash.Infra.Data.Context;
 using LiloDash.Infra.IOC;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,8 @@ namespace LiloDash.Tests
         {
             services
                 .AddScoped<BuildingController>()
+                .AddScoped<ControllerContext>()
+                .AddScoped<DefaultHttpContext>()
                 .RegisterServicesTestProjects(GetInMemoryDatabaseOptions())
                 .AddSingleton(LoadConfiguration());
                 
