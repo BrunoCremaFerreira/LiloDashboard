@@ -1,8 +1,30 @@
 version: '3'
 	services:
-		build:
-			dockerfile: ./docker/nginx.dockerfile
-			context: ..
+		nginx:
+			build:
+				dockerfile: ./docker/nginx.dockerfile
+				context: ..
 			image: lilodash/nginx
 			container_name: nginx
+			port:
+				- "80:80"
+			networks:
+				- production-network
+			depends_on: 
+				- "lilodb"
+		lilodb:
+			image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+			environment: 
+				- 'ACCEPT_EULA=Y'
+				- 'SA_PASSWORD=Masterkey10@'
+				- 'MSSQL_PID=Express'
+			container_name: lilodb
+			port: 
+				- "1433:1433"
+			networks:
+				- production-network
+
+	networks:
+		production-network:
+			driver: bridge
 	
