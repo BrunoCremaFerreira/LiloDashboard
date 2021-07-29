@@ -1,0 +1,8 @@
+version: '3'
+	services:
+		build:
+			dockerfile: ./docker/nginx.dockerfile
+			context: ..
+			image: lilodash/nginx
+			container_name: nginx
+	
