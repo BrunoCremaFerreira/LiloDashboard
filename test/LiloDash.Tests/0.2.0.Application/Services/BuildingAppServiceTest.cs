@@ -52,8 +52,8 @@ namespace LiloDash.Tests.Application.Services
 
             //Assert
             Assert.True(result.Result.IsValid);
-            Assert.NotNull(result.Id);
-            Assert.NotEqual(result.Id, Guid.Empty);
+            Assert.NotEqual(default, result.Id);
+            Assert.NotEqual(Guid.Empty, result.Id);
         }
 
         private BuildingAddViewModel BuildingAddViewModelGetNewInstance()

@@ -14,18 +14,12 @@ namespace LiloDash.Tests.API.Controllers
 {
     public class BuildingControllerTest: Test<Building>
     {
-        protected readonly DefaultHttpContext _httpContext;
-        protected readonly ControllerContext _controllerContext;
-        protected readonly BuildingController _controller;
+        private readonly BuildingController _controller;
 
         public BuildingControllerTest(LiloDataContext context,
-            DefaultHttpContext httpContext,
-            ControllerContext controllerContext,
             BuildingController controller)
             :base(context)
         {
-            _httpContext = httpContext;
-            _controllerContext = controllerContext;
             _controller = controller;
         }
 
@@ -43,7 +37,7 @@ namespace LiloDash.Tests.API.Controllers
             //Assert
             Assert.True(result.StatusCode == 200);
             Assert.NotNull(result.Value);
-            Assert.Equal((result.Value as BuildingViewModel).Id, building.Id);
+            Assert.Equal(((BuildingViewModel) result.Value).Id, building.Id);
         }
     }
 }
