@@ -16,21 +16,26 @@ fi
 log "Update started..." title
 
 #Checking all directories with have projects
-for filename in `find ../src -name *.csproj`
+declare -a arr=("../src" "../test")
+for d in "${arr[@]}"
 do
-    {
-        directory=${filename%/*.csproj}
-        cd "${directory}/"
-        pwd
+    log $d
+    for filename in `find ${d} -name *.csproj`
+    do
+        {
+            directory=${filename%/*.csproj}
+            cd "${directory}/"
+            pwd
 
-        for package in `dotnet list package | grep '>' | sed 's/^ *> //g;s/ \+/ /g' | cut -f 1 -d ' ' | sort -u`
-        do
-            log "Updating package:${NC}${YLL} ${package}${NC}${GRE}..." success
-            dotnet add package "$package"
-        done
+            for package in `dotnet list package | grep '>' | sed 's/^ *> //g;s/ \+/ /g' | cut -f 1 -d ' ' | sort -u`
+            do
+                log "Updating package:${NC}${YLL} ${package}${NC}${GRE}..." success
+                dotnet add package "$package"
+            done
 
-    } &
+        } &
 
+    done
 done
 wait
 
