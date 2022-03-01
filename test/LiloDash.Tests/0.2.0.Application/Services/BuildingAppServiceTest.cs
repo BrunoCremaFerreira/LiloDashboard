@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using LiloDash.Domain.Model;
 using LiloDash.Infra.Data.Context;
@@ -40,7 +41,7 @@ namespace LiloDash.Tests.Application.Services
             Assert.Equal(result.Id, building.Id);
         }
 
-        [Fact(DisplayName = "Add - Should return Building")]
+        [Fact(DisplayName = "Add - Should add with success")]
         [Trait("Category", "BuildingAppService")]
         public async Task Building_Add_ShouldAddWithSuccess()
         {
@@ -52,8 +53,8 @@ namespace LiloDash.Tests.Application.Services
 
             //Assert
             Assert.True(result.Result.IsValid);
-            Assert.NotEqual(default, result.Id);
-            Assert.NotEqual(Guid.Empty, result.Id);
+            var buildingDb = Context.Buildings.FirstOrDefault(e=> e.Id == result.Id);
+            Assert.Equal(buildingAddViewModel.Name, buildingDb.Name);
         }
 
         private BuildingAddViewModel BuildingAddViewModelGetNewInstance()

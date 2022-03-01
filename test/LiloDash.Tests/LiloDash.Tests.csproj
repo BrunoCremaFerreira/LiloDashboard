@@ -35,4 +35,19 @@
     <ProjectReference Include="..\..\src\Infra.Bus\LiloDash.Infra.Bus.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="0.3.0.Domain\**" />
+    <Compile Remove="0.4.1.Infra.Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="0.3.0.Domain\**" />
+    <EmbeddedResource Remove="0.4.1.Infra.Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="0.3.0.Domain\**" />
+    <None Remove="0.4.1.Infra.Data\**" />
+  </ItemGroup>
+
 </Project>
