@@ -7,4 +7,6 @@
 	|______|_|_|\___/  |_____/ \__,_|___/_| |_|   \\"--\\ 
 # Lilo Dashboard - An Open-Source Electrical Consumption Monitoring System
 
+[![Build and test](https://github.com/BrunoCremaFerreira/LiloDashboard/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/BrunoCremaFerreira/LiloDashboard/actions/workflows/build-and-test.yml)
+
 UNDER CONSTRUCTION
