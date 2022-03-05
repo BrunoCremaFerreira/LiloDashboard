@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . ./lib.sh
 log "START CONTAINERS" intro 1.0.2

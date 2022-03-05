@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . ./lib.sh
 log "UPDATE SOLUTION NUGET PACKAGES" intro 1.0.2

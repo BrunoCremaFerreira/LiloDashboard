@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #Text Decorations
 RED='\033[1;31m'

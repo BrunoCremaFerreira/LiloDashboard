@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . ./lib.sh
 log "DOT NET DEVELOPMENT ENVIRONMENT" intro 1.0.2
