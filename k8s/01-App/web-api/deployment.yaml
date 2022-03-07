@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lilo-web-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: lilo-web-api
+  template:
+    metadata:
+      labels:
+        app: lilo-web-api
+    spec:
+      containers:
+      - name: lilo-web-api-container
+        image: brunocremaferreira/lilodash:latest
+        ports:
+        - containerPort: 80
+

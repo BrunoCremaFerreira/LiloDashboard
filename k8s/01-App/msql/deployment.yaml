@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lilo-db-deployment
+spec:
+  selector:
+    matchLabels:
+      app: lilo-db
+  template:
+    metadata:
+      labels:
+        app: lilo-db
+    spec:
+      containers:
+      - name: lilo-db-container
+        image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: Y
+        - name: SA_PASSWORD
+          value: Masterkey10@
+
