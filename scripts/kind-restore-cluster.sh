@@ -19,7 +19,7 @@ log "Deleting Cluster" title
 kind delete cluster --name lilo-cluster
 
 log "Creating Cluster" title
-kind create cluster --name lilo-cluster
+kind create cluster --name lilo-cluster --config ../k8s/kind.yaml
 
 #------------------|End of Script|----------------------
 log "End of Script..." success

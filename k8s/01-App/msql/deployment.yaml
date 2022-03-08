@@ -13,12 +13,14 @@ spec:
     spec:
       containers:
       - name: lilo-db-container
-        image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
         ports:
         - containerPort: 1433
         env:
         - name: ACCEPT_EULA
-          value: Y
+          value: 'Y'
         - name: SA_PASSWORD
-          value: Masterkey10@
+          value: 'Masterkey10@'
+        - name: MSSQL_PID
+          value: 'Express'
 
