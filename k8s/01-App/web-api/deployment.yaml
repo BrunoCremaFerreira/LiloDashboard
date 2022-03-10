@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: lilo-web-api-deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: lilo-web-api
@@ -14,6 +15,13 @@ spec:
       containers:
       - name: lilo-web-api-container
         image: brunocremaferreira/lilodash:latest
+        resources:
+          requests:
+            cpu: "0.2"
+            memory: "64Mi"
+          limits:
+            cpu: "0.9"
+            memory: "128Mi"
         ports:
         - containerPort: 80
 
