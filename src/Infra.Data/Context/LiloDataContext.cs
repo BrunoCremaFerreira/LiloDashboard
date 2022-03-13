@@ -27,16 +27,12 @@ namespace LiloDash.Infra.Data.Context
 
         public LiloDataContext(IUserLoggedRepository userLoggedRepository, 
             DbContextOptions options) : base (options)
-        {
-            _userLoggedRepository = userLoggedRepository;
-        }
-
+            => _userLoggedRepository = userLoggedRepository;
+        
         public LiloDataContext(IUserLoggedRepository userLoggedRepository)
             : this()
-        {
-            _userLoggedRepository = userLoggedRepository;
-        }
-
+            => _userLoggedRepository = userLoggedRepository;
+        
         #endregion
 
         #region :: DbSets

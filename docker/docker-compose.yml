@@ -1,28 +1,33 @@
 version: '3'
 services:
-    nginx:
-      build:
-        dockerfile: ./docker/nginx.dockerfile
-        context: ..
-      image: lilodash/nginx
-      container_name: nginx
-      port:
-        - "80:80"
-      networks:
-        - production-network
-      depends_on:
-        - "lilodb"
-    lilodb:
+    lilo-db:
       image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
       environment:
         - 'ACCEPT_EULA=Y'
         - 'SA_PASSWORD=Masterkey10@'
         - 'MSSQL_PID=Express'
-      container_name: lilodb
-      port:
+      container_name: lilo-db
+      ports:
         - "1433:1433"
       networks:
-        - production-network
+        - uat-network
+    lilo-web-api:
+      build:
+        dockerfile: ../src/API/Dockerfile
+        context: ..
+      image: brunocremaferreira/lilodash:latest
+      container_name: lilo-web-api
+      environment:
+        - 'ASPNETCORE_ENVIRONMENT=Development'
+        - 'DB_CONNECTION_STRING=Masterkey10@'
+      ports:
+        - "5020:80"
+        - "5023:443"
+      networks:
+        - uat-network
+      depends_on:
+        - "lilo-db"
+    
 networks:
-    production-network:
+    uat-network:
       driver: bridge
