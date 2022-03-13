@@ -68,14 +68,15 @@ namespace LiloDash.Infra.Data.Context
             if(optionsBuilder.IsConfigured)
                 return;
 
-            //Get the configuration from the app settings
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+            //Get the configuration from environment valiable
+            var connectionString = Environment
+                .GetEnvironmentVariable("DB_CONNECTION_STRING");
             
+            if(string.IsNullOrWhiteSpace(connectionString))
+                throw new InvalidOperationException("Database connection string is not set!");
+
             //Define the database to use
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         public async Task<bool> Commit()

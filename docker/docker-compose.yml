@@ -4,7 +4,7 @@ services:
       image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
       environment:
         - 'ACCEPT_EULA=Y'
-        - 'SA_PASSWORD=Masterkey10@'
+        - 'SA_PASSWORD=${LILO_DB_PSW}'
         - 'MSSQL_PID=Express'
       container_name: lilo-db
       ports:
@@ -19,7 +19,7 @@ services:
       container_name: lilo-web-api
       environment:
         - 'ASPNETCORE_ENVIRONMENT=Development'
-        - 'DB_CONNECTION_STRING=Masterkey10@'
+        - 'DB_CONNECTION_STRING=${LILO_DB_CONNECTION}'
       ports:
         - "5020:80"
         - "5023:443"
