@@ -13,9 +13,9 @@ services:
         - uat-network
     lilo-web-api:
       build:
-        dockerfile: ../src/API/Dockerfile
-        context: ..
-      image: brunocremaferreira/lilodash:latest
+        dockerfile: ./API/Dockerfile
+        context: ../src/
+      image: brunocremaferreira/lilodash:dev
       container_name: lilo-web-api
       environment:
         - 'ASPNETCORE_ENVIRONMENT=Development'
@@ -27,7 +27,6 @@ services:
         - uat-network
       depends_on:
         - "lilo-db"
-    
 networks:
     uat-network:
       driver: bridge
