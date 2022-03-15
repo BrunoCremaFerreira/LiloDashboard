@@ -10,7 +10,8 @@ services:
       ports:
         - "1433:1433"
       networks:
-        - uat-network
+        lilo-db-network:
+          ipv4_address: 10.5.0.5
     lilo-web-api:
       build:
         dockerfile: ./API/Dockerfile
@@ -24,9 +25,13 @@ services:
         - "5020:80"
         - "5023:443"
       networks:
-        - uat-network
+        - lilo-db-network
       depends_on:
         - "lilo-db"
 networks:
-    uat-network:
+    lilo-db-network:
       driver: bridge
+      ipam:
+        config:
+          - subnet: 10.05.0.0/16
+            gateway: 10.5.0.1
