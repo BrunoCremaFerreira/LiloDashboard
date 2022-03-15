@@ -20,7 +20,9 @@ spec:
         - name: ACCEPT_EULA
           value: 'Y'
         - name: SA_PASSWORD
-          value: 'Masterkey10@'
+          valueFrom:
+           secretKeyRef:
+            key: SA_PASSWORD
+            name: lilo-db-secret
         - name: MSSQL_PID
           value: 'Express'
-
