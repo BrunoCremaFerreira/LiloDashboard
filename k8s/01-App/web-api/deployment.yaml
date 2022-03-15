@@ -24,9 +24,6 @@ spec:
             memory: "128Mi"
         ports:
         - containerPort: 80
-        env:
-        - name: ASPNETCORE_ENVIRONMENT
-          value: 'Production'
-        - name: DB_CONNECTION_STRING
-          value: ''
-
+        envFrom:
+        - configMapRef:
+           name: lilo-web-app-config-map
