@@ -26,6 +26,10 @@ fi
 log  "Setting environment variable with Kubernete cluster yaml config path '$1'"
 export KUBECONFIG="$1"
 
+log "Setting secrets" title
+log "Setting database password secret"
+kubectl create secret generic lilo-db-secret --from-literal=SA_PASSWORD=Masterkey10@
+
 cd ../k8s/01-App
 log "Configuring MySql Database on Kubernetes" title
 log "Applying deployment.yaml..." title
