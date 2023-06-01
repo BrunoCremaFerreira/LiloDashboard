@@ -15,6 +15,10 @@ fi
 
 log "Setting KUBECONFIG" title
 
+if [ ! "$1" ]; then
+    die "Please inform the kubernetes yaml configuration file. Example: $ ./deploy-k8s.sh \"/home/user/k8s-config.yaml\""
+fi
+
 if [ ! -f "$1" ]; then
     die "The '$1' kubernetes configuration file was not found."
 fi
