@@ -7,5 +7,5 @@ spec:
     app: lilo-web-api
   ports:
   - protocol: TCP
-    port: 80
+    port: 9000
   type: LoadBalancer
