@@ -4,4 +4,4 @@ metadata:
  name: lilo-web-app-config-map
 data:
  ASPNETCORE_ENVIRONMENT: 'Production'
- DB_CONNECTION_STRING: '"Server=lilo-db-service:1433;Database=LiloDash;User Id=sa;Password=Masterkey10@;"'
+ DB_CONNECTION_STRING: 'Server=lilo-db-service;Database=LiloDash;User Id=sa;Password=Masterkey10@;'
