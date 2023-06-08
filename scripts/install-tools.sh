@@ -1,198 +1,139 @@
 #!/bin/sh
 
 . ./lib.sh
-log "DOT NET DEVELOPMENT ENVIRONMENT" intro 1.0.2
 
-#------------------|Dependencies Check|------------------
+readonly DOTNET_SDK_VERSION="6.0"
 
-#Checking APT
-log "Checking dependencies" title
-checkDependency apt APT
-if [ $? -eq 1 ]; then
-    die
-fi   
-#------------------|APT Update        |------------------
-
-#Running Apt Update
-log "Updating Source List" title
-sudo apt-get update
-
-
-log "Installer" title
-#------------------|Installing .Net 5  |------------------
-
-checkDependency dotnet ".NET Core 5"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-    sudo dpkg -i packages-microsoft-prod.deb
-    sudo apt-get update
-    sudo apt-get install -y apt-transport-https && \
-    sudo apt-get update && \
-    sudo apt-get install -y dotnet-sdk-5.0
-    rm -f packages-microsoft-prod.deb
-fi
-
-#-----------------|Installing Entity Framework|------------
-
-checkDependency dotnet-ef "Entity Framework"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    dotnet tool install --global dotnet-ef
-fi
-
-#-----------------|Installing ReportGenerator|------------
-# Git: https://github.com/danielpalme/ReportGenerator
-
-checkDependency reportgenerator "Report Generator"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    dotnet tool install -g dotnet-reportgenerator-globaltool
-    dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
-    dotnet new tool-manifest
-    dotnet tool install dotnet-reportgenerator-globaltool
-    rm -R tools
-fi
-
-#------------------|VS Code            |------------------
-
-checkDependency code "Visual Studio Code"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    wget https://az764295.vo.msecnd.net/stable/b4c1bd0a9b03c749ea011b06c6d2676c8091a70c/code_1.57.0-1623259737_amd64.deb
-    sudo dpkg -i code_1.57.0-1623259737_amd64.deb
-    rm -f code_1.57.0-1623259737_amd64.deb
-fi
-
-#------------------|VS Code - Extensions|------------------
-log "Visual Code Extensions" title
-installVsExtension()
+_validate_os()
 {
-    local extensionName="$1"
-    log "Installing: $extensionName ..." success
-    code --install-extension $extensionName
-}
+    log "Checking OS distribution" title
 
-installVsExtension "ms-dotnettools.csharp"
-installVsExtension "alefragnani.project-manager"
-installVsExtension "vscode-icons-team.vscode-icons"
-installVsExtension "jchannon.csharpextensions"
-installVsExtension "coenraads.bracket-pair-colorizer"
-installVsExtension "christian-kohler.path-intellisense"
-installVsExtension "jmrog.vscode-nuget-package-manager"
-installVsExtension "alefragnani.bookmarks"
-installVsExtension "eamodio.gitlens"
-installVsExtension "donjayamanne.githistory"
-installVsExtension "felipecaputo.git-project-manager"
-installVsExtension "github.vscode-pull-request-github"
-installVsExtension "spywhere.guides"
-installVsExtension "abusaidm.html-snippets"
-installVsExtension "ms-azuretools.vscode-docker"
-installVsExtension "fernandoescolar.vscode-solution-explorer"
-
-#-----------------|Installing Kubectl|------------
-
-checkDependency kubectl "kubectl"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    sudo apt-get update
-    sudo apt-get install -y ca-certificates curl
-    sudo apt-get install -y apt-transport-https
-    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-    sudo apt-get update
-    sudo apt-get install -y kubectl
-fi
-
-#-----------------|Installing Kube Lens|------------
-
-checkDependency lens-desktop "lens-desktop"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-    curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
-    sudo apt update
-    sudo apt install lens
-    lens-desktop
-fi
-
-#------------------|Installing Docker  |------------------
-
-#
-# Purpose: Install Docker on Ubuntu based systems
-#
-dockerInstallUbuntu()
-{
-    #Configuring
-    sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-    echo \
-    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    #Installing
-    sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-}
-
-#
-# Purpose: Install Docker on ChromeOs Systems
-#
-dockerInstallChromeBook()
-{
-    sudo apt-get update
-    sudo apt-get install -y \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg2 \
-        software-properties-common
-
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-
-    sudo apt-key -y fingerprint 0EBFCD88
-
-    sudo add-apt-repository -y \
-        "deb [arch=amd64] https://download.docker.com/linux/debian \
-        $(lsb_release -cs) \
-        stable"
-
-    sudo apt-get update
-
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-}
-
-
-checkDependency docker "Docker"
-if [ $? -eq 1 ]; then
-    log "Installing..." success
-
-    unameStr=$(uname -a)
-    
+    local unameStr=$(uname -a)
     case "$unameStr" in
 
-    *"penguin"*)
-        log "ChromeOs Version" success
-        dockerInstallChromeBook
+    *"Neon"*)
+        log "KDE Neon" success
         ;;
-    
+    *"Debian"*)
+        log "Debian based system" success
+        ;;
+    *"Ubuntu"*)
+        log "Ubuntu based system" success
+        ;;
     *)
-        log "Ubuntu Based Version" success
-        dockerInstallUbuntu
+        die "OS Not Supported."
         ;;
     esac
+}
 
-    #Testing
-    sudo docker run hello-world
-    sudo docker ps -a
-    #sudo docker container rm hello-world
+_install_kubectl()
+{
+    checkDependency kubectl "Kubectl"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+        sudo apt-get update
+        sudo apt-get install -y ca-certificates curl
+        sudo apt-get install -y apt-transport-https
+        curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+        sudo apt-get update
+        sudo apt-get install -y kubectl
+    fi
+}
 
-fi
-#------------------|End of Script|------------------
-log "End of Script..." success
+_install_kube_lens()
+{
+    checkDependency lens-desktop "lens-desktop"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+        curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+        sudo apt update
+        sudo apt install lens
+        log "Use de command lens-desktop to acces the tool" success
+    fi
+}
+
+_install_vs_code()
+{
+    checkDependency code "Vs Code"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+        local home_path="$HOME"
+        wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -O "$home_path/tmp-vscode.deb"
+        sudo dpkg -i "$home_path/tmp-vscode.deb"
+        rm -f "$home_path/tmp-vscode.deb"
+    fi
+}
+
+_install_vs_code_extensions()
+{
+    log "Visual Code Extensions" title
+    code --install-extension "ms-dotnettools.csharp"
+    code --install-extension "alefragnani.project-manager"
+    code --install-extension "vscode-icons-team.vscode-icons"
+    code --install-extension "jchannon.csharpextensions"
+    code --install-extension "coenraads.bracket-pair-colorizer"
+    code --install-extension "christian-kohler.path-intellisense"
+    code --install-extension "jmrog.vscode-nuget-package-manager"
+    code --install-extension "alefragnani.bookmarks"
+    code --install-extension "eamodio.gitlens"
+    code --install-extension "donjayamanne.githistory"
+    code --install-extension "felipecaputo.git-project-manager"
+    code --install-extension "github.vscode-pull-request-github"
+    code --install-extension "spywhere.guides"
+    code --install-extension "abusaidm.html-snippets"
+    code --install-extension "ms-azuretools.vscode-docker"
+    code --install-extension "fernandoescolar.vscode-solution-explorer"
+}
+
+_install_dotnet_sdk()
+{
+    checkDependency dotnet "Dot Net SDK"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+        local home_path="$HOME"
+        wget "https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb" -O "$home_path/packages-microsoft-prod.deb"
+        sudo dpkg -i "$home_path/packages-microsoft-prod.deb"
+        rm -f "$home_path/packages-microsoft-prod.deb"
+
+        sudo apt-get update
+        sudo apt-get install -y "dotnet-sdk-$DOTNET_SDK_VERSION"
+    fi
+}
+
+_install_podman()
+{
+    checkDependency podman "Podman"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+
+        sudo apt-get update
+        sudo apt-get install -y podman
+    fi
+}
+
+_main()
+{
+    log "DOT NET DEVELOPMENT ENVIRONMENT" intro 6.0.0
+
+    _validate_os
+
+    #Checking APT
+    log "Checking base dependencies" title
+    checkDependency apt APT
+    if [ $? -eq 1 ]; then
+        die
+    fi
+
+    _install_kubectl
+    _install_kube_lens
+    _install_vs_code
+    _install_vs_code_extensions
+    _install_dotnet_sdk
+    _install_podman
+
+    log "End of Script..." success
+}
+
+_main

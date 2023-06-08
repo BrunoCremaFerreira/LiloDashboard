@@ -12,6 +12,12 @@ spec:
       labels:
         app: lilo-web-api
     spec:
+      initContainers:
+      - name: lilo-db-migrate
+        image: brunocremaferreira/lilodash:latest
+        envFrom:
+        - configMapRef:
+           name: lilo-web-app-config-map
       containers:
       - name: lilo-web-api-container
         image: brunocremaferreira/lilodash:latest
