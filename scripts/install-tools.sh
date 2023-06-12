@@ -90,15 +90,42 @@ _install_vs_code_extensions()
 _install_dotnet_sdk()
 {
     checkDependency dotnet "Dot Net SDK"
+    local result_value=$?
+    if [ $result_value -eq 0 ]; then
+        if [ "$1"="-y" ]; then
+            log "Removing..." warning
+            sudo apt remove dotnet* -y
+            sudo apt remove aspnetcore* -y
+            sudo apt remove netstandard* -y
+        fi
+    fi
+    if [ $result_value -eq 1 ] || [ "$1"="-y" ]; then
+        log "Installing..." success
+        
+        log "Creating /etc/apt/preferences.d/dotnet.pref ..." warning
+        echo "Package: *
+Pin: origin \"packages.microsoft.com\"
+Pin-Priority: 1001" >> "$HOME/dotnet.pref"
+        sudo cp -f -v "$HOME/dotnet.pref" "/etc/apt/preferences.d/dotnet.pref"
+        rm "$HOME/dotnet.pref"
+        
+        log "Updating packages..." warning
+        sudo apt update
+        
+        log "Installing DotNet package..." warning
+        sudo apt install "dotnet-sdk-$DOTNET_SDK_VERSION" -y
+    fi
+}
+
+_install_dotnet_ef()
+{
+    checkDependency dotnet-ef "Dot Net Entity Framework Tool"
     if [ $? -eq 1 ]; then
         log "Installing..." success
-        local home_path="$HOME"
-        wget "https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb" -O "$home_path/packages-microsoft-prod.deb"
-        sudo dpkg -i "$home_path/packages-microsoft-prod.deb"
-        rm -f "$home_path/packages-microsoft-prod.deb"
-
-        sudo apt-get update
-        sudo apt-get install -y "dotnet-sdk-$DOTNET_SDK_VERSION"
+        dotnet tool install --global dotnet-ef
+    else
+        log "Updating..." success
+        dotnet tool update --global dotnet-ef
     fi
 }
 
@@ -113,9 +140,20 @@ _install_podman()
     fi
 }
 
+_install_podman_compose()
+{
+    checkDependency podman-compose "Podman Compose"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+
+        sudo apt install python3-pip -y
+        pip3 install podman-compose
+    fi
+}
+
 _main()
 {
-    log "DOT NET DEVELOPMENT ENVIRONMENT" intro 6.0.0
+    log "DOT NET DEVELOPMENT ENVIRONMENT" intro "$DOTNET_SDK_VERSION"
 
     _validate_os
 
@@ -130,10 +168,12 @@ _main()
     _install_kube_lens
     _install_vs_code
     _install_vs_code_extensions
-    _install_dotnet_sdk
+    _install_dotnet_sdk "$1"
+    _install_dotnet_ef
     _install_podman
-
+    _install_podman_compose
+    
     log "End of Script..." success
 }
 
-_main
+_main "$1"
