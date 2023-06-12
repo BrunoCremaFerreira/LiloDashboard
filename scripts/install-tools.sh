@@ -85,6 +85,7 @@ _install_vs_code_extensions()
     code --install-extension "abusaidm.html-snippets"
     code --install-extension "ms-azuretools.vscode-docker"
     code --install-extension "fernandoescolar.vscode-solution-explorer"
+    code --install-extension "ms-vscode-remote.remote-containers"
 }
 
 _install_dotnet_sdk()
@@ -92,14 +93,15 @@ _install_dotnet_sdk()
     checkDependency dotnet "Dot Net SDK"
     local result_value=$?
     if [ $result_value -eq 0 ]; then
-        if [ "$1"="-y" ]; then
+        log "Value: $1" success
+        if [ "$1" = "-f" ]; then
             log "Removing..." warning
             sudo apt remove dotnet* -y
             sudo apt remove aspnetcore* -y
             sudo apt remove netstandard* -y
         fi
     fi
-    if [ $result_value -eq 1 ] || [ "$1"="-y" ]; then
+    if [ $result_value -eq 1 ] || [ "$1" = "-f" ]; then
         log "Installing..." success
         
         log "Creating /etc/apt/preferences.d/dotnet.pref ..." warning

@@ -1,24 +1,37 @@
 #!/bin/sh
 
 . ./lib.sh
-log "LILO CONTAINER IMAGE BUILDER" intro 1.0.0
 
-#------------------|Dependencies Check|------------------
+_check_dependecies()
+{
+    log "Checking dependencies" title
+    checkDependency podman Podman
+    if [ $? -eq 1 ]; then
+        die
+    fi
+}
 
-log "Checking dependencies" title
+_build_api_image()
+{
+    log "Building API Image..." title
+    podman build ../src -t brunocremaferreira/lilodash:dev -f ../src/API/Dockerfile
+}
 
-#Check Docker
-checkDependency docker Docker
-if [ $? -eq 1 ]; then
-    die
-fi
+_build_migration_image()
+{
+    log "Building Migration Image..." title
+    podman build ../src -t brunocremaferreira/lilodash-migration:dev -f ../src/Infra.Data/Dockerfile
+}
 
-------------|Building Image|--------------
+_main()
+{
+    log "LILO CONTAINER IMAGE BUILDER" intro 2.0.0
+    _check_dependecies
+    _build_api_image
+    _build_migration_image
+    log "End of script." information
+}
 
-log "Building..." title
-docker build ../src -t brunocremaferreira/lilodash:dev -f ../src/API/Dockerfile
-
-log "End of script." information
-
+_main
 
 
