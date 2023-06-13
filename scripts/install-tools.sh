@@ -3,6 +3,7 @@
 . ./lib.sh
 
 readonly DOTNET_SDK_VERSION="6.0"
+readonly AZURE_DATA_STUDIO_VERSION="stable"
 
 _validate_os()
 {
@@ -124,7 +125,7 @@ _install_dotnet_ef()
     checkDependency dotnet-ef "Dot Net Entity Framework Tool"
     if [ $? -eq 1 ]; then
         log "Installing..." success
-        dotnet tool install --global dotnet-ef
+        dotnet tool install<version string> --global dotnet-ef
     else
         log "Updating..." success
         dotnet tool update --global dotnet-ef
@@ -153,6 +154,33 @@ _install_podman_compose()
     fi
 }
 
+_install_azure_data_studio()
+{
+      checkDependency azuredatastudio "Azure Data Studio"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+
+        local azure_deb_path="$HOME/Downloads/azure-data-studio.deb"
+        wget "https://azuredatastudio-update.azurewebsites.net/latest/linux-deb-x64/$AZURE_DATA_STUDIO_VERSION" -O "$azure_deb_path"
+        sudo dpkg -i "$azure_deb_path"
+        rm "$azure_deb_path"
+    fi  
+}
+
+_install_helm()
+{
+    checkDependency helm "Helm"
+    if [ $? -eq 1 ]; then
+        log "Installing..." success
+
+        curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+        sudo apt-get install apt-transport-https --yes
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+        sudo apt-get update
+        sudo apt-get install helm
+    fi
+}
+
 _main()
 {
     log "DOT NET DEVELOPMENT ENVIRONMENT" intro "$DOTNET_SDK_VERSION"
@@ -174,6 +202,8 @@ _main()
     _install_dotnet_ef
     _install_podman
     _install_podman_compose
+    _install_azure_data_studio
+    _install_helm
     
     log "End of Script..." success
 }

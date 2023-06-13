@@ -12,6 +12,19 @@ services:
       networks:
         lilo-db-network:
           ipv4_address: 10.5.0.5
+    lilo-migration:
+      build:
+        dockerfile: ./API/Dockerfile
+        context: ../src/
+      image: brunocremaferreira/lilodash-migration:dev
+      container_name: lilo-migration
+      environment:
+        - 'ASPNETCORE_ENVIRONMENT=Development'
+        - 'DB_CONNECTION_STRING=${LILO_DB_CONNECTION}'
+      networks:
+        - lilo-db-network
+      depends_on:
+        - "lilo-db"
     lilo-web-api:
       build:
         dockerfile: ./API/Dockerfile

@@ -12,12 +12,6 @@ spec:
       labels:
         app: lilo-web-api
     spec:
-      initContainers:
-      - name: lilo-db-migrate
-        image: brunocremaferreira/lilodash:latest
-        envFrom:
-        - configMapRef:
-           name: lilo-web-app-config-map
       containers:
       - name: lilo-web-api-container
         image: brunocremaferreira/lilodash:latest
@@ -30,6 +24,12 @@ spec:
             memory: "128Mi"
         ports:
         - containerPort: 80
+        envFrom:
+        - configMapRef:
+           name: lilo-web-app-config-map
+      initContainers:
+      - name: lilo-db-migrate
+        image: brunocremaferreira/lilodash-migration:1.0
         envFrom:
         - configMapRef:
            name: lilo-web-app-config-map
