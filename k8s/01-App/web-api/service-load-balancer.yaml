@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lilo-web-api-service
+  name: lilo-web-api-load-balancer-service
 spec: 
   selector:
     app: lilo-web-api
