@@ -187,6 +187,8 @@ _main()
     kubectl get all
     log "Kubernetes Get Persistent Volume" title
     kubectl get pv
+    log "Kubernetes Get Persistent Volume Claims" title
+    kubectl get pvc
     log "Kubernetes Pods (Watch)" title
     kubectl get pods --watch
 }

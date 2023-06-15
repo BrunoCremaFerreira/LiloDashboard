@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: lilo-db-pv-volume
+  name: lilo-db-pv
 spec:
   storageClassName: manual
   capacity:
@@ -12,3 +12,16 @@ spec:
     path: /mnt/temp-storage/nfs-swap/k8s-volume/102/lilodash/db
     server: 192.168.0.2
     readOnly: false
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: lilo-db-pvc
+spec:
+  resources:
+    requests:
+      storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "manual"
+  volumeName: lilo-db-pv

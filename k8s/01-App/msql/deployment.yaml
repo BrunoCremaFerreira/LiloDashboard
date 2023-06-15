@@ -26,3 +26,10 @@ spec:
             name: lilo-db-secret
         - name: MSSQL_PID
           value: 'Express'
+        volumeMounts:
+          - name: lilo-db-pod-volume
+            mountPath: "/var/opt/mssql"
+      volumes:
+        - name: lilo-db-pod-volume
+          persistentVolumeClaim:
+            claimName: lilo-db-pvc
