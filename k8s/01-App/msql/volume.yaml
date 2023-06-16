@@ -3,11 +3,11 @@ kind: PersistentVolume
 metadata:
   name: lilo-db-pv
 spec:
-  storageClassName: manual
+  storageClassName: "standard"
   capacity:
     storage: 2Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   nfs:
     path: /mnt/temp-storage/nfs-swap/k8s-volume/102/lilodash/db
     server: 192.168.0.2
@@ -22,6 +22,6 @@ spec:
     requests:
       storage: 2Gi
   accessModes:
-    - ReadWriteMany
-  storageClassName: "manual"
+    - ReadWriteOnce
+  storageClassName: "standard"
   volumeName: lilo-db-pv

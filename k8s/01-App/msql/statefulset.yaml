@@ -1,11 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: lilo-db-deployment
+  name: lilo-db-statefulset
 spec:
   selector:
     matchLabels:
       app: lilo-db
+  serviceName: msql-db
+  replicas: 1
   template:
     metadata:
       labels:

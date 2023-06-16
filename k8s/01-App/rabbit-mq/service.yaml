@@ -3,9 +3,19 @@ kind: Service
 metadata:
   name: rabbitmq-service
 spec: 
+  type: ClusterIP
   selector:
     app: rabbitmq
   ports:
-    - port: 15672
-      targetPort: 15672
-  type: ClusterIP
+    - name: http
+      protocol: TCP
+      port: 15672
+      targetPort: management
+    - name: prometheus
+      protocol: TCP
+      port: 15692
+      targetPort: prometheus
+    - name: amqp
+      protocol: TCP
+      port: 5672
+      targetPort: amqp
