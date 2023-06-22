@@ -4,10 +4,13 @@ COPY ["API/LiloDash.API.csproj", "API/"]
 RUN dotnet restore "API/LiloDash.API.csproj"
 COPY . .
 WORKDIR "/src/Infra.Data"
-ENV DB_CONNECTION_STRING=""
+ARG DB_CONNECTION_STRING="Data Source=(LocalDb)\MSSQLLocalDB;Database=lilo-db"
 RUN dotnet tool install --global dotnet-ef
-RUN ls -lah ~
 ENV PATH="$PATH:/root/.dotnet/tools"
+RUN dotnet ef migrations bundle --self-contained -r linux-x64 --force
 
-FROM dotnet-ef AS migrations-run
-ENTRYPOINT ["dotnet-ef", "database", "update"]
+FROM mcr.microsoft.com/dotnet/aspnet AS migrations-run
+ENV DB_CONNECTION_STRING=""
+WORKDIR /app
+COPY --from=dotnet-ef /src/Infra.Data/efbundle .
+ENTRYPOINT ["ef-bundle"]
