@@ -2,6 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: lilo-web-api-hpa
+  namespace: lilo-stack
 spec:
   scaleTargetRef:
     apiVersion: app/v1

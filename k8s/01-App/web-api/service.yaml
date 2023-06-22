@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: lilo-web-api-service
+  namespace: lilo-stack
 spec:
   type: ClusterIP
   ports:

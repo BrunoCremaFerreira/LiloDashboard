@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: lilo-stack
+  labels:
+    name: lilo-stack

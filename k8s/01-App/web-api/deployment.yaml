@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: lilo-web-api-deployment
+  namespace: lilo-stack
 spec:
   replicas: 3
   selector:

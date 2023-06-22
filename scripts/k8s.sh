@@ -2,6 +2,8 @@
 
 . ./lib.sh
 
+readonly namespace="lilo-stack"
+
 _dependency_check()
 {
     log "Checking dependencies" title
@@ -18,6 +20,12 @@ _set_and_validate_kubeconfig()
     if [ "$1" ]; then
         log  "Setting environment variable with Kubernete cluster yaml config path '$1'"
         export KUBECONFIG="$1"
+    else
+        readonly globalKubeConfig="$HOME/.kube/config"
+        if [ -f "$globalKubeConfig" ]; then
+            log "Global Kubeconfig was found... (\"$globalKubeConfig)\"" success
+            return
+        fi
     fi
 
     if [ ! "$KUBECONFIG" ]; then
@@ -89,7 +97,7 @@ _help()
 }
 
 #--------------------|Apply Methods|--------------------
-_apply_flies_from_directory()
+_apply_cfg_from_directory()
 {   
     for file in "$1/*.yaml"; do
         kubectl apply -f "$file"
@@ -99,23 +107,29 @@ _apply_flies_from_directory()
 _apply_database()
 {
     log "Configuring MySql Database on Kubernetes" title
-    _apply_flies_from_directory "msql"
+    _apply_cfg_from_directory "msql"
 }
 
 _apply_rabbit_mq()
 {
     log "Configuring RabbitMq on Kubernetes" title
-    _apply_flies_from_directory "rabbit-mq"
+    _apply_cfg_from_directory "rabbit-mq"
 }
 
 _apply_api()
 {
     log "Configuring LiloDash application on Kubernetes" title
-    _apply_flies_from_directory "web-api"
+    _apply_cfg_from_directory "web-api"
+}
+
+_apply_general()
+{
+    log "Configuring General configurations on Kubernetes" title
+    _apply_cfg_from_directory "."
 }
 
 #--------------------|Delete Methods|--------------------
-_delete_flies_from_directory()
+_delete_cfg_from_directory()
 {   
     for file in "$1/*.yaml"; do
         kubectl delete -f "$file"
@@ -125,19 +139,25 @@ _delete_flies_from_directory()
 _delete_database()
 {
     log "Removing MySql Database from Kubernetes" title
-    _delete_flies_from_directory "msql"
+    _delete_cfg_from_directory "msql"
 }
 
 _delete_rabbit_mq()
 {
     log "Removing RabbitMq from Kubernetes" title
-    _delete_flies_from_directory "rabbit-mq"
+    _delete_cfg_from_directory "rabbit-mq"
 }
 
 _delete_api()
 {
     log "Removing LiloDash application from Kubernetes" title
-    _delete_flies_from_directory "web-api"
+    _delete_cfg_from_directory "web-api"
+}
+
+_delete_general()
+{
+    log "Removing General configurations on Kubernetes" title
+    _delete_cfg_from_directory "."
 }
 
 #--------------------|Main|--------------------
@@ -152,6 +172,7 @@ _main()
 
             cd ../k8s/01-App
             _secret_create
+            _apply_general
             _apply_database
             _apply_rabbit_mq
             _apply_api
@@ -160,6 +181,7 @@ _main()
             _set_and_validate_kubeconfig "$2"
 
             cd ../k8s/01-App
+            _delete_general
             _delete_database
             _delete_rabbit_mq
             _delete_api
@@ -184,17 +206,13 @@ _main()
     esac
 
     log "Kubernetes Get All" title
-    kubectl get all
+    kubectl get all -n "$namespace"
     log "Kubernetes Get Persistent Volume" title
     kubectl get pv
     log "Kubernetes Get Persistent Volume Claims" title
     kubectl get pvc
     log "Kubernetes Pods (Watch)" title
-    kubectl get pods --watch
+    kubectl get pods -n "$namespace" --watch
 }
 
-_main "$1" "$2" 
-
-
-
-
+_main "$1" "$2"
