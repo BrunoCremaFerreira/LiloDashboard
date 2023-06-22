@@ -14,13 +14,13 @@ _check_dependecies()
 _build_api_image()
 {
     log "Building API Image..." title
-    podman build ../src -t brunocremaferreira/lilodash:dev -f ../src/API/Dockerfile
+    podman build ../src -t brunocremaferreira/lilodash:latest -f ../src/API/Dockerfile
 }
 
 _build_migration_image()
 {
     log "Building Migration Image..." title
-    podman build ../src -t brunocremaferreira/lilodash-migration:dev -f ../src/Infra.Data/Dockerfile
+    podman build ../src -t brunocremaferreira/lilodash-migration:latest -f ../src/Infra.Data/Dockerfile
 }
 
 _main()

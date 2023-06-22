@@ -41,7 +41,7 @@ _secret_create()
 {
     log "Setting secrets" title
     log "Setting database password secret"
-    kubectl create secret generic lilo-db-secret --from-literal=SA_PASSWORD=Masterkey10@
+    kubectl -n $namespace create secret generic lilo-db-secret --from-literal=SA_PASSWORD=Masterkey10@
 }
 
 _debug_ubuntu_pod_install_tools()
