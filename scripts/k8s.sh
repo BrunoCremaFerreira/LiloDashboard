@@ -171,8 +171,8 @@ _main()
             _set_and_validate_kubeconfig "$2"
 
             cd ../k8s/01-App
-            _secret_create
             _apply_general
+            _secret_create
             _apply_database
             _apply_rabbit_mq
             _apply_api
